@@ -3,5 +3,6 @@ preface.md
 00-intro.md
 mainmatter.md
 01-set-up.md
+02-test.md
 backmatter.md
 conclusion.md
