@@ -1,2 +1,1 @@
-
-# Histogram
+## Histogram
