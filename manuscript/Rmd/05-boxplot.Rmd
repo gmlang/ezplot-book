@@ -1,0 +1,39 @@
+---
+title: "02-04-Simple-Logit-Models"
+author: "gmlang"
+date: "April 3, 2015"
+output: pdf_document
+---
+
+```{r setup}
+library(knitr)
+opts_chunk$set(comment = "", warning = FALSE, message = FALSE, tidy = FALSE,
+               echo = TRUE, fig.width = 6, fig.height = 6, dev = 'png')
+options(width = 100, scipen = 5, digits = 5)
+```
+
+## I'll use it to demo boxplots. 
+
+First, let's draw boxplots of budget vs. years. 
+```{r, warning=FALSE, message=FALSE}
+# call the films dataset make a function that will draw boxplots 
+# using the variables in the films data set
+plt = mk_boxplot(films)
+
+# plot distributions of budget over the years
+title1 = "Annual Distribution of Budget from 1913 to 2014"
+p = plt("year_cat", "budget", ylab="budget", main=title1)
+print(p)
+```
+
+We see the y-axis tick labels are expressed in scientific notations. This makes it difficult to read. We can use the comma scale on the y-axis, which will display the numbers in 000,000 format.
+```{r}
+scale_axis(p, "y", scale = "comma")
+```
+
+We also observe that all the boxes are squashed down, indicating budget is heavily right-skewed. We can use either the log scale or the log10 scale on the y-axis. Once again, this can be easily done using the function `scale_axis()`.
+```{r}
+scale_axis(p, "y", scale = "log")
+scale_axis(p, "y", scale = "log10")
+scale_axis(p, "y", scale = "log2")
+```

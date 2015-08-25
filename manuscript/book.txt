@@ -3,6 +3,6 @@ preface.md
 00-intro.md
 mainmatter.md
 01-set-up.md
-02-test.md
+02-plot-a-con-var-4-in-1.md
 backmatter.md
 conclusion.md
