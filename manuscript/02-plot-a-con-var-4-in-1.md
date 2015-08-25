@@ -1,5 +1,5 @@
 
-# Plot The Distribution of A Continuous Variable
+# Plot the Distribution of a Continuous Variable
 
 Let's begin with an example. First, we load the ezplot package, which contains a dataset of films obtained from IMBD.com. 
 
