@@ -14,8 +14,7 @@ The variable `budget` is continuous, and we can look at its distribution using t
 plt = plt_dist(films) # plt_dist() returns a function
 plt("budget") # notice the quotation marks 
 ```
-
-<img src="images/dist_budget-1.png" title="" alt="" style="display: block; margin: auto;" />
+![](images/dist_budget-1.png)
 
 It outputs four plots in one panel: histogram, density plot, boxplot and qqplot. The first three plots show the shape of its distribution, and we see it has a long right tail. The qqplot shows the its deviation from normality, and we see it isn't close to being normally distributed because a normal distribution would have most of the blue dots aligned linearly along the 45 degree diagonal line connecting the bottom left corner to the upper right corner. 
 
@@ -28,7 +27,7 @@ Pay attention to how we used `plt_dist()`: first, we pass to it the data frame `
 plt("boxoffice") # notice the quotation marks 
 ```
 
-<img src="images/dist_bo-1.png" title="" alt="" style="display: block; margin: auto;" />
+![](images/dist_bo-1.png)
 
 Let's look at the two plots drawn above for a moment. Both budget and boxoffice have a long right tail. And we can make the long right tail disappear by taking the log transformation. For example, we can append to `films` a new variable called `log_budget` by taking the log of budget. We'd like to visualize `log_budget`, however, because `films` is updated, we need to call `plt_dist()` on `films` again, which will output a new function that we can use to draw, and we'll assign it to the variable `plt2`. Finally, to make the plot, we'll simply call `plt2("log_budget")`.
 
@@ -38,7 +37,7 @@ plt2 = plt_dist(films)
 plt2("log_budget")
 ```
 
-<img src="images/dist_log_budget-1.png" title="" alt="" style="display: block; margin: auto;" />
+![](images/dist_log_budget-1.png)
 
 We see that after taking log, budget becomes more or less bell-shaped, though it's still not quite normal because of the slight long left tail. For all practical purpose, this is good enough. By the way, the reason why we care about normality is that many statistical methods, for example, linear regression, are devised based on the assumption of a normal distribution. In order to use these methods correctly, we need to make sure the input data are approximately normally distributed. When encountering long right tailed continuous data, we can often make it more normal by taking the log of its values.
 
