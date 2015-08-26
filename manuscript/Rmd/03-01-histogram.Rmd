@@ -1,28 +1,35 @@
----
-title: ""
-author: ""
-date: ""
-output: md_document
----
-
 ```{r setup}
 library(knitr)
 opts_chunk$set(comment = "", warning = FALSE, message = FALSE, tidy = FALSE,
-               echo = TRUE, fig.width = 6, fig.height = 6, dev = 'png')
+               echo = TRUE, fig.path='images/', fig.width = 6, fig.height = 6, 
+               dev = 'png') # don't use fig.align, which forces html img code instead of md code
 options(width = 100, scipen = 5, digits = 5)
 ```
 
-
 ## Histogram
-Plot The Distribution of A Continuous Variable
 
+As we've already seen from the last chapter, histogram, density plot and boxplot are for displaying the distribution of a continuous variable. We'll look at histogram in this section, and density plot and boxplot in the next two sections. Before we start, make sure you load the `ezplot` library first. And the ezplot function for making histogram is `mk_distplot()`.
 ```{r}
 library(ezplot)
 ```
 
-## The ezplot package comes with a dataset of films obtained from IMBD.com
+
 ```{r}
-?films
+# plot ratings distribution
+plt = mk_distplot(dat)
+title2 = "Distribution of Ratings (1913-2014)"
+p = plt("rating", binw=0.3, xlab="rating", main=title2, add_vline_mean=T) 
+p = ezplot::web_display(p)
+print(p)
+
+        # plot histogram to show the distribution of lengths
+        plt = ezplot::mk_distplot(dat)
+        title1 = "Distribution of Film Lengths"
+        p = plt("length", xlab="minutes", main=title1, add_vline_mean=T)
+        p = ezplot::scale_axis(p, "y", use_comma=T)
+        p = ezplot::web_display(p)
+        print(p)
+
 ```
 
 ## We'll plot dist first. The Q-Q plot shows that it isn't normally distributed. A normal variable would have all the blue dots form a line along the 45 degree line.  
