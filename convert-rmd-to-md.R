@@ -1,5 +1,6 @@
 rm(list=ls())
 
+# set opts
 library(knitr)
 opts_knit$set(out.format = "markdown")
 opts_chunk$set(comment = "", warning = FALSE, message = FALSE, tidy = FALSE,
@@ -7,6 +8,7 @@ opts_chunk$set(comment = "", warning = FALSE, message = FALSE, tidy = FALSE,
                dev = 'png') # don't use fig.align, it forces html code for img
 options(width = 100, scipen = 5, digits = 5)
 
+# set paths
 proj_path = "~/write/ezplot-book"
 manu_path = file.path(proj_path, "manuscript")
 setwd(manu_path)
