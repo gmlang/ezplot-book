@@ -1,11 +1,3 @@
-```{r setup}
-library(knitr)
-opts_chunk$set(comment = "", warning = FALSE, message = FALSE, tidy = FALSE,
-               echo = TRUE, fig.path='images/', fig.width = 6, fig.height = 6, 
-               dev = 'png') # don't use fig.align, it forces html code for img
-options(width = 100, scipen = 5, digits = 5)
-```
-
 ## Histogram
 
 As we've already seen from the last chapter, histogram, density plot and boxplot are for displaying the distribution of a continuous variable. We'll look at histogram in this section, density plot and boxplot in the next two sections. Before we start, make sure you load the `ezplot` library. The ezplot function we'll use is `mk_distplot()`.
@@ -19,7 +11,7 @@ str(films$rating)
 ```
 
 The output `num` says that R treats it as a numeric variable. A numeric variable can be discrete (whole numbers) or continuous (decimal numbers). From the first few data values (6.2, 4.7, ...) shown in the output, it's clear that `rating` is continuous. And we can draw a histogram to help us understand its distribution.
-```{r, dist_rating_1, fig.cap="Average Ratings Distribution"}
+```{r, dist_rating_p1, fig.cap="Average Ratings Distribution"}
 plt = mk_distplot(films)
 title = "Distribution of Average User Rating (1913-2014)"
 p = plt("rating", binw=0.3, xlab="Average IMDB User Rating", main=title,
@@ -30,22 +22,10 @@ print(p)
 Notice how we used `mk_distplot()`. We passed it the data frame `films` as input. It returned a function, and we assigned it to the variable `plt`. We then used the function `plt()` to draw the histogram. Note that once again, we had to feed `plt()` the variable name, in this case, `"rating"` in quotes, instead of the variable itself. Do you recall the same usage from the last chapter? Yes, this is how you use every plotting function in ezplot. I assure you this usage pattern will reappear again and again in later chapters. 
 
 Here're some explanations for the other parameters: a histogram is made of bins, and `binw` is the width of the bins; `xlab` is the x-axis label; `main` is the plot title; `add_vline_mean` decides whether to add a vertical line at the mean or not, and when setting `add_vline_mean=T`, it draws a purple line vertically at the mean value of the x's, just like shown in the above histogram. We can also add a vertical line at the median by setting `add_vline_median=T`, and as shown by the plot below, the median vertical line is colored green.
-```{r, dist_rating_2, fig.cap="Average Ratings Distribution"}
+```{r, dist_rating_p2, fig.cap="Average Ratings Distribution"}
 p = plt("rating", binw=0.3, xlab="Average IMDB User Rating", main=title,
         add_vline_mean=T, add_vline_median=T) 
 print(p)
 ```
-
-
-
-```{r, dist_length, fig.cap="Distribution of Lengths"}
-plt = mk_distplot(films)
-title = "Distribution of Film Lengths"
-p = plt("length", xlab="minutes", main=title, add_vline_median=T)
-# use comma scale for y-axis
-p = scale_axis(p, "y", scale="comma")
-print(p)
-```
-
 
 You can read the complete description of the parameters by running `?mk_distplot()`.
