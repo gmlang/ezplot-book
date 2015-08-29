@@ -2,6 +2,7 @@
 
 Let's begin with an example. First, we load the ezplot package, which contains a dataset of films obtained from IMBD.com. 
 
+A>
 ```r
 library(ezplot)
 ?films
@@ -9,6 +10,7 @@ library(ezplot)
 
 The variable `budget` is continuous, and we can look at its distribution using the `plt_dist()` function. 
 
+A>
 ```r
 plt = plt_dist(films) # plt_dist() returns a function
 plt("budget") # notice the quotation marks 
@@ -26,6 +28,7 @@ Pay attention to how we used `plt_dist()`: first, we pass to it the data frame `
 
 We now look at the distribution of `boxoffice` by passing the string `"boxoffice"` to the function `plt()`.
 
+A>
 ```r
 plt("boxoffice") # notice the quotation marks 
 ```
@@ -34,6 +37,7 @@ plt("boxoffice") # notice the quotation marks
 
 Let's look at the two plots drawn above for a moment. Both budget and boxoffice have a long right tail. And we can make the long right tail disappear by taking the log transformation. For example, we can append to `films` a new variable called `log_budget` by taking the log of budget. We'd like to visualize `log_budget`, however, because `films` is updated, we need to call `plt_dist()` on `films` again, which will output a new function that we can use to draw, and we'll assign it to the variable `plt2`. Finally, to make the plot, we'll simply call `plt2("log_budget")`.
 
+A>
 ```r
 films$log_budget = log(films$budget)
 plt2 = plt_dist(films)
