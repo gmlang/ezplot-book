@@ -7,7 +7,7 @@
 * On Linux, install the R development package, usually called **r-devel** or **r-base-dev**.
 3. Install the following R packages.
 
-A>
+A> {linenos=off}
 ```r
 install.packages("dplyr")
 install.packages("tidyr")
