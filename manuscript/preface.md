@@ -20,10 +20,3 @@ You'll also be able to use colors, in particular, color-blind friendly colors to
 You will get most out of this book by typing and running the code given in the book. Do NOT just copy and paste. Type the code. This will help you become a better R programmer. 
 
 Good luck and Happy Learning!
-
-
-Guangming Lang
-
-Founder and Data Scientist 
-
-Cabaceo.com and MasterR.org
