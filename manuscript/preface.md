@@ -1,14 +1,29 @@
 # Preface
 
-This book will teach you how to do data analysis and machine learning in R. It does that by showing you the entire process through a case study step by step. You will learn
+This book will teach you two things: how to make good statistical charts for reports or presentations and how to do it fast. The tool we'll use is a R package called ezplot. Here's a quick history about ezplot: about three years ago, I started [my own data science consulting company](http://www.cabaceo.com), and my work requires me to make tons of data visualizations. Initially, I used ggplot, but I gradually discovered that I could not and didn't want to remember the various detailed commands when customizing and annotating a ggplot, so I did a lot of code recycling, but every time I copy-n-pasted a chunk of old code, I had to change the name of the data frame or variable to make it work for the new data. Even worse, as my code base piled up, it became a pain to find the right piece of code for the things I wanted to do. Moreover, code recycling caused the R script file to grow large quickly, yet many repetitions could be abstracted away if thought carefully. Finally, one day, the frustration became unbearable. I decided to make a package to change all this, and ezplot was born as a result. Now, I use ezplot for all my static visualizations, and it reduces the time to make a plot by 80% on average. My productivity has been improved significantly because of ezplot, and I believe it'll also help improve yours.
 
-* how to clean data 
-* how to do descriptive and exploratory analysis 
-* how to create nice looking statistical charts
-* how to build and interpret logistic regression (or logit) models
-* how to do automatic model selection (for logit models) using the best subsets method
-* how to run K-fold Cross Validation
-* how to backtest a logit model using different performance measures: accuracy, sensitivity, false positive rate, specificity, precision, and the F-measure
-* how to draw the ROC curve and calculate the AUC
+After working through this book, you will be able to make the following 10 types of charts in less than one-tenth of the time it takes you to do it now.
 
-You will get most out of this book by typing and running the code given in the book. Do NOT just copy and paste. Type the code. This will help you become a better programmer. So let's get started!
+* histogram
+* density plot
+* boxplot
+* interval plot
+* scatter plot
+* barplot
+* areaplot
+* lineplot
+* slopeplot
+* heatmap
+
+You'll also be able to use colors, in particular, color-blind friendly colors to the best effect. In addition, you'll be able to easily and quickly customize and anotate your charts, for example, change the scale of the axes to `log` or `percent`, enlarge the axis-tick labels for web display, and etc.  
+
+You will get most out of this book by typing and running the code given in the book. Do NOT just copy and paste. Type the code. This will help you become a better R programmer. 
+
+Good luck and Happy Learning!
+
+
+Guangming Lang
+
+Founder and Data Scientist 
+
+Cabaceo.com and MasterR.org
