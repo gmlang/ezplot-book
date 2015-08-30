@@ -24,9 +24,7 @@ Pay attention to how we used `plt_dist()`: first, we pass to it the data frame `
 
 1. Consistent Interface. Every plotting function takes a data frame as input and returns a function as output. If you've used R a lot, you know the frustration of having to remember different types of input and output across different functions. Guess what? You'll never have this problem when using ezplot functions. The consistent interface eliminates this frustration and frees up your brain cells so that you can focus on what a function does, for example, draw a boxplot or histogram, rather than how it does it. 
 
-2. Reusability. The output function can be used to visualize more than one variables in the same data frame. For example, besides visualizing `budget`, we can also use `plt()` to visualize another continuous variable `boxoffice`. This is really handy since a dataset rarely only contains one variable, and we almost always want to visualize every variable and their relationships when we do descriptive and exploratory analyses. 
-
-We now look at the distribution of `boxoffice` by passing the string `"boxoffice"` to the function `plt()`.
+2. Reusability. The output function can be used to visualize more than one variables in the same data frame. For example, instead of calling `plt("budget")`, we can use `plt()` to visualize another continuous variable `boxoffice`. This is really handy since a dataset rarely only contains one continuous variable or one categorical variable, and we almost always want to visualize every variable and their relationships when we do descriptive and exploratory analyses. 
 
 A>
 ```r

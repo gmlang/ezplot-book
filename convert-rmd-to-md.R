@@ -4,7 +4,7 @@ rm(list=ls())
 library(knitr)
 opts_knit$set(out.format = "markdown")
 opts_chunk$set(comment = "", warning = FALSE, message = FALSE, tidy = FALSE,
-               echo = TRUE, fig.path='images/', fig.width = 10, fig.height = 10, 
+               echo = TRUE, fig.path='images/', fig.width = 8, fig.height = 8, 
                dev = 'png') # don't use fig.align, it forces html code for img
 options(width = 100, scipen = 5, digits = 5)
 
