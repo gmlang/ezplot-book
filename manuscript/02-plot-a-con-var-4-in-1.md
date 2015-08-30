@@ -1,14 +1,14 @@
 # Plot the Distribution of a Continuous Variable
 
 Let's begin with an example. First, we load the ezplot package, which contains a dataset of films obtained from IMBD.com. 
-
+A>
 ```r
 library(ezplot)
 ?films
 ```
 
 The variable `budget` is continuous, and we can look at its distribution using the `plt_dist()` function. 
-
+A>
 ```r
 plt = plt_dist(films) # plt_dist() returns a function
 plt("budget") # notice the quotation marks 
