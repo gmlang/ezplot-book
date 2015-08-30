@@ -1,6 +1,7 @@
 # Plot the Distribution of a Continuous Variable
 
 Let's begin with an example. First, we load the ezplot package, which contains a dataset of films obtained from IMBD.com. 
+
 A>
 ```r
 library(ezplot)
@@ -8,6 +9,7 @@ library(ezplot)
 ```
 
 The variable `budget` is continuous, and we can look at its distribution using the `plt_dist()` function. 
+
 A>
 ```r
 plt = plt_dist(films) # plt_dist() returns a function
@@ -24,6 +26,7 @@ Pay attention to how we used `plt_dist()`: first, we pass to it the data frame `
 
 2. Reusability. The output function can be used to visualize more than one variables in the same data frame. For example, instead of calling `plt("budget")`, we can use `plt()` to visualize another continuous variable `boxoffice`. This is really handy since a dataset rarely only contains one continuous variable or one categorical variable, and we almost always want to visualize every variable and their relationships when we do descriptive and exploratory analyses. 
 
+A>
 ```r
 plt("boxoffice") # notice the quotation marks 
 ```
@@ -32,6 +35,7 @@ plt("boxoffice") # notice the quotation marks
 
 Let's look at the two plots drawn above for a moment. Both budget and boxoffice have a long right tail. And we can make the long right tail disappear by taking the log transformation. For example, we can append to `films` a new variable called `log_budget` by taking the log of budget. We'd like to visualize `log_budget`, however, because `films` is updated, we need to call `plt_dist()` on `films` again, which will output a new function that we can use to draw, and we'll assign it to the variable `plt2`. Finally, to make the plot, we'll simply call `plt2("log_budget")`.
 
+A>
 ```r
 films$log_budget = log(films$budget)
 plt2 = plt_dist(films)
