@@ -44,4 +44,5 @@ We see the green histogram (films that made money) completely overshadows the re
 ```{r}
 table(films$made_money)
 ```
+
 We see the number of films that made money is more than twice of the number of films that didn't make money or lost money. Does this change your initial conclusion? What's your new conclusion?
