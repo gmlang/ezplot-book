@@ -60,6 +60,18 @@ print(p)
 
 ![Avg. Ratings of Two Film Groups](images/hist_rating_by_made_money-1.png) 
 
+One thing I'd like to point out: the default red and green colors in the above plot are not color-blind friendly. And it's good to use color-blind friendly colors whenever possible. Luckily, the ezplot package comes with 9 color-blind friendly colors, and we'll now use the color-blind friendly versions of red and green to re-do the above chart.
+
+A>
+```r
+red = cb_color("reddish_purple")
+green = cb_color("bluish_green")
+p = p + ggplot2::scale_fill_manual(values = c(red, green))
+print(p)
+```
+
+![Avg. Ratings of Two Film Groups, Color-blind Friendly](images/hist_rating_by_made_money_cb-1.png) 
+
 We see the green histogram (films that made money) completely overshadows the red histograms (films that didn't make money or lost money). What conclusion can you draw? Write it down. Now, let's check the size of each group.
 
 A>
