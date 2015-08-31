@@ -26,11 +26,21 @@ We can also draw two density curves for `length`, one is for the group of films 
 
 A>
 ```r
-plt = mk_distplot(films)
-title = "Distribution of Film Lengths"
 p = plt("length", fillby="made_money", xlab="minutes", type="density",
         main=title)
 print(p)
 ```
 
 ![Distribution of Film Length by Two Groups](images/density_length_by_made_money-1.png) 
+
+The resulting plot looks all good except the default green and red colors are not color-blind friendly. We now replace them with color-blind friendly versions. 
+
+A>
+```r
+red = cb_color("reddish_purple")
+green = cb_color("bluish_green")
+p = p + ggplot2::scale_color_manual(values = c(red, green))
+print(p)
+```
+
+![Distribution of Film Length by Two Groups, Color-blind Friendly](images/density_length_by_made_money_cb-1.png) 
