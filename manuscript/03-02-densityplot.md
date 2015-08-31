@@ -44,3 +44,5 @@ print(p)
 ```
 
 ![Distribution of Film Length by Two Groups, Color-blind Friendly](images/density_length_by_made_money_cb-1.png) 
+
+You may wonder about the command `ggplot2::scale_color_manual()` that we used to replace the default colors. If you recall, we used something similar at the end of the last section, namely, `ggplot2::scale_fill_manual()`. Yes, they are ggplot2 functions, and the reason we can use them here is because ezplot functions are just wrappers of ggplot2 functions, and the plots returned by ezplot functions are just ggplot objects, which you can use with any ggplot2 functions if needed. This is really powerful as you'll see in later chapters. For now, let's take a break before we move to something called boxplot.
