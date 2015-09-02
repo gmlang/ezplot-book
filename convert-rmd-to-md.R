@@ -17,16 +17,16 @@ rmd_path = file.path(manu_path, "Rmd")
 # file_in = file.path(rmd_path, "01-set-up.Rmd")
 # knitr::knit(file_in)
 
-file_in = file.path(rmd_path, "02-plot-a-con-var-4-in-1.Rmd")
-knitr::knit(file_in)
+# file_in = file.path(rmd_path, "02-plot-a-con-var-4-in-1.Rmd")
+# knitr::knit(file_in)
 
-file_in = file.path(rmd_path, "03-01-histogram.Rmd")
-knitr::knit(file_in)
+# file_in = file.path(rmd_path, "03-01-histogram.Rmd")
+# knitr::knit(file_in)
 
-file_in = file.path(rmd_path, "03-02-densityplot.Rmd")
-knitr::knit(file_in)
+# file_in = file.path(rmd_path, "03-02-densityplot.Rmd")
+# knitr::knit(file_in)
 
-file_in = file.path(rmd_path, "")
+file_in = file.path(rmd_path, "03-03-boxplot.Rmd")
 knitr::knit(file_in)
 
 file_in = file.path(rmd_path, "")
