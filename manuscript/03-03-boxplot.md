@@ -1,4 +1,4 @@
-## Boxplot. 
+## Boxplot
 
 When visualizing the distribution of a continuous variable, instead of histogram or density plot, you can also use boxplot. For example, we can make a boxplot for `budget` with 5 lines of code.
 
@@ -29,6 +29,7 @@ We see a general pattern of budget increase, however, it seems the details are t
 A>
 ```r
 table(films$year_cat)
+
 1913-1950 1950-1970 1970-1990 1990-2014 
       231       243       876      4594 
 ```
@@ -74,7 +75,7 @@ print(p)
 
 ![Distribution of Budget Over the Years](images/boxplot_bt_vs_year_cat_p4-1.png) 
 
-Now, it's your turn. Try the following exercises.
+Notice the numbers at the top of each boxplot, they are the sizes of the x-variable groups. For example, there are 231 films released between 1913 and 1950, and 4594 films released between 1990 and 2014. Yes, the ezplot function is smart enough to tally these numbers and display them on the plot. This is very handy. Now, it's your turn. Try the following exercises.
 
 1. Draw a plot to show how the distributions of boxoffice change over the years.
 2. Draw a plot to show how the distributions of rating change over the years.

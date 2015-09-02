@@ -1,6 +1,6 @@
-## Boxplot
+## Interval Plot
 
-When visualizing the distribution of a continuous variable, instead of histogram or density plot, you can also use boxplot. For example, we can make a boxplot for `budget` with 5 lines of code.
+In the previous section, we learned how to make boxplot. If you go back and look at the boxplots we made, you'll realize a boxplot actually visualizes a lot of information, for example, it shows the median, the 
 ```{r, boxplot_budget, fig.cap="Distribution of Budget"}
 library(ezplot)
 plt = mk_boxplot(films)
@@ -44,7 +44,7 @@ p = p + ggplot2::scale_fill_manual(values = c(red, green, purple, blue))
 print(p)
 ```
 
-Notice the numbers at the top of each boxplot, they are the sizes of the x-variable groups. For example, there are 231 films released between 1913 and 1950, and 4594 films released between 1990 and 2014. Yes, the ezplot function is smart enough to tally these numbers and display them on the plot. This is very handy. Now, it's your turn. Try the following exercises.
+Now, it's your turn. Try the following exercises.
 
 1. Draw a plot to show how the distributions of boxoffice change over the years.
 2. Draw a plot to show how the distributions of rating change over the years.
