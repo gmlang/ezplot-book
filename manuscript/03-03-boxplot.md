@@ -29,7 +29,6 @@ We see a general pattern of budget increase, however, it seems the details are t
 A>
 ```r
 table(films$year_cat)
-
 1913-1950 1950-1970 1970-1990 1990-2014 
       231       243       876      4594 
 ```
@@ -37,29 +36,22 @@ table(films$year_cat)
 A>
 ```r
 p = plt("year_cat", "budget", ylab="budget ($)", main=title)
-print(p)
-```
-
-![Distribution of Budget Over the Years](images/boxplot_bt_vs_year_cat_p1-1.png) 
-
-Note that without applying any scale transformations on the y-axis, its tick labels are expressed in scientific notations by default, which makes it difficult to read. We can apply the comma scale to the y-axis to display the numbers in 000,000 format.
-
-A>
-```r
+# apply comma scale to the y-axis to display the numbers in 000,000 format
 scale_axis(p, "y", scale = "comma")
 ```
 
-![Distribution of Budget Over the Years](images/boxplot_bt_vs_year_cat_p2-1.png) 
+![Distribution of Budget Over the Years](images/boxplot_bt_vs_year_cat_p1-1.png) 
 
 Observe that all the boxes are squashed down, indicating `budget` is heavily right-skewed. We can use the function `scale_axis()` to apply the log10 scale on the y-axis.
 
 A>
 ```r
+# change y-axis to log10 scale
 p = scale_axis(p, scale = "log10")
 print(p)
 ```
 
-![Distribution of Budget Over the Years](images/boxplot_bt_vs_year_cat_p3-1.png) 
+![Distribution of Budget Over the Years](images/boxplot_bt_vs_year_cat_p2-1.png) 
 
 Finally, we can use color-blind friendly colors to color the boxes.
 
@@ -73,7 +65,7 @@ p = p + ggplot2::scale_fill_manual(values = c(red, green, purple, blue))
 print(p)
 ```
 
-![Distribution of Budget Over the Years](images/boxplot_bt_vs_year_cat_p4-1.png) 
+![Distribution of Budget Over the Years](images/boxplot_bt_vs_year_cat_p3-1.png) 
 
 Notice the numbers at the top of each boxplot, they are the sizes of the x-variable groups. For example, there are 231 films released between 1913 and 1950, and 4594 films released between 1990 and 2014. Yes, the ezplot function is smart enough to tally these numbers and display them on the plot. This is very handy. Now, it's your turn. Try the following exercises.
 
