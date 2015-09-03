@@ -12,6 +12,7 @@ dat = films %>% select(year_cat, budget) %>% group_by(year_cat) %>%
 dat
 ```
 
+A>
 ```
 Source: local data frame [4 x 4]
 
