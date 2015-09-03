@@ -7,5 +7,6 @@ mainmatter.md
 03-01-histogram.md
 03-02-densityplot.md
 03-03-boxplot.md
+03-04-intervalplot.md
 backmatter.md
 conclusion.md
