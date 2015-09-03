@@ -15,7 +15,6 @@ dat
 A>
 ```
 Source: local data frame [4 x 4]
-
    year_cat      med   lwr       upr
 1 1913-1950   467000  3000   6000000
 2 1950-1970  3000000 16000 100000000
