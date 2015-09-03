@@ -2,7 +2,8 @@
 
 In the previous section, we learned how to make boxplot. If you go back and look at the boxplots we made, you'll realize a boxplot actually contains a lot of information, for example, it displays the median, mean, lower quartile (25th percentile), upper quartile (75th percentile), minimum and maximum. Sometimes we want to quickly look at the range and the center of a continuous variable, and we can do that using something called interval plot. An interval plot only visualizes three things: the center, the upper bound and the lower bound. Let's draw `budget` vs. `year_cat` again using interval plot. We first need to group `budget` by `year_cat`, and at each unique value of `year_cat`, we calculate the median, minimum and maximum of `budget`.
 
-```{r}
+A>
+```r
 library(ezplot)
 library(tidyr)
 library(dplyr)
@@ -11,8 +12,20 @@ dat = films %>% select(year_cat, budget) %>% group_by(year_cat) %>%
 dat
 ```
 
+```
+Source: local data frame [4 x 4]
+
+   year_cat      med   lwr       upr
+1 1913-1950   467000  3000   6000000
+2 1950-1970  3000000 16000 100000000
+3 1970-1990  8000000  3000  70000000
+4 1990-2014 17000000  1000 300000000
+```
+
 We can then visualize the (lwr, med, upr) triple on an interval plot. 
-```{r, intervalplot_budget_vs_year_cat, fig.cap="Range of Budget Over the Years"}
+
+A>
+```r
 plt = mk_intervalplot(dat)
 title = "Budget Range from 1913 to 2014"
 p = plt(xvar="year_cat", yvar="med", ymin_var="lwr", ymax_var="upr",
@@ -20,8 +33,12 @@ p = plt(xvar="year_cat", yvar="med", ymin_var="lwr", ymax_var="upr",
 scale_axis(p, scale = "log10")
 ```
 
+![Range of Budget Over the Years](images/intervalplot_budget_vs_year_cat-1.png) 
+
 A more common application of the interval plot is to visualize the predictions and their uncertainties of some statistical model. The smaller the uncertainties, the more confident we'd feel about the predictions. Here's an example. Let's say we build a linear regression to predict `log10(boxoffice)` using `year_cat`. We can look at the fitted values (predictions on the data used to build the model) and their 95% prediction intervals (uncertainties) using an interval plot.
-```{r, intervalplot_lm, fig.cap="Fitted Values and 95% Prediction Intervals"}
+
+A>
+```r
 # fit a linear regression
 fit = lm(log10(boxoffice) ~ year_cat, data=films)
 # obtain the fitted values and their 95% prediction intervals
@@ -35,6 +52,8 @@ p = plt("year_cat", "fit", ymin_var="lwr", ymax_var="upr",
         main="Budget Prediction Using year_cat")
 p
 ```
+
+![Fitted Values and 95% Prediction Intervals](images/intervalplot_lm-1.png) 
 
 Now, it's your turn. Try the following exercises.
 
