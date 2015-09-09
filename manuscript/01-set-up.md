@@ -17,3 +17,6 @@ devtools::install_github("hadley/ggplot2")
 devtools::install_github("jrnold/ggthemes")
 devtools::install_github("gmlang/ezplot")
 ```
+
+Note: throughout this book, if when displaying plots, you encounter an error like this,
+`Error in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y,  : polygon edge not found`, just run `dev.off()` first, and then `print(p)`. 
