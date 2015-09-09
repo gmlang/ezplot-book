@@ -1,6 +1,6 @@
 ## Scatter Plot
 
-A scatter plot is good for showing the relationship between two continuous variables. Let's call the `mk_scatterplot()` ezplot function on the data frame `films` to obtain a function that we can use to make scatter plots for any two continuous variables in `films`.
+A scatter plot is good for showing the relationship between two continuous variables. Let's call the `mk_scatterplot()` function on the data frame `films` to obtain a function that we can use to make scatter plots for any two continuous variables in `films`.
 
 A>
 ```r
@@ -98,3 +98,5 @@ print(p)
 ```
 
 ![Boxoffice vs. Budget, Tufte Style](images/scatterplot_bo_vs_bt_tufte-1.png) 
+
+Compare this plot with the first plot we drew in the beginning of this chapter, what differences do you notice? We'll talk more about Tufte styles in later chapters. For now, let's take a break. In the next chapter, we'll talk about bar chart, which is commonly used for showing the distribution of a quantitative variable. See you then. 
