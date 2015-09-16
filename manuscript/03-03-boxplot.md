@@ -31,7 +31,6 @@ We see a general pattern of budget increase over the years, however, it seems th
 A>
 ```r
 table(films$year_cat)
-
 1913-1950 1950-1970 1970-1990 1990-2014 
       231       243       876      4594 
 ```
