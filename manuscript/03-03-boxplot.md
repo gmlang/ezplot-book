@@ -13,22 +13,25 @@ scale_axis(p, axis="y", scale="log10")
 
 ![Distribution of Budget](images/boxplot_budget-1.png) 
 
-Note the usage of `scale_axis()` above. It changes the y-axis to log10 scale. Also note the usage of `xvar="1"`. The parameter `xvar` needs to take a string representing the x variable name. We pass it the string `"1"` here because we are only visualizing `budget` (on the y-axis) and don't have a x variable. Let's do an example where we also need a x variable. The films in the dataset are made between 1913 and 2014, so an interesting thing to look at is how the distributions of budget change over the years. To do that, we need to draw a boxplot with `budget` on the y-axis and `year` on the x-axis.
+Note the usage of `scale_axis()` above. It changes the y-axis to log10 scale. Also note the usage of `xvar="1"`. The parameter `xvar` needs to take a string representing the x variable name. We pass it the string `"1"` here because we are visualizing `budget` (on the y-axis) by itself and hence don't need a x variable. The number 5944 is the number of observations in `budget`. The function `mk_boxplot()` is smart enough to figure this out and display it on the graph.
+
+Let's do an example where we require a x variable. The films are made between 1913 and 2014, so an interesting thing to look at is how the distribution of budget changes over the years. To do that, we need to draw a boxplot with `budget` on the y-axis and `year` on the x-axis. Note that we can turn off the display of the count of observations by setting the parameter `add_label = F`.
 
 A>
 ```r
 title = "Distribution of Budget from 1913 to 2014"
-p = plt("year", "budget", ylab="budget ($)", main=title)
+p = plt("year", "budget", ylab="budget ($)", main=title, add_label = F)
 scale_axis(p, scale = "log10")
 ```
 
 ![Distribution of Budget Over the Years](images/boxplot_bt_vs_year-1.png) 
 
-We see a general pattern of budget increase, however, it seems the details are too granular and hence a bit distracting. Luckily, there's another variable called `year_cat` that aggregate `year` into 4 brackets. We can use `year_cat` instead of `year` to redraw the plot.
+We see a general pattern of budget increase over the years, however, it seems the details are too granular and hence a bit distracting. Luckily, there's another variable called `year_cat` that aggregate `year` into 4 brackets. We can use `year_cat` instead of `year` to redraw the plot.
 
 A>
 ```r
 table(films$year_cat)
+
 1913-1950 1950-1970 1970-1990 1990-2014 
       231       243       876      4594 
 ```
@@ -67,7 +70,20 @@ print(p)
 
 ![Distribution of Budget Over the Years](images/boxplot_bt_vs_year_cat_p3-1.png) 
 
-Notice the numbers at the top of each boxplot, they are the sizes of the x-variable groups. For example, there are 231 films released between 1913 and 1950, and 4594 films released between 1990 and 2014. Yes, the ezplot function is smart enough to tally these numbers and display them on the plot. This is very handy. Now, it's your turn. Try the following exercises.
+Notice the numbers at the top of each boxplot, they are the sizes of the x-variable groups. For example, there are 231 films released between 1913 and 1950, and 4594 films released between 1990 and 2014. Yes, the ezplot function is smart enough to tally these numbers and display them at the top of each boxplot. We can also choose to display them at the bottom, and we can adjust their vertical distances using the `vpos` parameter. Finally, we can turn off the legend by setting `legend=F`.
+
+A>
+```r
+p = plt("year_cat", "budget", ylab="budget ($)", main=title, lab_at_top = F,
+        vpos = -0.5, legend=F)
+p = scale_axis(p, scale = "log10")
+p = p + ggplot2::scale_fill_manual(values = c(red, green, purple, blue))
+print(p)
+```
+
+![Distribution of Budget Over the Years](images/boxplot_bt_vs_year_cat_p4-1.png) 
+
+Now, it's your turn. Try the following exercises.
 
 1. Draw a plot to show how the distributions of boxoffice change over the years.
 2. Draw a plot to show how the distributions of rating change over the years.
