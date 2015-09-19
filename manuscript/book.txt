@@ -9,6 +9,7 @@ mainmatter.md
 03-03-boxplot.md
 03-04-intervalplot.md
 03-05-scatterplot.md
+03-06-barplot-0.md
 03-06-barplot-1.md
 03-06-barplot-2.md
 03-06-barplot-3.md
