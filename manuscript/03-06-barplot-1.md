@@ -1,6 +1,6 @@
-### Regular Bar Chart
+## Bar Chart
 
-A bar chart is often used for displaying the distribution (a.k.a., the frequencies or percentages of all the levels) of a categorical variable, or the bivariate distribution of two categorical variables. When making a bar chart, the first step is to count the frequencies and/or calculate the corresponding percentages of all the levels in that categorical variable. For example, the `mpaa` variable in the data frame `films` has 4 levels: NC-17, PG, PG-13 and R, and we can tally up their frequencies and percentages using the following code.
+A bar chart is often used for displaying the distribution (a.k.a., the frequencies or percentages of the levels) of a categorical variable. When making a bar chart, the first step is to count the frequencies and/or calculate the corresponding percentages of all the levels in that categorical variable. For example, the `mpaa` variable in the data frame `films` has 4 levels: NC-17, PG, PG-13 and R, and we can tally up their frequencies and percentages using the following code.
 
 A>
 ```r
@@ -153,3 +153,47 @@ p
 ```
 
 ![Distribution of MPAA - Percentage](images/barplot_mpaa_pct_lab_in_mid-1.png) 
+
+We can also use bar chart to display the bivariate distribution of two categorical variables. For example, say we want to look at the breakdown of the MPAA ratings for action films vs. non-action films. We can tally the numbers by running ``5, 0, 473, 103, 920, 373, 1645, 438``.
+
+Instead of visualizing all this information, it suffices to only visualize the percent of action films (`action = 1`) for each MPAA rating. The following function allows us to calculate the percent of the 1-level of an arbitrary binary variable for each level of another arbitrary categorical variable.
+
+A>
+```r
+calc_pct_1 = function(dat, xvar, yvar){
+        # dat: data frame
+        # xvar: string, name of a categorical variable on dat, x-axis 
+        # yvar: string, name of a 0-1 binary variable on dat, y-axis
+        tbl = table(dat[[yvar]], dat[[xvar]])
+        pct = tbl["1", ] / (tbl["0", ] + tbl["1", ])
+        pct = data.frame(pct)
+        pct = cbind(row.names(pct), pct)
+        names(pct) = c(xvar, paste("pct", yvar, "1", sep="_"))
+        row.names(pct) = NULL
+        pct
+}
+```
+
+We can use it to calculate the percent of action films for each MPAA rating. Afterwards, we'll visualize these percentages using a bar chart.
+
+A>
+```r
+# calculate pct
+mpaa_vs_action = calc_pct_1(films, "mpaa", "action")
+# append bar label positions based on pct
+f = add_bar_label_pos(mpaa_vs_action)
+tbl = f("mpaa", "pct_action_1", vpos=0.03)
+# make bar chart
+plt = mk_barplot(tbl)
+title = "Percentage of Action Films for Each MPAA Rating"
+p = plt("mpaa", "pct_action_1", fillby="mpaa", main=title, legend=F,
+        barlab="pct_action_1", barlab_use_pct=T, decimals=2, 
+        barlab_at_top=T, barlab_size=5)
+p = scale_axis(p, scale="pct", pct_jump=0.25)
+p = p + ggplot2::scale_fill_manual(values = c(purple, green, red, blue))
+p
+```
+
+![Distribution of Action Films Across MPAA Ratings](images/barplot_mpaa_vs_action-1.png) 
+
+Now, it's your turn. Visualize the percentages of dramas across each MPAA rating. Do the same for comedy, romance, thriller and horror films.
