@@ -1,4 +1,5 @@
 ## Bar Chart
+### Regular Bar Chart
 
 A bar chart is often used for displaying the distribution (a.k.a., the frequencies or percentages of all the levels) of a categorical variable, or the bivariate distribution of two categorical variables. When making a bar chart, the first step is to count the frequencies and/or calculate the corresponding percentages of all the levels in that categorical variable. For example, the `mpaa` variable in the data frame `films` has 4 levels: NC-17, PG, PG-13 and R, and we can tally up their frequencies and percentages using the following code.
 
