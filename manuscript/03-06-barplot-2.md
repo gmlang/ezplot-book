@@ -191,4 +191,4 @@ p
 
 ![Percent of Films that Made or Lost Money for Each Time Period](images/barplot_stacked_pct_midlab-1.png)
 
-Now, it's your turn. Use `str(films)` to explore the variable types in the `films` data. Pick two categorical variables and one continuous variable. Try to visualize the relationships amongst them. See if you can dig out any hidden relationships. To do that, you may need to perform some data aggregation or slicing. Good luck and I'll see you in the next chapter, where we'll learn how to make Tufte bar chart. 
+Now, it's your turn. Use `str(films)` to explore the variable types in the `films` data. Pick two categorical variables and one continuous variable. Try to visualize the relationships amongst them. See if you can dig out any hidden relationships. To do that, you may need to perform some data aggregation or slicing. Good luck and I'll see you in the next section, where we'll learn how to make Tufte bar chart. 
