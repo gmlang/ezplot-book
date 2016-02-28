@@ -26,7 +26,7 @@ title = "Frequency of Each MPAA Rating"
 plt("lvl", "cnt", main=title, ybreak_n=3) 
 ```
 
-![plot of chunk unnamed-chunk-2](images/unnamed-chunk-2-1.png)
+![Distribution of MPAA - Frequency](images/tufte_barplot_mpaa_cnt-1.png)
 
 A>
 ```r
@@ -34,7 +34,7 @@ A>
 plt("lvl", "cnt", main=title, ybreak_n=6) 
 ```
 
-![plot of chunk unnamed-chunk-2](images/unnamed-chunk-2-2.png)
+![Distribution of MPAA - Frequency](images/tufte_barplot_mpaa_cnt-2.png)
 
 A>
 ```r
@@ -42,7 +42,7 @@ A>
 plt("lvl", "cnt", main=title, ybreak_n=6, bar_w=0.5)
 ```
 
-![plot of chunk unnamed-chunk-2](images/unnamed-chunk-2-3.png)
+![Distribution of MPAA - Frequency](images/tufte_barplot_mpaa_cnt-3.png)
 
 A>
 ```r
@@ -50,7 +50,7 @@ A>
 plt("lvl", "cnt", main=title, ybreak_n=6, ybreak_h=2)
 ```
 
-![plot of chunk unnamed-chunk-2](images/unnamed-chunk-2-4.png)
+![Distribution of MPAA - Frequency](images/tufte_barplot_mpaa_cnt-4.png)
 
 Next, let's try to draw a Tufte bar chart to display the percentages of the MPAA ratings.
 
@@ -62,7 +62,7 @@ title = "Percentage of Each MPAA Rating"
 plt("lvl", "pct", main=title, ybreak_n=3)
 ```
 
-![plot of chunk unnamed-chunk-3](images/unnamed-chunk-3-1.png)
+![Distribution of MPAA - Percentage](images/tufte_barplot_mpaa_pct-1.png)
 
 A>
 ```r
@@ -70,7 +70,7 @@ A>
 plt("lvl", "pct", main=title, ybreak_n=5)
 ```
 
-![plot of chunk unnamed-chunk-3](images/unnamed-chunk-3-2.png)
+![Distribution of MPAA - Percentage](images/tufte_barplot_mpaa_pct-2.png)
 
 A>
 ```r
@@ -78,7 +78,7 @@ A>
 plt("lvl", "pct", main=title, ybreak_n=5, ytick_decimals=2)
 ```
 
-![plot of chunk unnamed-chunk-3](images/unnamed-chunk-3-3.png)
+![Distribution of MPAA - Percentage](images/tufte_barplot_mpaa_pct-3.png)
 
 A>
 ```r
@@ -86,7 +86,7 @@ A>
 plt("lvl", "pct", main=title, ybreak_n=5, show_axis_ticks=T)
 ```
 
-![plot of chunk unnamed-chunk-3](images/unnamed-chunk-3-4.png)
+![Distribution of MPAA - Percentage](images/tufte_barplot_mpaa_pct-4.png)
 
 A>
 ```r
@@ -94,6 +94,6 @@ A>
 plt("lvl", "pct", main=title, ybreak_n=5, font_size=22)
 ```
 
-![plot of chunk unnamed-chunk-3](images/unnamed-chunk-3-5.png)
+![Distribution of MPAA - Percentage](images/tufte_barplot_mpaa_pct-5.png)
 
 So what do you think? I really like the minimalistic look of these tufte styled bar charts. If you also love them, why don't you start making some yourself? Take a look at the variables in the `films` data, and have fun graphing Tufte bar charts! We'll talk about another graph type called slopegraph by Tufte near the end of the book. But before then, we need to learn a few other normal chart types. In the next chapter, we'll look at the area plot. See you then. 

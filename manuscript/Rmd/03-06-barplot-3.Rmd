@@ -15,7 +15,7 @@ plt = mk_barplot_tufte(tbl)
 ```      
 
 We can now use `plt()` to make a bar chart to display the frequency counts of each MPAA rating.
-```{r}
+```{r, tufte_barplot_mpaa_cnt, fig.cap="Distribution of MPAA - Frequency"} 
 # make plot title
 title = "Frequency of Each MPAA Rating"
 # draw a tufte bar chart, breaking the bars into 3 chunks
@@ -29,7 +29,7 @@ plt("lvl", "cnt", main=title, ybreak_n=6, ybreak_h=2)
 ```
 
 Next, let's try to draw a Tufte bar chart to display the percentages of the MPAA ratings.
-```{r}
+```{r, tufte_barplot_mpaa_pct, fig.cap="Distribution of MPAA - Percentage"} 
 # make plot title
 title = "Percentage of Each MPAA Rating"
 # draw a tufte bar chart, breaking the bars into 3 chunks
