@@ -13,5 +13,6 @@ mainmatter.md
 03-06-barplot-1.md
 03-06-barplot-2.md
 03-06-barplot-3.md
+03-07-areaplot.md
 backmatter.md
 conclusion.md

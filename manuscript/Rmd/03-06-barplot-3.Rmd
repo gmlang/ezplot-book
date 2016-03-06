@@ -44,4 +44,4 @@ plt("lvl", "pct", main=title, ybreak_n=5, show_axis_ticks=T)
 plt("lvl", "pct", main=title, ybreak_n=5, font_size=22)
 ```
 
-So what do you think? I really like the minimalistic look of these tufte styled bar charts. If you also love them, why don't you start making some yourself? Take a look at the variables in the `films` data, and have fun graphing Tufte bar charts! We'll talk about another graph type called slopegraph by Tufte near the end of the book. But before then, we need to learn a few other normal chart types. In the next chapter, we'll look at the area plot. See you then. 
+So what do you think? I really like the minimalistic look of these tufte styled bar charts. If you also love them, why don't you start making some yourself? Take a look at the variables in the `films` data, and have fun graphing Tufte bar charts! We'll talk about another graph type called slopegraph by Tufte near the end of the book. But before then, we need to learn a few other common chart types. In the next chapter, we'll look at the area plot. See you then. 
