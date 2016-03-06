@@ -90,7 +90,6 @@ A>
 ```
 Source: local data frame [6 x 5]
 Groups: year [6]
-
    year   type   rev total     pct
   (int)  (chr) (dbl) (dbl)   (dbl)
 1  2014 search 18.81 49.52 0.37985
