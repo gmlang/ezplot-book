@@ -86,6 +86,7 @@ dat2 = dat %>% group_by(year) %>% mutate(total = sum(rev), pct = rev / total)
 head(dat2)
 ```
 
+A>
 ```
 Source: local data frame [6 x 5]
 Groups: year [6]
