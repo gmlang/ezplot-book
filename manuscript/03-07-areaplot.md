@@ -1,10 +1,11 @@
 ### Stacked Area Chart
 
-Stacked area chart is something Economists use frequently. For example, if you leaf through the book <a href="http://www.amazon.com/gp/product/067443000X/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=067443000X&linkCode=as2&tag=cabaceo-20&linkId=VFX64EPFR3YKA7OG">Capital in the Twenty-First Century</a><img src="http://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&l=as2&o=1&a=067443000X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />, you'll find many stacked area charts. A stacked area chart is the continuous analog of a stacked bar chart. We can use it to show how different components of the whole vary over time. It's important
+Stacked area chart is something Economists use frequently. For example, if you leaf through the book [Capital in the Twenty-First Century](http://www.amazon.com/gp/product/067443000X/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=067443000X&linkCode=as2&tag=cabaceo-20&linkId=VFX64EPFR3YKA7OG), you'll find many stacked area charts. A stacked area chart is the continuous analog of a stacked bar chart. We can use it to show how different components of the whole vary over time. It's important
 to choose the order in which the different components are stacked because as you move up the stacks, it becomes increasingly difficult to see the patterns. I don't use stacked area chart that often, but if you ever need to use it, the `mk_areaplot()` function can save you a lot of time. Let's see it works. The ezplot package comes with a dataset of online advertising revenues between 2000 and 2014 broken down by 13 different revenue channels. We'll make a stacked area chart to show how revenue progressed from 2000 to 2014 for each channel.
 
 First, let's look at the data and change it to long format.
 
+A>
 ```r
 library(ezplot)
 library(tidyr)
@@ -13,6 +14,7 @@ library(dplyr)
 str(ads)
 ```
 
+A>
 ```
 'data.frame':	15 obs. of  13 variables:
  $ year           : int  2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 ...
@@ -30,12 +32,14 @@ str(ads)
  $ other          : num  0 0 0 0 0 0 0 0 0 0 ...
 ```
 
+A>
 ```r
 # wide format to long format
 dat = ads %>% gather(type, rev, -year)
 str(dat)
 ```
 
+A>
 ```
 'data.frame':	180 obs. of  3 variables:
  $ year: int  2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 ...
@@ -43,10 +47,12 @@ str(dat)
  $ rev : num  18.8 18.4 16.8 14.9 11.7 ...
 ```
 
+A>
 ```r
 head(dat)
 ```
 
+A>
 ```
   year   type   rev
 1 2014 search 18.81
@@ -59,6 +65,7 @@ head(dat)
 
 Next, we can easily draw a stacked area chart using `mk_areaplot()`.
 
+A>
 ```r
 plt = mk_areaplot(dat)
 p = plt("year", "rev", fillby = "type", ylab = "Revenue (in Billions of USD)",
@@ -73,6 +80,7 @@ p + ggplot2::scale_x_continuous(limit = c(2000, 2014),
 
 We can also visualize the revenue percentage of each channel over the years. First, we calculate the revenue percentage of each channel for each year.
 
+A>
 ```r
 dat2 = dat %>% group_by(year) %>% mutate(total = sum(rev), pct = rev / total)
 head(dat2)
@@ -94,6 +102,7 @@ Groups: year [6]
 
 Next, we run the same code, replacing "dat" with "dat2" and "rev" with "pct".
 
+A>
 ```r
 plt = mk_areaplot(dat2)
 p = plt("year", "pct", fillby = "type", 

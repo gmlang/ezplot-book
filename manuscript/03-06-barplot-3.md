@@ -2,6 +2,7 @@
 
 [Edward Tufte](https://en.wikipedia.org/wiki/Edward_Tufte) is famous for his simple and elegant statistical graphs. If you revisit the Regular Bar Chart section, you can see the bar charts presented there are already pretty simplistic. But Tufte would even strip away a few more elements that he thinks are extraneous and distracting. Let's now re-create the same bar charts in Tufte's way. First we prepare data and make a function by calling `mk_barplot_tufte()`.
 
+A>
 ```r
 library(ezplot)
 # prep data
@@ -17,6 +18,7 @@ plt = mk_barplot_tufte(tbl)
 
 We can now use `plt()` to make a bar chart to display the frequency counts of each MPAA rating.
 
+A>
 ```r
 # make plot title
 title = "Frequency of Each MPAA Rating"
@@ -26,6 +28,7 @@ plt("lvl", "cnt", main=title, ybreak_n=3)
 
 ![Distribution of MPAA - Frequency](images/tufte_barplot_mpaa_cnt-1.png)
 
+A>
 ```r
 # draw a tufte bar chart, breaking the bars into 6 chunks
 plt("lvl", "cnt", main=title, ybreak_n=6) 
@@ -33,6 +36,7 @@ plt("lvl", "cnt", main=title, ybreak_n=6)
 
 ![Distribution of MPAA - Frequency](images/tufte_barplot_mpaa_cnt-2.png)
 
+A>
 ```r
 # draw a tufte bar chart, making the bars wider
 plt("lvl", "cnt", main=title, ybreak_n=6, bar_w=0.5)
@@ -40,6 +44,7 @@ plt("lvl", "cnt", main=title, ybreak_n=6, bar_w=0.5)
 
 ![Distribution of MPAA - Frequency](images/tufte_barplot_mpaa_cnt-3.png)
 
+A>
 ```r
 # draw a tufte bar chart, making the breaks between bars wider
 plt("lvl", "cnt", main=title, ybreak_n=6, ybreak_h=2)
@@ -49,6 +54,7 @@ plt("lvl", "cnt", main=title, ybreak_n=6, ybreak_h=2)
 
 Next, let's try to draw a Tufte bar chart to display the percentages of the MPAA ratings.
 
+A>
 ```r
 # make plot title
 title = "Percentage of Each MPAA Rating"
@@ -58,6 +64,7 @@ plt("lvl", "pct", main=title, ybreak_n=3)
 
 ![Distribution of MPAA - Percentage](images/tufte_barplot_mpaa_pct-1.png)
 
+A>
 ```r
 # draw a tufte bar chart, breaking the bars into 5 chunks
 plt("lvl", "pct", main=title, ybreak_n=5)
@@ -65,6 +72,7 @@ plt("lvl", "pct", main=title, ybreak_n=5)
 
 ![Distribution of MPAA - Percentage](images/tufte_barplot_mpaa_pct-2.png)
 
+A>
 ```r
 # draw a tufte bar chart, showing y tick text with 2 decimal points
 plt("lvl", "pct", main=title, ybreak_n=5, ytick_decimals=2)
@@ -72,6 +80,7 @@ plt("lvl", "pct", main=title, ybreak_n=5, ytick_decimals=2)
 
 ![Distribution of MPAA - Percentage](images/tufte_barplot_mpaa_pct-3.png)
 
+A>
 ```r
 # draw a tufte bar chart, showing y-axis ticks
 plt("lvl", "pct", main=title, ybreak_n=5, show_axis_ticks=T)
@@ -79,6 +88,7 @@ plt("lvl", "pct", main=title, ybreak_n=5, show_axis_ticks=T)
 
 ![Distribution of MPAA - Percentage](images/tufte_barplot_mpaa_pct-4.png)
 
+A>
 ```r
 # draw a tufte bar chart, enlarge font size
 plt("lvl", "pct", main=title, ybreak_n=5, font_size=22)
