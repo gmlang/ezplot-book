@@ -1,4 +1,4 @@
-### Line plot
+## Line plot
 
 Line plots are good for showing trends. A line plot has time on its x-axis and a continuous variable on its y-axis. The `mk_lineplot()` function makes drawing line plots super easy. Let's see how it works. The ezplot package comes with a data set containing the annual boxoffice/budget ratio between 1913 and 2014.
 ```{r}
