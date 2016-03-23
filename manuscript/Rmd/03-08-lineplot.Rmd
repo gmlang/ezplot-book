@@ -62,8 +62,8 @@ But of course, we can add the min and max values on the y-axis to make the plot 
 ymin = min(films_cnt$n)
 ymax = max(films_cnt$n)
 p = p + ggplot2::scale_y_continuous(limits = c(ymin, ymax), 
-                                    breaks = c(ymin, seq(1000, 4000, 1000), ymax), 
-                                    labels = scales::comma)
+                                    breaks = c(ymin, seq(1000, 4000, 1000), 
+                                               ymax), labels=scales::comma)
 p
 ```
 

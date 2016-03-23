@@ -86,7 +86,6 @@ table(films$year_cat)
 
 A>
 ```
-
 1913-1950 1950-1970 1970-1990 1990-2014 
       231       243       876      4594 
 ```
@@ -104,7 +103,6 @@ films_cnt
 A>
 ```
 Source: local data frame [4 x 2]
-
    year_cat     n
       (chr) (int)
 1 1913-1950   231
@@ -132,8 +130,8 @@ A>
 ymin = min(films_cnt$n)
 ymax = max(films_cnt$n)
 p = p + ggplot2::scale_y_continuous(limits = c(ymin, ymax), 
-                                    breaks = c(ymin, seq(1000, 4000, 1000), ymax), 
-                                    labels = scales::comma)
+                                    breaks = c(ymin, seq(1000, 4000, 1000), 
+                                               ymax), labels=scales::comma)
 p
 ```
 
