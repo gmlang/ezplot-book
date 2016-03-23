@@ -1,7 +1,7 @@
 ### Stacked Area Chart
 
 Stacked area chart is something Economists use frequently. For example, if you leaf through the book [Capital in the Twenty-First Century](http://www.amazon.com/gp/product/067443000X/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=067443000X&linkCode=as2&tag=cabaceo-20&linkId=VFX64EPFR3YKA7OG), you'll find many stacked area charts. A stacked area chart is the continuous analog of a stacked bar chart. We can use it to show how different components of the whole vary over time. It's important
-to choose the order in which the different components are stacked because as you move up the stacks, it becomes increasingly difficult to see the patterns. I don't use stacked area chart that often, but if you ever need to use it, the `mk_areaplot()` function can save you a lot of time. Let's see it works. The ezplot package comes with a dataset of online advertising revenues between 2000 and 2014 broken down by 13 different revenue channels. We'll make a stacked area chart to show how revenue progressed from 2000 to 2014 for each channel.
+to choose the order in which the different components are stacked because as you move up the stacks, it becomes increasingly difficult to see the patterns. I don't use stacked area chart that often, but if you ever need to use it, the `mk_areaplot()` function can save you a lot of time. Let's see how it works. The ezplot package comes with a dataset of online advertising revenues between 2000 and 2014 broken down by 13 different revenue channels. We'll make a stacked area chart to show how revenue progressed from 2000 to 2014 for each channel.
 
 First, let's look at the data and change it to long format.
 
