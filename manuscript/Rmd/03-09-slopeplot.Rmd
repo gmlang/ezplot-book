@@ -1,0 +1,53 @@
+## Slopegraph
+
+If I'm not mistaken, slopegraphs are invented by Edward Tufte. They compare changes over time for a group of ordered categories. To see what they look like, please visit Tufte's website to see some [examples](http://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0003nk). In this section, we're going to reproduce the cancer survival rates example using the `slopegraph_data_prep()` and the `mk_slopegraph()` functions. First, we take a look at the `cancer` data, and see it has 3 variables: group, year, and value, where group indicates the type of cancer, year is the number of years since cancer onset, and value is the proportion of patients still survived.
+```{r}
+library(ezplot)
+str(cancer)
+head(cancer)
+```      
+
+The cancer data is in long format, and we can put it in wide format.
+```{r} 
+df = tidyr::spread(cancer, key=year, value=value)
+names(df) = c("", paste(names(df)[-1], "year"))
+knitr::kable(df, caption="Survival Rates by Cancer Type")
+```
+
+We can visualize the above table using a slopegraph. To do that, we need to first prep the data a little bit and this is where you need to use the function `slopegraph_data_prep()`. Notice we need to pass to it the long formatted `cancer` data frame.
+```{r} 
+df = slopegraph_data_prep(cancer, xvar="year", yvar="value", gpvar="group")
+head(df)
+```
+
+Next, we change the x variable (year) to factor, ensuring the time order is ascending, and label it so that it's human readable. We also round the y values.
+```{r}
+df = within(df, {year = factor(year, levels=c(5,10,15,20), 
+                               labels=c("5 years", "10 years", 
+                                        "15 years", "20 years"))
+                 value= round(value)})
+```
+
+Finally, we are ready to make a slopegraph.
+```{r, slopeplot_cancer, fig.cap="Survival Rates by Cancer Types"} 
+plt = mk_slopegraph(df) 
+p = plt("year", "value", "group", main="Estimates of % survival rates") 
+p
+```
+
+When preparing data, we can also set values for `min_space` (defaul is 0.05) and `line_gap_scale` (default is 1). The first parameter controls the minimum gap between the lines, and the second parameter plays a role in calculating `ypos`. For example, we can set `min_space=0.5` and `line_gap_scale=2` and re-draw the slopegraph.
+```{r}
+# prep data
+df = slopegraph_data_prep(cancer, xvar="year", yvar="value", gpvar="group",
+                          min_space=0.5, line_gap_scale=2)
+df = within(df, {year = factor(year, levels=c(5,10,15,20), 
+                               labels=c("5 years", "10 years", 
+                                        "15 years", "20 years"))
+                 value= round(value)})
+# make slopegraph
+plt = mk_slopegraph(df) 
+p = plt("year", "value", "group", main="Estimates of % survival rates") 
+p
+```
+
+We see all the lines are almost parallel, which are misleading, but you get the idea. You can always adjust these two parameter values to make the lines reflect the relative sizes of the numbers. This concludes our section. Go grab a coffee, and when you come back, we'll discuss the heatmap, which is the last type of chart we'll talk about.

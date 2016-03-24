@@ -50,7 +50,7 @@ rmd_path = file.path(manu_path, "Rmd")
 # file_in = file.path(rmd_path, "03-08-lineplot.Rmd")
 # knitr::knit(file_in)
 
-file_in = file.path(rmd_path, "")
+file_in = file.path(rmd_path, "03-09-slopeplot.Rmd")
 knitr::knit(file_in)
 
 file_in = file.path(rmd_path, "")
