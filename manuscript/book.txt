@@ -16,5 +16,6 @@ mainmatter.md
 03-07-areaplot.md
 03-08-lineplot.md
 03-09-slopeplot.md
+03-10-heatmap.md
 backmatter.md
 conclusion.md
