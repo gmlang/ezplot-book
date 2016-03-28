@@ -21,4 +21,7 @@ You will get most out of this book by typing and running the code given in the b
 
 Good luck and Happy Learning!
 
+| |
+
+Guangming
 PS: if you run into typos or errors, please let me know at gmlang@cabaceo.com
