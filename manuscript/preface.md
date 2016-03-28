@@ -17,11 +17,6 @@ After working through this book, you will be able to make the following 10 most 
 
 You'll also learn how to use color-blind friendly colors to the best effect. In addition, you'll be able to easily and quickly customize and anotate your charts, for example, change the scale of the axes to `log` or `percent`, enlarge the axis tick labels for web display, and etc.  
 
-You will get most out of this book by typing and running the code given in the book. Do NOT just copy and paste. Type the code. This will help you become a better R programmer. 
+You will get most out of this book by typing and running the code given in the book. Do NOT just copy and paste. Type the code. This will help you become a better R programmer. If you run into typos or errors, please let me know at gmlang@cabaceo.com.
 
 Good luck and Happy Learning!
-
-| |
-
-Guangming
-PS: if you run into typos or errors, please let me know at gmlang@cabaceo.com
