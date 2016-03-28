@@ -4,4 +4,5 @@ mainmatter.md
 01-set-up.md
 03-00-ten-most-used-charts.md
 03-01-histogram.md
+03-06-barplot-0.md
 03-06-barplot-1.md
