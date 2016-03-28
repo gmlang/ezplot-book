@@ -118,4 +118,4 @@ plt("stats", "Name", "val_scaled", legend=F, use_theme_gray=F, base_size=9)
 
 ![NBA Performance Statistics](images/heatmap_nba_minimal-1.png)
 
-Now it's your turn. Try to make a heatmap using the unscaled values, and compare it with the scaled version. You will see the two look very differently. The scaled version is the correct one here. With that, we conclude this section. In the next section, we'll discuss how to easily annotate the charts we've been making and make them suitable for web display. See you soon. 
+Now it's your turn. Try to make a heatmap using the unscaled values, and compare it with the scaled version. You will see the two look very differently. This is the end. Hope you've enjoyed the book. Let me know if you have any questions: gmlang@cabaceo.com
