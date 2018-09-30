@@ -4,7 +4,7 @@ rm(list=ls())
 library(knitr)
 opts_knit$set(out.format = "markdown")
 opts_chunk$set(comment = "", warning = FALSE, message = FALSE, tidy = FALSE,
-               echo = TRUE, fig.path='images/', fig.width = 7, fig.height = 7, 
+               echo = TRUE, fig.path='images/', fig.width = 7, fig.height = 7,
                dev = 'png') # don't use fig.align, it forces html code for img
 options(width = 100, scipen = 5, digits = 5)
 
@@ -17,7 +17,7 @@ rmd_path = file.path(manu_path, "Rmd")
 # file_in = file.path(rmd_path, "01-set-up.Rmd")
 # knitr::knit(file_in)
 
-# file_in = file.path(rmd_path, "02-plot-a-con-var-4-in-1.Rmd")
+# file_in = file.path(rmd_path, "02-plot-dist-of-a-con-var.Rmd")
 # knitr::knit(file_in)
 
 # file_in = file.path(rmd_path, "03-01-histogram.Rmd")
