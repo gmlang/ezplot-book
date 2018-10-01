@@ -2,8 +2,10 @@
 
 Previously, we learned how to draw histograms and density plots. When visualizing 
 the distribution of a continuous variable, there's yet another type of plot we 
-can use, namely, the boxplot. For example, we can make a boxplot for `budget`
-using `ezplot` functions as follows. 
+can use, namely, the boxplot. A boxplot shows the minimum, lower quartile 
+(25th percentile), median, mean, upper quartile (75th percentile) and maximum.
+It also shows outliers that are distributed far away from the majority of data 
+points. Let's start with an example by making a boxplot for `budget`.
 
 ```r
 library(ezplot)
