@@ -1,6 +1,6 @@
 ## Density Plot
 
-Previously, we learned how to make histogram using `mk_histogram()`. 
+Previously, we learned how to make histograms using `mk_histogram()`. 
 Density plot is similar to histogram except it draws a smooth curve tracing out 
 the hights of the bins instead of drawing the bins themselves. 
 To make a density plot, we use the function `mk_densityplot()`. 
