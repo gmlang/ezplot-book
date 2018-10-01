@@ -1,48 +1,57 @@
 ## Density Plot
 
-Density plot is quite similar to histogram except it uses a smooth line to trace out the hights of the bins instead of drawing the bins themselves. To make a density plot, we can use the same ezplot function `mk_distplot()`. The `films` dataset has a variable called `length` that measures the lengths of the films in minutes. Let's draw a density plot to reveal its distribution. First, we load the `ezplot` library. 
+Previously, we learned how to make histogram using `mk_histogram()`. 
+Density plot is similar to histogram except it draws a smooth curve tracing out 
+the hights of the bins instead of drawing the bins themselves. 
+To make a density plot, we use the function `mk_densityplot()`. 
 
-A>
+The `films` dataset has a variable `length` that measures the duration of each 
+film in minutes. Let's draw a density plot to show its distribution. 
+
 ```r
 library(ezplot)
-```
-
-Next, we call `mk_distplot()` on `films` to get a function `plt()`, and we use `plt()` to draw a density plot for `length` by specifying `type="density"`. This is the key here since by default, `type = "histogram"`, which results a histogram.
-
-A>
-```r
-plt = mk_distplot(films)
-title = "Distribution of Film Length"
-p = plt("length", xlab="minutes", type="density", main=title, 
-        add_vline_mean=T, add_vline_median=T)
+plt = mk_densityplot(films)
+p = plt("length", cut_tail = 0) # use cut_tail to remove tails, 0 means not removing any
+p = add_labs(p, xlab = "minutes", title = "Distribution of Film Length")
 print(p)
 ```
 
-![Distribution of Film Length](images/density_length-1.png) 
+![Distribution of Film Length](images/density_length-1.png)
 
-Recall that the purple line is the mean and the green line is the median. We see the median film length is slightly greater than 100 minutes, while the average is even a little bigger. As a result, the distribution is slightly right skewed. 
+We can also draw two density curves of `length`, one for profitable films, 
+and the other for unprofitable films.
 
-We can also draw two density curves for `length`, one is for the group of films that made money, and the other is for the group that didn't make money. 
-
-A>
 ```r
-p = plt("length", fillby="made_money", xlab="minutes", type="density",
-        main=title)
+p = plt(xvar = "length", yvar = "made_money") # remove tails <= 0.5% by default
+p = add_labs(p, xlab = "minutes", ylab = "made money?",
+             title = "Distribution of Film Length")
 print(p)
 ```
 
-![Distribution of Film Length by Two Groups](images/density_length_by_made_money-1.png) 
+![Distribution of Film Length by Two Groups](images/density_length_by_made_money-1.png)
 
-The resulting plot looks all good except the default green and red colors are not color-blind friendly. We now replace them with color-blind friendly versions. 
+The resulting density plot has `length` on the x-axis and `made_money` on the
+y-axis, and this correpsonds to how we specified xvar and yvar in `plt()`. Yes,
+what you specify is what you get. This is very intuitive. Let's see another
+example. Let's plot the density of `rating` by `year_cat`.
 
-A>
 ```r
-red = cb_color("reddish_purple")
-green = cb_color("bluish_green")
-p = p + ggplot2::scale_color_manual(values = c(red, green))
-print(p)
+plt("rating", "year_cat", font_size = 9) 
 ```
 
-![Distribution of Film Length by Two Groups, Color-blind Friendly](images/density_length_by_made_money_cb-1.png) 
+![Distribution of Film Length by Years](images/density_rating_by_year_cat-1.png)
 
-You may wonder about the command `ggplot2::scale_color_manual()` that we used to replace the default colors. If you recall, we used something similar at the end of the last section, namely, `ggplot2::scale_fill_manual()`. Yes, they are ggplot2 functions, and the reason we can use them here is because ezplot functions are just wrappers of ggplot2 functions, and the plots returned by ezplot functions are just ggplot objects, which you can use with any ggplot2 functions if needed. This is really powerful as you'll see in later chapters. For now, let's take a break before we move to something called boxplot.
+But the y variable must be character or factor type, and it cannot be integer
+or numeric. For example, `year` is of integer type, and if we try to plot the
+density of `rating` by `year`, it'll throw an error.
+
+```r
+plt("rating", "year") # throws error when yvar is integer or numeric
+```
+
+```
+Error in plt("rating", "year"): The y variable, year, is integer or numeric. Change to factor or character.
+```
+
+For homework, read the document of `mk_densityplot()` and run the examples. 
+You can pull up the document by running `?mk_densityplot` in Rstudio. 
