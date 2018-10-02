@@ -9,59 +9,86 @@ of the same bar charts we made in the last two sections.
 
 ## Example usage of `mk_barploth_freq()`
 
-```{r}
+
+```r
 library(ezplot)
 plt = mk_barploth_freq(films)
 ```
 
-```{r, barploth_freq_mpaa_cnt, fig.cap="Frequency of MPAA"} 
-plt("mpaa", yorder = "descend", label_decimals = 2)
-```      
 
-```{r, barploth_freq_mpaa_pct, fig.cap="Relative Frequency of MPAA"} 
+```r
+plt("mpaa", yorder = "descend", label_decimals = 2)
+```
+
+![Frequency of MPAA](images/barploth_freq_mpaa_cnt-1.png)
+
+
+```r
 plt("mpaa", show_pct = T, yorder = "descend") 
 ```
 
-```{r, barploth_dodged, fig.cap="Number of Profitable vs. Unprofitable Films for Each Time Period"} 
-plt(yvar = "year_cat", fillby = "made_money", label_size = 0) 
-```  
+![Relative Frequency of MPAA](images/barploth_freq_mpaa_pct-1.png)
 
-```{r, barploth_stacked, fig.cap="Percents of Profitable vs. Unprofitable Films for Each Time Period"} 
+
+```r
+plt(yvar = "year_cat", fillby = "made_money", label_size = 0) 
+```
+
+![Number of Profitable vs. Unprofitable Films for Each Time Period](images/barploth_dodged-1.png)
+
+
+```r
 plt(yvar = "year_cat", fillby="made_money", show_pct = T)
-```  
+```
+
+![Percents of Profitable vs. Unprofitable Films for Each Time Period](images/barploth_stacked-1.png)
 
 
 ## Example usage of `mk_barploth_resp()`
 
-```{r}
+
+```r
 df = films %>% count(mpaa) %>% mutate(pct = n / sum(n))
 plt = mk_barploth_resp(df)
 ```
 
-```{r, barploth_resp_mpaa_cnt, fig.cap="Frequency of MPAA"} 
+
+```r
 p = plt(xvar = "n", yvar = "mpaa", label_decimals = 0) # default uses 1 decimal 
 add_labs(p, xlab = "Frequency")
-```  
+```
 
-```{r, barploth_resp_mpaa_pct, fig.cap="Relative Frequency of MPAA"}   
+![Frequency of MPAA](images/barploth_resp_mpaa_cnt-1.png)
+
+
+```r
 plt(xvar = "pct", yvar = "mpaa", show_pct = T, label_decimals = 2, font_size = 9)  
 ```
 
-```{r, barploth_mpaa_vs_bo, fig.cap="Boxoffice by MPAA"} 
+![Relative Frequency of MPAA](images/barploth_resp_mpaa_pct-1.png)
+
+
+```r
 plt = mk_barploth_resp(films)
 plt("boxoffice", "mpaa", yorder = "descend", font_size = 10, label_decimals = 0)
-```  
+```
 
-```{r, barploth_dodged_p3, fig.cap="Votes of Profitable and Unprofitable Films for each MAPP rating"} 
+![Boxoffice by MPAA](images/barploth_mpaa_vs_bo-1.png)
+
+
+```r
 plt("votes", "mpaa", fillby = "made_money", label_size = 0)
 ```
+
+![Votes of Profitable and Unprofitable Films for each MAPP rating](images/barploth_dodged_p3-1.png)
 
 ## Horizontal bar chart vs. lollipop chart
 
 Horizontal bar chart and lollipop chart are exchangeable. So if you use a lot of
 horizontal bar charts, maybe you want to switch to horizontal lollipop chart for
 a change. Let's draw both using the following dataset.
-```{r}
+
+```r
 df = read.csv(text="category,pct
                Other,0.09
                South Asian/South Asian Americans,0.12
@@ -91,17 +118,32 @@ df$category = reorder(df$category, df$pct)
 str(df)
 ```
 
-```{r, barploth_vs_lollipop_p1, fig.cap="Demo H Bar Chart"} 
+```
+'data.frame':	21 obs. of  2 variables:
+ $ category: Factor w/ 21 levels "               Other",..: 1 2 3 4 5 6 7 8 9 10 ...
+  ..- attr(*, "scores")= num [1:21(1d)] 0.34 0.67 0.49 0.52 0.34 0.87 0.21 0.85 0.69 0.79 ...
+  .. ..- attr(*, "dimnames")=List of 1
+  .. .. ..$ : chr  "               Africa/Pan Africa/African Americans" "               Caribbean/Caribbean Americans" "               Disability Advocacy" "               European/European Americans" ...
+ $ pct     : num  0.09 0.12 0.21 0.25 0.29 0.34 0.34 0.49 0.52 0.54 ...
+```
+
+
+```r
 plt = mk_barploth_resp(df)
 plt("pct", "category", yorder = "descend", font_size = 10, show_pct = T,
     label_decimals = 0)
 ```
 
-```{r, barploth_vs_lollipop_p2, fig.cap="Demo H Lollipop Chart"} 
+![Demo H Bar Chart](images/barploth_vs_lollipop_p1-1.png)
+
+
+```r
 plt = mk_lollipop(df)
 plt("pct", "category", yorder = "descend", font_size = 10, show_pct = T,
     label_decimals = 0)
 ```
+
+![Demo H Lollipop Chart](images/barploth_vs_lollipop_p2-1.png)
 
 
 
