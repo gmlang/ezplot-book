@@ -14,9 +14,6 @@ manu_path = file.path(proj_path, "manuscript")
 setwd(manu_path)
 rmd_path = file.path(manu_path, "Rmd")
 
-# file_in = file.path(rmd_path, "01-set-up.Rmd")
-# knitr::knit(file_in)
-
 # file_in = file.path(rmd_path, "02-plot-dist-of-a-con-var.Rmd")
 # knitr::knit(file_in)
 
@@ -32,13 +29,13 @@ rmd_path = file.path(manu_path, "Rmd")
 # file_in = file.path(rmd_path, "03-04-qqplot.Rmd")
 # knitr::knit(file_in)
 
-# file_in = file.path(rmd_path, "03-05-barplot-1.Rmd")
+# file_in = file.path(rmd_path, "04-01-barplot-1.Rmd")
 # knitr::knit(file_in)
 
-# file_in = file.path(rmd_path, "03-05-barplot-2.Rmd")
+# file_in = file.path(rmd_path, "04-02-barplot-2.Rmd")
 # knitr::knit(file_in)
 
-file_in = file.path(rmd_path, "03-06-horizontal-barplot-n-lollipop.Rmd")
+file_in = file.path(rmd_path, "04-03-horizontal-barplot-n-lollipop.Rmd")
 knitr::knit(file_in)
 
 # file_in = file.path(rmd_path, "03-07-scatterplot.Rmd")
