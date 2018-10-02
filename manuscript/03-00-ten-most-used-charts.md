@@ -13,6 +13,6 @@ I wrote ezplot to improve efficiency. Looking back to all the client projects I'
 * heatmap
 * dumbbell plot
 
-In this chapter, I'll show you how to make these charts with ezplot. I'll show you the nuances and variations. You'll watch your productivity soaring, and by the end of the chapter, you'll be able to create these charts yourself with minimal effort.
+In this chapter, I'll show you how to make these charts with ezplot. I'll show you the nuances and variations. You'll watch your productivity soar, and by the end of the book, you'll be able to create these charts yourself with minimal effort.
 
 Let's get started. 
