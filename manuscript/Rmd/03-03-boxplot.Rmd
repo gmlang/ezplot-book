@@ -57,14 +57,14 @@ between the medians.
 
 For homework, try the following exercises.
 
-1. read the document of `mk_boxplot()` and run the examples. You can pull up the 
+1. Read the document of `mk_boxplot()` and run the examples. You can pull up the 
 document by running `?mk_boxplot` in Rstudio. 
-2. Draw a plot to show how the distributions of boxoffice change over the years.
-3. Draw a plot to show how the distributions of rating change over the years.
-4. Draw a plot to show how the distributions of length change over the years.
-5. The `films` dataset has a variable named `mpaa` that records the MPAA rating 
-of each film. What type of a variable is it? Can you draw a plot to show the 
-distribution of boxoffice at each MPAA rating?
+2. Draw a plot to show how the distributions of `boxoffice` change over the years.
+3. Draw a plot to show how the distributions of `rating` change over the years.
+4. Draw a plot to show how the distributions of `length` change over the years.
+5. The `films` dataset has a variable `mpaa` that has the MPAA rating of each 
+film. What type of a variable is it? Can you draw a plot to show the 
+distribution of `boxoffice` at each MPAA rating?
 6. The `films` dataset has a bunch of variables that record the genres, 
 for example, `action`, `comedy`, and etc. Can you draw a plot to show the 
-distribution of boxoffice for each genre?
+distribution of `boxoffice` for each genre?
