@@ -1,0 +1,14 @@
+### Horizontal Bar Chart & Lollipop Plot
+
+Previously, we mastered two ezplot functions, `mk_barplot_freq()` and 
+`mk_barplot_resp()`. We can use them to easily make regular, dodged and stacked 
+bar charts. There're two other ezplot functions, namely, 
+`mk_barploth_freq()` and `mk_barploth_resp()` that can be used to create 
+horizontal versions of the same bar charts. Let's make the horizontal versions
+of the same bar charts we made in the last two 
+
+```{r, barploth_freq_mpaa_cnt_p1, fig.cap="Frequency of MPAA"} 
+library(ezplot)
+plt = mk_barploth_freq(films)
+plt("mpaa", yorder = "descend", label_decimals = 2)
+```      
