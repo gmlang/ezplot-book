@@ -81,8 +81,6 @@ observations with an exponential distribution of rate 0.022.
 
 Now it's your turn. Try the following exercises for homework.
 
-For homework, try the following exercises.
-
 1. Read the document of `mk_qqplot()` and run the examples. You can pull up the 
 document by running `?mk_qqplot` in Rstudio. 
 2. Draw a qqplot to check if `boxoffice` from the `films` dataset is normally distributed.
