@@ -1,4 +1,4 @@
-### Dodged and Stacked Bar Chart
+## Dodged and Stacked Bar Chart
 
 A dodged or stacked bar chart is often used to show relationships among two 
 categorical and one continous variables. For example, take the variables 

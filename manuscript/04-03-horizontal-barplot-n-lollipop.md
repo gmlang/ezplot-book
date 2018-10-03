@@ -1,4 +1,4 @@
-### Horizontal Bar Chart & Lollipop Plot
+## Horizontal Bar Chart & Lollipop Plot
 
 Previously, we mastered two ezplot functions, `mk_barplot_freq()` and 
 `mk_barplot_resp()`. We can use them to easily make regular, dodged and stacked 
@@ -7,7 +7,7 @@ bar charts. There're two other ezplot functions, namely,
 horizontal versions of the same bar charts. Let's make the horizontal versions
 of the same bar charts we made in the last two sections.
 
-## Example usage of `mk_barploth_freq()`
+### Example usage of `mk_barploth_freq()`
 
 
 ```r
@@ -44,7 +44,7 @@ plt(yvar = "year_cat", fillby="made_money", show_pct = T)
 ![Percents of Profitable vs. Unprofitable Films for Each Time Period](images/barploth_stacked-1.png)
 
 
-## Example usage of `mk_barploth_resp()`
+### Example usage of `mk_barploth_resp()`
 
 
 ```r
@@ -83,7 +83,7 @@ plt("votes", "mpaa", fillby = "made_money", label_size = 0)
 
 ![Votes of Profitable and Unprofitable Films for each MAPP rating](images/barploth_dodged_p3-1.png)
 
-## Horizontal bar chart vs. lollipop chart
+### Horizontal bar chart vs. lollipop chart
 
 Horizontal bar chart and lollipop chart are exchangeable. So if you use a lot of
 horizontal bar charts, maybe you want to switch to horizontal lollipop chart for

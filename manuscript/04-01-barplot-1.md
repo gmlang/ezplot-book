@@ -1,4 +1,4 @@
-### Regular Bar Chart
+## Regular Bar Chart
 
 Previously, we learned four tools for displaying the distribution of a continuous
 variable. What about categorical variables? How can we show the frequencies 
