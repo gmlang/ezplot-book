@@ -56,6 +56,7 @@ counts and percents of the categories are given along side the categories. How
 shall we just display them on a bar chart?
 
 ```r
+library(dplyr)
 df = films %>% count(mpaa) %>% mutate(pct = n / sum(n))
 df
 ```

@@ -48,6 +48,7 @@ plt(yvar = "year_cat", fillby="made_money", show_pct = T)
 
 
 ```r
+library(dplyr)
 df = films %>% count(mpaa) %>% mutate(pct = n / sum(n))
 plt = mk_barploth_resp(df)
 ```
