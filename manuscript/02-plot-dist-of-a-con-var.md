@@ -104,10 +104,10 @@ statistical methods, for example, linear regression, are devised based on the
 assumption of normal distribution. When encountering long right tailed data, 
 we can often make it approximately normal by taking the log. 
 
-The rest of the book is organized into four chapters. In chapter 3, we'll learn
+The rest of the book is organized into three chapters. In chapter 3, we'll learn
 how to make histogram, density plot, boxplot and qqplot. In chapter 4, we'll 
 learn how to make regular, dodged and stacked bar charts, their horizontal
-cousins and likert plot. In chapter 5, we'll learn how to make scatterplot and 
-lineplot. In chapter 6, we'll learn how to make heatmap and dumbbell plot. 
+cousins and likert plot. In chapter 5, we'll learn how to make scatterplot, 
+lineplot, dumbbell plot and heatmap. 
 
 

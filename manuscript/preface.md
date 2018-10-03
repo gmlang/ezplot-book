@@ -14,8 +14,8 @@ In this book, I'll show you the nuances of ezplot with example code and comments
 * likert plot (a.k.a, horizontal diverging barplot)
 * scatterplot
 * lineplot
-* heatmap
 * dumbbell plot
+* heatmap
 
 
 You will get most out of this book by typing and running the code given in the book. Do NOT just copy and paste. Type the code. This will help you become a better R programmer. If you run into typos or errors, please let me know at gmlang@cabaceo.com.
