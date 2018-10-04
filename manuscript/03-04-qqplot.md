@@ -58,6 +58,17 @@ degree diagonal line. If yes, conclude the data are normally distributed. When
 looking at a detrended qqplot, check if data points are randomly scattered 
 around $y = 0$. If yes, conclude normality. 
 
+There's another ezplot function `test_normality()` that allows us to perform
+normality check even easier and quicker. As an example, let's check if 
+`Sepal.Length` of the `iris` dataset is normally distributed.
+
+```r
+plt = test_normality(iris)
+plt("Sepal.Length")
+```
+
+![Normality check of Sepal.Length](images/test_norm_sepallength-1.png)
+
 Not only qqplot can be used to check normality, it can also be used to check if
 a set of data values follow another well-known theoretical distribution such as
 beta, cauchy, chi-squared, exponential, F, gamma, geometric, log-normal, 
@@ -85,3 +96,4 @@ Now it's your turn. Try the following exercises for homework.
 document by running `?mk_qqplot` in Rstudio. 
 2. Draw a qqplot to check if `boxoffice` from the `films` dataset is normally distributed.
 3. What about `log(boxoffice)`?
+4. Read the document of `test_normality()` and run the examples. 
