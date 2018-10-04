@@ -8,6 +8,7 @@ To make a density plot, we use the function `mk_densityplot()`.
 The `films` dataset has a variable `length` that measures the duration of each 
 film in minutes. Let's draw a density plot to show its distribution. 
 
+A>
 ```r
 library(ezplot)
 plt = mk_densityplot(films)
@@ -21,6 +22,7 @@ print(p)
 We can also draw two density curves of `length`, one for profitable films, 
 and the other for unprofitable films.
 
+A>
 ```r
 p = plt(xvar = "length", yvar = "made_money") # remove tails <= 0.5% by default
 p = add_labs(p, xlab = "minutes", ylab = "made money?",
@@ -35,6 +37,7 @@ y-axis, and this correpsonds to how we specified xvar and yvar in `plt()`. Yes,
 what you specify is what you get. This is very intuitive. Let's see another
 example. Let's plot the density of `rating` by `year_cat`.
 
+A>
 ```r
 plt("rating", "year_cat", font_size = 9) 
 ```
@@ -45,10 +48,11 @@ But the y variable must be character or factor type, and it cannot be integer
 or numeric. For example, `year` is of integer type, and if we try to plot the
 density of `rating` by `year`, it'll throw an error.
 
+A>
 ```r
 plt("rating", "year") # throws error when yvar is integer or numeric
 ```
-
+A>
 ```
 Error in plt("rating", "year"): The y variable, year, is integer or numeric. Change to factor or character.
 ```

@@ -23,7 +23,7 @@ A>
 ```r
 str(films$rating)
 ```
-
+A>
 ```
  num [1:5944] 6.2 4.7 7.8 7.5 7.2 6.2 5 5.6 5.6 4.8 ...
 ```
@@ -79,7 +79,7 @@ A>
 ```r
 str(films$made_money)
 ```
-
+A>
 ```
  Factor w/ 2 levels "no","yes": 2 2 2 2 2 2 2 1 2 2 ...
 ```
@@ -104,9 +104,8 @@ A>
 ```r
 table(films$made_money)
 ```
-
+A>
 ```
-
   no  yes 
 1831 4113 
 ```
