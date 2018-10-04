@@ -1,3 +1,5 @@
+# Ten most used charts
+
 ## Histogram
 
 As we've seen from chapter 2, we can use histogram, density plot, boxplot and 
