@@ -7,6 +7,7 @@ years into four categories and the latter flags if a film made money or not.
 Suppose we want to compare the frequencies of profitable vs. 
 unprofitable films for each time period, we can draw a dodged bar chart.
 
+A>
 ```r
 library(ezplot)
 plt = mk_barplot_freq(films)
@@ -21,6 +22,7 @@ chart. By the way, the blue and orange colors are color-blind friendly.
 Of course, we can also draw a stacked bar chart instead. We do that by setting
 `show_pct = T` inside `plt()`.
 
+A>
 ```r
 plt = mk_barplot_freq(films)
 plt(xvar = "year_cat", fillby="made_money", show_pct = T)
@@ -37,6 +39,7 @@ Just for fun, let's switch places for `year_cat` and `made_money`. We'll place
 `made_money` on x-axis and color the bars with `year_cat`. We'll also disable
 the bar labels by setting `label_size = 0`, which will make the chart uncluttered.
 
+A>
 ```r
 plt = mk_barplot_freq(films)
 plt(xvar = "made_money", fillby = "year_cat", label_size = 0)
@@ -54,6 +57,7 @@ how many votes there're under each MPAA rating for profitable and unprofitable
 films respectively. We can draw a dodged bar chart using `mk_barplot_resp()` and
 set `yvar = "votes"` inside `plt()`, as shown in the code block below. 
 
+A>
 ```r
 plt = mk_barplot_resp(films)
 plt(xvar = "mpaa", yvar = "votes", fillby = "made_money", label_size = 0)

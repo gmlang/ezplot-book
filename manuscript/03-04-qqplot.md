@@ -5,13 +5,12 @@ boxplot. These charts don't directly tell us if the plotted variable is normally
 distributed or not. To check normality, we need Q-Q plot. Let's start with an
 example. First, let's generate 100 data points from a standard normal distribution.
 
+A>
 ```r
 library(ezplot)
 library(dplyr)
 set.seed(0)
 smp = data.frame(x = rnorm(100))
-
-# get a function to draw qqplot of variables from the data frame smp
 plt = mk_qqplot(smp)
 ```
 
@@ -20,6 +19,7 @@ Next, let's draw a normal Q-Q plot using the simulated data. We'll set
 plot (rectangular shaped) to the ezplot function `square_fig()` to make it 
 square shaped. 
 
+A>
 ```r
 plt("x", detrend = FALSE) %>% square_fig() 
 ```
@@ -34,6 +34,7 @@ normal distribution.)
 Alternatively, we can draw the Aldor-Noiman tail-sensitive confidence band
 by setting `ci_band_type = "ts"`. 
 
+A>
 ```r
 plt("x", detrend = FALSE, ci_band_type = "ts") %>% square_fig()
 ```
@@ -45,6 +46,7 @@ Finally, there're visual biases when looking at trends, so we can create
 detrended qqplot. To do that, we just need to remove `detrend = FALSE` 
 because the parameter `detrend` is set to `TRUE` by default.
 
+A>
 ```r
 plt("x", ci_band_type = "ts", font_size = 10) %>% square_fig()
 ```
@@ -62,6 +64,7 @@ There's another ezplot function `test_normality()` that allows us to perform
 normality check even easier and quicker. As an example, let's check if 
 `Sepal.Length` of the `iris` dataset is normally distributed.
 
+A>
 ```r
 plt = test_normality(iris)
 plt("Sepal.Length")
@@ -76,6 +79,7 @@ logistic, binomial, poisson, t, and weibull distribution. For example, let's
 check if the ozone levels from the air quality data are exponentially 
 distributed.
 
+A>
 ```r
 plt = mk_qqplot(airquality)
 plt("Ozone", dist = "exp", dparams = list(rate = 0.022)) %>% 

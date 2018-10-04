@@ -4,6 +4,7 @@ Previously, we learned how to make horizontal bar chart. There's another kind of
 horizontal bar chart, namely, horizontal diverging bar chart, or likert chart. 
 Let's see an example.
 
+A>
 ```r
 library(ezplot)
 library(dplyr)
@@ -25,6 +26,7 @@ as a result, the bars to the left of `x = 0` correspond to `made_money = no`,
 and to the right of `x = 0` correspond to `made_money = yes`. We can also choose 
 to show percent instead of count.
 
+A>
 ```r
 plt("pct", "mpaa", fillby = "made_money", 
     fillby_lvls = c("no", "yes"), x_as_pct = T)
@@ -35,6 +37,7 @@ plt("pct", "mpaa", fillby = "made_money",
 
 Let's consider another example. First, we make some fake data.
 
+A>
 ```r
 df = data.frame(item = rep(LETTERS[1:5], 4),
                 slope = c(rep("North", 10), rep("South", 10)),
@@ -45,7 +48,7 @@ df = data.frame(item = rep(LETTERS[1:5], 4),
                sppInv = ifelse(type == "native", spp, spp*-1))
 head(df)
 ```
-
+A>
 ```
   item slope       type spp sppInv
 1    A North     native   4      4
@@ -55,11 +58,11 @@ head(df)
 5    E North     native   3      3
 6    A North introduced   6     -6
 ```
-
+A>
 ```r
 tail(df)
 ```
-
+A>
 ```
    item slope       type spp sppInv
 15    E South     native   2      2
@@ -72,6 +75,7 @@ tail(df)
 
 Let's focus on North for now and ignore South. 
 
+A>
 ```r
 plt = mk_likertplot(df %>% filter(slope == "North"))
 ```
@@ -80,6 +84,7 @@ The variable `sppInv` is < 0 when `type` is "introduced", and > 0 when type is
 "native". We can make a likert chart to show the values of `sppInv` by `type` for
 each `item`.
 
+A>
 ```r
 plt("sppInv", "item", fillby = "type", fillby_lvls = c("introduced", "native"))
 ```
@@ -89,6 +94,7 @@ plt("sppInv", "item", fillby = "type", fillby_lvls = c("introduced", "native"))
 On the other hand, the variable `spp` is always > 0. Let's also make a likert 
 chart to show the values of `spp` by `type` for each `item`.
 
+A>
 ```r
 plt("spp", "item", fillby = "type", fillby_lvls = c("introduced", "native"))
 ```
@@ -106,6 +112,7 @@ future economy of 12 Arabic countries. Respondents were asked,
 your country during the next few years (3-5 years) compared to the current 
 situation?". We can dispaly this info on a likert chart. 
 
+A>
 ```r
 library(tidyr)
 df = ab3 %>% gather(opinion, pct, -Country)

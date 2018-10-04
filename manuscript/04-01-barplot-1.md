@@ -8,15 +8,16 @@ has 5 unique values: NA, "PG-13", "R", "PG", and "NC-17". Let's draw a bar chart
 to show their frequencies. We can do this easily via the ezplot function 
 `mk_barplot_freq()`. 
 
+A>
 ```r
 library(ezplot)
 str(films$mpaa)
 ```
-
+A>
 ```
  chr [1:5944] NA "PG-13" "PG-13" NA "PG-13" NA "PG-13" "R" NA NA "R" ...
 ```
-
+A>
 ```r
 plt = mk_barplot_freq(films)
 plt("mpaa")
@@ -32,6 +33,7 @@ middle of each bar. By default, the bars are ordered alphanumerically from
 left to right. We can choose to sort them in descending order of the bar heights. 
 In addition, we can change the percent bar labels to 2 decimal places.
 
+A>
 ```r
 plt("mpaa", xorder = "descend", label_decimals = 2)
 ```
@@ -42,6 +44,7 @@ Instead of showing frequency counts, we can show relative frequencies (%) on
 the y-axis by setting `show_pct = T` in `plt()`. If we do that, the top and 
 middle bar labels will also switch places.  
 
+A>
 ```r
 plt("mpaa", show_pct = T, xorder = "descend") 
 ```
@@ -55,12 +58,13 @@ are already tallied? For example, consider the following data set, where the
 counts and percents of the categories are given along side the categories. How
 shall we just display them on a bar chart?
 
+A>
 ```r
 library(dplyr)
 df = films %>% count(mpaa) %>% mutate(pct = n / sum(n))
 df
 ```
-
+A>
 ```
 # A tibble: 5 x 3
   mpaa      n      pct
@@ -74,6 +78,7 @@ df
 
 The answer is a different ezplot function, `mk_barplot_resp()`. 
 
+A>
 ```r
 plt = mk_barplot_resp(df)
 p = plt(xvar = "mpaa", yvar = "n", label_decimals = 0) # default uses 1 decimal 
@@ -86,6 +91,7 @@ Notice we need to supply values to both `xvar` and `yvar` in `plt()`. Recall
 we've seen this pattern of usage before. We'll see it over and over again. Of
 course, we can show the relative frequencies by setting `yvar = "pct"`.
 
+A>
 ```r
 plt(xvar = "mpaa", yvar = "pct", show_pct = T, label_decimals = 2, font_size = 9)  
 ```
@@ -98,11 +104,12 @@ The function `mk_barplot_resp()` is actually more powerful than the example we'v
 just shown. Consider the following data set, which further splits the counts
 of each MPAA category by a binary flag of made money or not.
 
+A>
 ```r
 df2 = films %>% count(mpaa, made_money) %>% mutate(pct = n / sum(n))
 df2
 ```
-
+A>
 ```
 # A tibble: 9 x 4
   mpaa  made_money     n      pct
@@ -122,6 +129,7 @@ What will happen if we make a bar chart using `df2`? Yes, we'll get the same bar
 chart as when using `df`! This is because `mk_barplot_resp()` is smart enough to 
 aggregate `n` for each category of `mpaa`.
 
+A>
 ```r
 plt = mk_barplot_resp(df2)
 p = plt(xvar = "mpaa", yvar = "n", label_decimals = 0) # default uses 1 decimal 
@@ -134,6 +142,7 @@ To summarise, `mk_barplot_resp()` first aggregates the y values for each x
 category, and then makes a bar chart. Now we know this, we can use it to plot 
 the total boxoffice of each MPAA rating on a bar chart.
 
+A>
 ```r
 plt = mk_barplot_resp(films)
 plt("mpaa", "boxoffice", xorder = "descend", font_size = 10, label_decimals = 0)

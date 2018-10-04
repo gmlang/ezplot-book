@@ -87,7 +87,6 @@ df = read.csv(text="category,pct
                Jewish Heritage/Observance,0.85
                International Students,0.87", 
               stringsAsFactors = FALSE, sep = ",", header = TRUE)
-
 # change category to factor and order its levels in ascending order of pct 
 df$category = reorder(df$category, df$pct)
 str(df)

@@ -9,8 +9,6 @@ library(ezplot)
 library(dplyr)
 set.seed(0)
 smp = data.frame(x = rnorm(100))
-
-# get a function to draw qqplot of variables from the data frame smp
 plt = mk_qqplot(smp)
 ```
 
