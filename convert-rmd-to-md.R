@@ -29,8 +29,8 @@ rmd_path = file.path(manu_path, "Rmd")
 # file_in = file.path(rmd_path, "03-04-qqplot.Rmd")
 # knitr::knit(file_in)
 
-# file_in = file.path(rmd_path, "04-01-barplot-1.Rmd")
-# knitr::knit(file_in)
+file_in = file.path(rmd_path, "04-01-barplot-1.Rmd")
+knitr::knit(file_in)
 
 # file_in = file.path(rmd_path, "04-02-barplot-2.Rmd")
 # knitr::knit(file_in)

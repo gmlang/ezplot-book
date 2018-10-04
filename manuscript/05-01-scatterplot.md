@@ -5,6 +5,7 @@ apply the ezplot function `mk_scatterplot()` to the data frame `films` to
 get a function that we can use to make scatter plots for any two continuous 
 variables in `films`.
 
+A>
 ```r
 library(dplyr)
 library(ezplot)
@@ -15,6 +16,7 @@ For example, we can use `plt()` to draw a scatter plot of `boxoffice` vs.
 `budget`. We'll use `log10` scale on both axes because the two variables are 
 heavily right-skewed.
 
+A>
 ```r
 p = plt(xvar = "budget", yvar = "boxoffice") %>% 
         add_labs(xlab="budget (in US Dollars)", 
@@ -35,6 +37,7 @@ We need to run linear regression to find out. But luckily, we have the ezplot
 function `add_lm_line()`. It will add the best fitting line with its equation,
 R-squared and p-valued displayed on the plot. Let's add the best fitting line now. 
 
+A>
 ```r
 add_lm_line(p)
 ```
@@ -48,6 +51,7 @@ by the variation in budget (both at log10 scale).
 The function `plt()` can be re-used. For example, we can use it to draw a 
 scatter plot of `boxoffice` vs. `votes`.
 
+A>
 ```r
 p = plt("votes", "boxoffice", alpha = 0.2, jitter = T) %>% 
         add_labs(xlab="number of votes", 
@@ -70,6 +74,7 @@ question: did action movies make money year after year? To answer it, we'll need
 to draw a scatter plot of `bo_bt_ratio` vs. `year` and color the points by the 
 flagging variable `action`. 
 
+A>
 ```r
 p = plt("year", "bo_bt_ratio", fillby = "action", alpha = 0.5) %>% 
         add_labs(ylab = "boxoffice/budget ratio", 

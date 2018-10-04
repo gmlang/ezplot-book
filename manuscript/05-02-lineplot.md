@@ -3,6 +3,7 @@
 Line plots are good for showing trends over time. For example, let's plot the
 annual average budget (and boxoffice) over the years.
 
+A>
 ```r
 library(ezplot)
 plt = mk_lineplot(btbo_by_year)
@@ -21,6 +22,7 @@ and re-run. What's changed on the plot?
 Alternatively, we can calculate and plot the annual boxoffice/budget ratios over
 the years.
 
+A>
 ```r
 library(tidyr)
 df = btbo_by_year %>% select(-avg) %>% spread(type, tot) %>% 
@@ -43,20 +45,20 @@ However, the `plt()` function also works with a x variable of type character or
 factor. For example, the `films` dataset has a character variable `year_cat` 
 with only 4 unique values. 
 
+A>
 ```r
 str(films$year_cat)
 ```
-
+A>
 ```
  chr [1:5944] "1913-1950" "1990-2014" "1990-2014" "1990-2014" ...
 ```
-
+A>
 ```r
 table(films$year_cat)
 ```
-
+A>
 ```
-
 1913-1950 1950-1970 1970-1990 1990-2014 
       231       243       876      4594 
 ```
@@ -64,6 +66,7 @@ table(films$year_cat)
 Instead of plotting the films of each period on a bar chart, we can use a line 
 plot because there's a time order to the periods.
 
+A>
 ```r
 films_cnt = films %>% group_by(year_cat) %>% summarise(n = n())
 plt = mk_lineplot(films_cnt)

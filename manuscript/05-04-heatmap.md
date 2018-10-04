@@ -2,6 +2,7 @@
 
 Let's start with an example. Consider the dataset `nba`.
 
+A>
 ```r
 library(dplyr)
 library(tidyr)
@@ -9,7 +10,7 @@ library(ezplot)
 # look at the first 5 rows and 8 columns
 nba[1:5, 1:8]
 ```
-
+A>
 ```
             Name  G  MIN  PTS  FGM  FGA   FGP FTM
 1   Dwyane Wade  79 38.6 30.2 10.8 22.0 0.491 7.5
@@ -18,21 +19,21 @@ nba[1:5, 1:8]
 4 Dirk Nowitzki  81 37.7 25.9  9.6 20.0 0.479 6.0
 5 Danny Granger  67 36.2 25.8  8.5 19.1 0.447 6.0
 ```
-
+A>
 ```r
 # check the dimensions
 dim(nba)
 ```
-
+A>
 ```
 [1] 50 21
 ```
-
+A>
 ```r
 # check the colnames
 colnames(nba)
 ```
-
+A>
 ```
  [1] "Name" "G"    "MIN"  "PTS"  "FGM"  "FGA"  "FGP"  "FTM"  "FTA"  "FTP" 
 [11] "X3PM" "X3PA" "X3PP" "ORB"  "DRB"  "TRB"  "AST"  "STL"  "BLK"  "TO"  
@@ -43,21 +44,22 @@ The variable `Name` contains players' names. It's a factor with levels ordered
 alphabetically. Let's reorder the levels in ascending order of the points the 
 players scored.
 
+A>
 ```r
 str(nba$Name)
 ```
-
+A>
 ```
  Factor w/ 50 levels "Nate Robinson ",..: 50 49 48 47 46 45 44 43 42 41 ...
  - attr(*, "scores")= num [1:50(1d)] 20.1 23.1 17.5 21.4 18.8 22.2 20.7 22.6 22.8 20.8 ...
   ..- attr(*, "dimnames")=List of 1
   .. ..$ : chr [1:50] "Al Harrington " "Al Jefferson " "Allen Iverson " "Amare Stoudemire " ...
 ```
-
+A>
 ```r
 levels(nba$Name)
 ```
-
+A>
 ```
  [1] "Nate Robinson "     "Allen Iverson "     "Chauncey Billups " 
  [4] "Rashard Lewis "     "Maurice Williams "  "Shaquille O'neal " 
@@ -77,7 +79,7 @@ levels(nba$Name)
 [46] "Danny Granger "     "Dirk Nowitzki "     "Kobe Bryant "      
 [49] "LeBron James "      "Dwyane Wade "      
 ```
-
+A>
 ```r
 nba$Name = with(nba, reorder(Name, PTS))
 ```
@@ -87,11 +89,12 @@ the data in a heatmap, we first need to put the data in long format, a.k.a., we
 need to gather the names of the statistics in one column and their values in 
 another column.
 
+A>
 ```r
 nba_m = nba %>% gather(stats, val, -Name)
 head(nba_m)
 ```
-
+A>
 ```
             Name stats val
 1   Dwyane Wade      G  79
@@ -105,6 +108,7 @@ head(nba_m)
 Let's scale the values of every performance statistics so that they are between 
 0 and 1. 
 
+A>
 ```r
 dat = nba_m %>% group_by(stats) %>% mutate(val_scaled = scales::rescale(val))
 head(dat)
@@ -126,6 +130,7 @@ head(dat)
 With the data prep work done, we're ready to make a heatmap using the 
 `mk_heatmap()` function.
 
+A>
 ```r
 plt = mk_heatmap(dat)
 plt(xvar = "stats", yvar = "Name", fillby = "val_scaled") %>%
@@ -144,10 +149,11 @@ us to make multiple heatmaps in one plot with no sweat. Let's see another
 example. The dataset `attacks_by_country` has the number of internet 
 attacks of ten countries for each hour of a day during a fixed time period. 
 
+A>
 ```r
 str(attacks_by_country)
 ```
-
+A>
 ```
 Classes 'tbl_df', 'tbl' and 'data.frame':	1680 obs. of  5 variables:
  $ country     : Factor w/ 10 levels "South Korea (KR)",..: 9 9 9 9 9 9 9 9 9 9 ...
@@ -161,6 +167,7 @@ We can draw a heatmap for each country, showing the severity of attacks over
 time. Pay attention to the usage of `facet_by` and `facet_ncol` parameters in
 the following code.
 
+A>
 ```r
 plt = mk_heatmap(attacks_by_country)
 plt("hour", "wkday", fillby ="n", facet_by = "country", facet_ncol = 2) %>%
