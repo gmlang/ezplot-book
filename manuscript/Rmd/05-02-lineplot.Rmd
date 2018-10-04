@@ -1,4 +1,4 @@
-## Line plot
+## Line Plot
 
 Line plots are good for showing trends over time. For example, let's plot the
 annual average budget (and boxoffice) over the years.
