@@ -3,6 +3,7 @@
 Let's begin with an example. First, we load the ezplot package, which contains 
 a dataset of films from IMBD.com. 
 
+A>
 ```r
 library(ezplot)
 ?films
@@ -11,6 +12,7 @@ library(ezplot)
 The variable `budget` is continuous, and we can draw a histogram using the 
 `mk_histogram()` function. 
 
+A>
 ```r
 plt = mk_histogram(films) # plt is a function
 plt("budget") # note the quotation marks around budget
@@ -20,6 +22,7 @@ plt("budget") # note the quotation marks around budget
 
 We can also draw a density plot.
 
+A>
 ```r
 plt = mk_densityplot(films) 
 plt("budget") 
@@ -29,6 +32,7 @@ plt("budget")
 
 Or a boxplot.
 
+A>
 ```r
 plt = mk_boxplot(films) 
 plt(yvar = "budget") 
@@ -39,6 +43,7 @@ plt(yvar = "budget")
 These plots show the distribution of budget has a long right tail. We can
 confirm budget is not normally distributed by looking at its qq-normal plot. 
 
+A>
 ```r
 plt = mk_qqplot(films) 
 plt("budget", detrend = F) 
@@ -74,6 +79,7 @@ extremely large values. To solve this, we can apply the log transformation.
 For example, we can add to `films` a new variable called `log_budget` by 
 taking the log of `budget` and visualize `log_budget` afterwards.
 
+A>
 ```r
 films$log_budget = log(films$budget)
 plt2 = mk_histogram(films)
@@ -82,7 +88,7 @@ plt2("log_budget")
 
 ![Histogram of log(Budget)](images/hist_log_budget-1.png)
 
-
+A>
 ```r
 plt2 = mk_densityplot(films)
 plt2("log_budget")
@@ -90,7 +96,7 @@ plt2("log_budget")
 
 ![Density of log(Budget)](images/density_log_budget-1.png)
 
-
+A>
 ```r
 plt2 = mk_qqplot(films)
 plt2("log_budget", detrend = F)
