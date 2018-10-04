@@ -67,7 +67,6 @@ df
 A>
 ```
   mpaa      n      pct
-  <chr> <int>    <dbl>
 1 NC-17     5 0.000841
 2 PG      576 0.0969  
 3 PG-13  1293 0.218   
@@ -111,9 +110,7 @@ df2
 
 A>
 ```
-# A tibble: 9 x 4
   mpaa  made_money     n      pct
-  <chr> <fct>      <int>    <dbl>
 1 NC-17 yes            5 0.000841
 2 PG    no           118 0.0199  
 3 PG    yes          458 0.0771  
