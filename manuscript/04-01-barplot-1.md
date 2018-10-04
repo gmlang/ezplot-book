@@ -66,7 +66,6 @@ df
 ```
 A>
 ```
-# A tibble: 5 x 3
   mpaa      n      pct
   <chr> <int>    <dbl>
 1 NC-17     5 0.000841
@@ -109,6 +108,7 @@ A>
 df2 = films %>% count(mpaa, made_money) %>% mutate(pct = n / sum(n))
 df2
 ```
+
 A>
 ```
 # A tibble: 9 x 4

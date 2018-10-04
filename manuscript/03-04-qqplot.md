@@ -84,7 +84,7 @@ A>
 plt = mk_qqplot(airquality)
 plt("Ozone", dist = "exp", dparams = list(rate = 0.022)) %>% 
         square_fig() %>%
-        add_labs(title = "The ozone levels are mostly\nexponential except at the tail",
+        add_labs(title = "Ozone levels are mostly\nexponential except at the tail",
                  caption = "Theoretical Distribution: Exponential with rate 0.022")
 ```
 

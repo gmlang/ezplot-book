@@ -1,4 +1,4 @@
-# Ten most used charts
+# Top 10 charts
 
 ## Histogram
 
