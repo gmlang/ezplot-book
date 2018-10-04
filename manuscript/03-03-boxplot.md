@@ -7,6 +7,7 @@ can use, namely, the boxplot. A boxplot shows the minimum, lower quartile
 It also shows outliers that are distributed far away from the majority of data 
 points. Let's start with an example by making a boxplot for `budget`.
 
+A>
 ```r
 library(ezplot)
 plt = mk_boxplot(films)
@@ -26,6 +27,7 @@ The films were made between 1913 and 2014, and it'll be interesting to see how
 budget changed over the years. To find out, we can draw a boxplot of `budget` 
 over `year_cat`. 
 
+A>
 ```r
 p = plt(xvar = "year_cat", yvar = "budget")
 scale_axis(p, "y", scale = "dollar") # apply dollar scale to y-axis 
@@ -43,16 +45,18 @@ But the x variable must be character or factor type, and cannot be integer or
 numeric. For example, if we try to plot `budget` by `year`,  it'll throw an 
 error because `year` is integer type.
 
+A>
 ```r
 plt(xvar = "year", yvar = "budget") # throws error because "year" is integer
 ```
-
+A>
 ```
 Error in plt(xvar = "year", yvar = "budget"): The x variable, year, is integer or numeric. Change to factor or character.
 ```
 
 To make it work, we can change `year` to factor first. 
 
+A>
 ```r
 library(dplyr)
 plt = mk_boxplot(films %>% filter(year %in% 2010:2014) %>%
