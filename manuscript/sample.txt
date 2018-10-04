@@ -2,6 +2,4 @@ frontmatter.md
 preface.md
 mainmatter.md
 01-set-up.md
-03-00-ten-most-used-charts.md
-03-01-histogram.md
-03-05-scatterplot.md
+05-01-scatterplot.md

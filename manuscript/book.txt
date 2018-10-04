@@ -11,5 +11,10 @@ mainmatter.md
 04-02-barplot-2.md
 04-03-horizontal-barplot-n-lollipop.md
 04-04-likertplot.md
+05-01-scatterplot.md
+05-02-lineplot.md
+05-03-dumbbell.md
+05-04-heatmap.md
+06-web-display.md
 backmatter.md
 conclusion.md
