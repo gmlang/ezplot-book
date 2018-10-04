@@ -10,6 +10,7 @@ plot, boxplot and qqplot in the next three sections.
 First, we load the `ezplot` library. It has a dataset of films. We can run the 
 command `?films` to see the descriptions of its variables. 
 
+A>
 ```r
 library(ezplot)
 ?films
@@ -18,6 +19,7 @@ library(ezplot)
 Notice it has a variable `rating`, which measures IMDB users' average ratings. 
 Check its type by running `str()`.
 
+A>
 ```r
 str(films$rating)
 ```
@@ -31,6 +33,7 @@ can be discrete (whole numbers) or continuous (decimal numbers). Looking at the
 first few data values, it's clear `rating` is continuous. We can draw a 
 histogram to understand its distribution.
 
+A>
 ```r
 plt = mk_histogram(films)
 p = plt("rating") 
@@ -55,6 +58,7 @@ of each bin and hence the number of bins. In practice, I often set `binw` or
 `bins` a few times until I have a sufficiently large number of bins to show how 
 raw data are distributed without any smoothing.
 
+A>
 ```r
 p = plt("rating", add_vline_median = FALSE, binw = 0.1) 
 print(p)
@@ -71,6 +75,7 @@ What do users' average ratings look like for films that made money vs. films
 that didn't? We can answer this question by bringing in another variable called 
 `made_money`. Again, let's `str()` it first.
 
+A>
 ```r
 str(films$made_money)
 ```
@@ -83,6 +88,7 @@ So `made_money` is a factor with two levels (yes, no), indicating if a film made
 money or not. We can create 2 facets, one with a histogram of profitable films
 and the other of unprofitable films, by simply setting `facet_by = "made_money"`.    
 
+A>
 ```r
 p = plt("rating", facet_by = "made_money", binw=0.1, add_vline_mean = F) 
 print(p)
@@ -94,6 +100,7 @@ We see profitable films do have a higher median average rating, and it seems
 there're more profitable films (the height of the bottom histogram is higher).
 Let's check if this is true.
 
+A>
 ```r
 table(films$made_money)
 ```
