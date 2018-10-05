@@ -24,6 +24,7 @@ the years.
 
 A>
 ```r
+library(dplyr)
 library(tidyr)
 df = btbo_by_year %>% select(-avg) %>% spread(type, tot) %>% 
         mutate(bo_bt_ratio = boxoffice / budget)
@@ -78,6 +79,49 @@ plt("year_cat", "n") %>%
 
 ![Films at 4 periods 1913 - 2014](images/lineplot_films-1.png)
 
+Line plot can also be used to show complex relationships among upto 5 variables.
+For example, it's a common task to calculate powers and sample sizes over a 
+grid of effect sizes. Their relationships can be revealed best with a line plot, 
+combined with facets when necessary. Consider the dataset `power_n_ssize_gender`. 
+It contains powers and sample sizes over a grid of effect sizes when testing
+some cellular chemical differences between Male and Female rats. The variable 
+`ssize` is sample size (number of animals), `csize` is the number of cells taken
+from each animal, `delta` is the effect size, and `rho` is the correlation among
+different cells. 
+
+A>
+```r
+head(power_n_ssize_gender)
+```
+A>
+```
+  ssize csize delta rho   Power
+1    30     3    30 0.4      NA
+2    40     3    30 0.4 0.22763
+3    50     3    30 0.4 0.27310
+4    60     3    30 0.4 0.31775
+5    30     5    30 0.4      NA
+6    40     5    30 0.4 0.25569
+```
+
+We can draw a faceted line plot using `mk_facet_lineplot()` to show all 5 
+variables at once.
+
+A>
+```r
+plt = mk_facet_lineplot(power_n_ssize_gender)
+p = plt("delta", "Power", xvar_top = "csize", yvar_rt = "ssize", gpby = "rho",
+        ylab_rt = "Sample Size", legend_title = bquote(rho))
+cap = "delta: outcome difference between male and female;
+         rho: correlation coefficient within animal."
+add_labs(p, xlab = bquote(delta),
+         title = "Powers & Sample sizes, testing difference between male and female rats",
+         subtitle = "Number of cells per animal",
+         caption = cap)
+```
+
+![plot of chunk unnamed-chunk-3](images/unnamed-chunk-3-1.png)
+
 Now it's your turn. Try the following exercises for homework.
 
 1. Read the document of `mk_lineplot()` by running `?mk_lineplot` in Rstudio. 
@@ -85,4 +129,4 @@ Now it's your turn. Try the following exercises for homework.
 the years.
 3. Make a line plot to show the trend of annual total number of action films 
 over the years.
-
+4. Read the document of `mk_facet_lineplot()` by running `?mk_facet_lineplot`. 
