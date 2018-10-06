@@ -47,7 +47,7 @@ error because `year` is integer type.
 
 A>
 ```r
-plt(xvar = "year", yvar = "budget") # throws error because "year" is integer
+plt(xvar = "year", yvar = "budget") # throws error since "year" is integer
 ```
 A>
 ```
@@ -60,8 +60,7 @@ A>
 ```r
 library(dplyr)
 plt = mk_boxplot(films %>% filter(year %in% 2010:2014) %>%
-                         mutate(year = factor(year))
-                 )
+                         mutate(year = factor(year)))
 plt("year", "budget", notched = T) # draw notched boxplot
 ```
 

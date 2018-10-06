@@ -76,7 +76,7 @@ p = plt("delta", "Power", xvar_top = "csize", yvar_rt = "ssize", gpby = "rho",
 cap = "delta: outcome difference between male and female;
          rho: correlation coefficient within animal."
 add_labs(p, xlab = bquote(delta),
-         title = "Powers & Sample sizes, testing difference between male and female rats",
+         title = "Testing cellular difference between male and female rats",
          subtitle = "Number of cells per animal",
          caption = cap)
 ```

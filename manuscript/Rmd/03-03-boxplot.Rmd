@@ -37,15 +37,14 @@ But the x variable must be character or factor type, and cannot be integer or
 numeric. For example, if we try to plot `budget` by `year`,  it'll throw an 
 error because `year` is integer type.
 ```{r}
-plt(xvar = "year", yvar = "budget") # throws error because "year" is integer
+plt(xvar = "year", yvar = "budget") # throws error since "year" is integer
 ```
 
 To make it work, we can change `year` to factor first. 
 ```{r, boxplot_bt_vs_year_p1, fig.cap="Distribution of Budget 2010 to 2014"}
 library(dplyr)
 plt = mk_boxplot(films %>% filter(year %in% 2010:2014) %>%
-                         mutate(year = factor(year))
-                 )
+                         mutate(year = factor(year)))
 plt("year", "budget", notched = T) # draw notched boxplot
 ```
 
