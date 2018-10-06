@@ -60,7 +60,8 @@ question: did action movies make money year after year? To answer it, we'll need
 to draw a scatter plot of `bo_bt_ratio` vs. `year` and color the points by the 
 flagging variable `action`. 
 ```{r, scatterplot_bo_vs_bt_color_by_action, fig.cap="Boxoffice vs. Budget colored by action film indicator"}
-p = plt("year", "bo_bt_ratio", fillby = "action", alpha = 0.5) %>% 
+p = plt("year", "bo_bt_ratio", fillby = "action", 
+        alpha = 0.5, font_size = 9) %>% 
         add_labs(ylab = "boxoffice / budget", 
                  title = "Boxoffice / Budget (1913-2014)")
 p = p + ggplot2::geom_hline(yintercept = 1)

@@ -54,8 +54,8 @@ scatter plot of `boxoffice` vs. `votes`.
 A>
 ```r
 p = plt("votes", "boxoffice", alpha = 0.2, jitter = T) %>% 
-        add_labs(xlab="number of votes", 
-                 ylab="boxoffice (in US Dollars)", 
+        add_labs(xlab = "number of votes", 
+                 ylab = "boxoffice (in US Dollars)", 
                  title = "Boxoffice vs. Votes (1913-2014)",
                  caption = "Source: IMDB"
                  )
@@ -76,8 +76,9 @@ flagging variable `action`.
 
 A>
 ```r
-p = plt("year", "bo_bt_ratio", fillby = "action", alpha = 0.5) %>% 
-        add_labs(ylab = "boxoffice/budget", 
+p = plt("year", "bo_bt_ratio", fillby = "action", 
+        alpha = 0.5, font_size = 9) %>% 
+        add_labs(ylab = "boxoffice / budget", 
                  title = "Boxoffice / Budget (1913-2014)")
 p = p + ggplot2::geom_hline(yintercept = 1)
 p = scale_axis(p, scale="log10")
