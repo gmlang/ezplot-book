@@ -55,7 +55,8 @@ rotate_axis_text(p, 10)
 ```  
 
 ```{r, barploth_dodged_p3, fig.cap="Votes of Profitable and Unprofitable Films for each MAPP rating"} 
-plt("votes", "mpaa", fillby = "made_money", label_size = 0)
+p = plt("votes", "mpaa", fillby = "made_money", label_size = 0, font_size = 9)
+rotate_axis_text(p, 15)
 ```
 
 The next example shows how to create horizontal bar chart and lollipop chart 

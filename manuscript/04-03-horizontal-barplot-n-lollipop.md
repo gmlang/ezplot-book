@@ -79,7 +79,8 @@ rotate_axis_text(p, 10)
 
 A>
 ```r
-plt("votes", "mpaa", fillby = "made_money", label_size = 0)
+p = plt("votes", "mpaa", fillby = "made_money", label_size = 0, font_size = 9)
+rotate_axis_text(p, 15)
 ```
 
 ![Votes of Profitable and Unprofitable Films for each MAPP rating](images/barploth_dodged_p3-1.png)
@@ -120,6 +121,7 @@ df = read.csv(text="category,pct
 df$category = reorder(df$category, df$pct)
 str(df)
 ```
+
 A>
 ```
 'data.frame':	21 obs. of  2 variables:
