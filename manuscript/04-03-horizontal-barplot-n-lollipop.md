@@ -71,7 +71,8 @@ plt(xvar = "pct", yvar = "mpaa", show_pct = T, label_decimals = 2, font_size = 9
 A>
 ```r
 plt = mk_barploth_resp(films)
-plt("boxoffice", "mpaa", yorder = "descend", font_size = 10, label_decimals = 0)
+p = plt("boxoffice", "mpaa", yorder = "descend", font_size = 10, label_decimals = 0)
+rotate_axis_text(p, 10)
 ```
 
 ![Boxoffice by MPAA](images/barploth_mpaa_vs_bo-1.png)
