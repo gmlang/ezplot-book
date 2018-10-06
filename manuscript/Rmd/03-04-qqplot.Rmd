@@ -51,7 +51,7 @@ normality check even easier and quicker. As an example, let's check if
 `Sepal.Length` of the `iris` dataset is normally distributed.
 ```{r, test_norm_sepallength, fig.cap="Normality check of Sepal.Length"}
 plt = test_normality(iris)
-plt("Sepal.Length")
+plt("Sepal.Length", font_size = 9)
 ```
 
 Not only qqplot can be used to check normality, it can also be used to check if

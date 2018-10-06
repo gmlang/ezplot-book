@@ -67,7 +67,7 @@ normality check even easier and quicker. As an example, let's check if
 A>
 ```r
 plt = test_normality(iris)
-plt("Sepal.Length")
+plt("Sepal.Length", font_size = 9)
 ```
 
 ![Normality check of Sepal.Length](images/test_norm_sepallength-1.png)
