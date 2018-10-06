@@ -8,9 +8,8 @@ A>
 library(ezplot)
 plt = mk_lineplot(btbo_by_year)
 p = plt("year", "avg", fillby = "type", font_size = 10, add_cnt_to_legend = F)
-add_labs(p, ylab = "total amount ($billion)",
+add_labs(p, ylab = "total amount ($billion)", xlab = NULL, subtitle = NULL,
          title = "Annual Total Budget and Boxoffice from 1913 to 2014",
-         subtitle = NULL,
          caption = "data source: IMBD.com")
 ```
 
@@ -30,9 +29,11 @@ df = btbo_by_year %>% select(-avg) %>% spread(type, tot) %>%
         mutate(bo_bt_ratio = boxoffice / budget)
 plt = mk_lineplot(df)
 p = plt("year", "bo_bt_ratio")
-p = p + ggplot2::geom_hline(yintercept = 10, linetype = 2)
-add_labs(p, ylab="boxoffice/budget ratio",
-         title = "Boxoffice/Budget Ratio from 1913 to 2014",
+p = p + ggplot2::geom_hline(yintercept = 10, linetype = 2) +
+        ggplot2::geom_text(x = 2005, y = 20, color = "black",
+                           label = "10x line")
+add_labs(p, ylab="boxoffice/budget", xlab = NULL,
+         title = "Boxoffice/Budget (1913 - 2014)",
          caption = "data source: IMDB.com")
 ```
 
@@ -120,7 +121,7 @@ add_labs(p, xlab = bquote(delta),
          caption = cap)
 ```
 
-![plot of chunk unnamed-chunk-3](images/unnamed-chunk-3-1.png)
+![plot of chunk unnamed-chunk-4](images/unnamed-chunk-4-1.png)
 
 Now it's your turn. Try the following exercises for homework.
 

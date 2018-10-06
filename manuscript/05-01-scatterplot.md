@@ -77,8 +77,8 @@ flagging variable `action`.
 A>
 ```r
 p = plt("year", "bo_bt_ratio", fillby = "action", alpha = 0.5) %>% 
-        add_labs(ylab = "boxoffice/budget ratio", 
-                 title = "Boxoffice / Budget ratio (1913-2014)")
+        add_labs(ylab = "boxoffice/budget", 
+                 title = "Boxoffice / Budget (1913-2014)")
 p = p + ggplot2::geom_hline(yintercept = 1)
 p = scale_axis(p, scale="log10")
 add_lm_line(p, pval_xpos = "left")
