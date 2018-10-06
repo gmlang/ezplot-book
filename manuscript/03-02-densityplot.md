@@ -12,7 +12,7 @@ A>
 ```r
 library(ezplot)
 plt = mk_densityplot(films)
-p = plt("length", cut_tail = 0) # use cut_tail to remove tails, 0 means not removing any
+p = plt("length", cut_tail = 0) # cut_tail = 0 means not removing any tails
 p = add_labs(p, xlab = "minutes", title = "Distribution of Film Length")
 print(p)
 ```
