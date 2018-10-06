@@ -50,10 +50,7 @@ str(nba$Name)
 ```
 A>
 ```
- Factor w/ 50 levels "Nate Robinson ",..: 50 49 48 47 46 45 44 43 42 41 ...
- - attr(*, "scores")= num [1:50(1d)] 20.1 23.1 17.5 21.4 18.8 22.2 20.7 22.6 22.8 20.8 ...
-  ..- attr(*, "dimnames")=List of 1
-  .. ..$ : chr [1:50] "Al Harrington " "Al Jefferson " "Allen Iverson " "Amare Stoudemire " ...
+ Factor w/ 50 levels "Al Harrington ",..: 21 31 29 19 15 27 28 2 13 9 ...
 ```
 A>
 ```r
@@ -61,23 +58,23 @@ levels(nba$Name)
 ```
 A>
 ```
- [1] "Nate Robinson "     "Allen Iverson "     "Chauncey Billups " 
- [4] "Rashard Lewis "     "Maurice Williams "  "Shaquille O'neal " 
- [7] "Josh Howard "       "LaMarcus Aldridge " "Ray Allen "        
-[10] "John Salmons "      "Richard Hamilton "  "O.J. Mayo "        
-[13] "Corey Maggette "    "Andre Iguodala "    "Pau Gasol "        
-[16] "Rudy Gay "          "Monta Ellis "       "Tim Duncan "       
-[19] "Deron Williams "    "Jason Terry "       "Richard Jefferson "
-[22] "Jamal Crawford "    "Yao Ming "          "Al Harrington "    
-[25] "Paul Pierce "       "Dwight Howard "     "Ben Gordon "       
-[28] "Stephen Jackson "   "Caron Butler "      "Vince Carter "     
-[31] "Zachary Randolph "  "David West "        "Michael Redd "     
-[34] "Devin Harris "      "Amare Stoudemire "  "Joe Johnson "      
-[37] "Tony Parker "       "Antawn Jamison "    "Brandon Roy "      
-[40] "Chris Bosh "        "Carmelo Anthony "   "Chris Paul "       
-[43] "Al Jefferson "      "Kevin Martin "      "Kevin Durant "     
-[46] "Danny Granger "     "Dirk Nowitzki "     "Kobe Bryant "      
-[49] "LeBron James "      "Dwyane Wade "      
+ [1] "Al Harrington "     "Al Jefferson "      "Allen Iverson "    
+ [4] "Amare Stoudemire "  "Andre Iguodala "    "Antawn Jamison "   
+ [7] "Ben Gordon "        "Brandon Roy "       "Carmelo Anthony "  
+[10] "Caron Butler "      "Chauncey Billups "  "Chris Bosh "       
+[13] "Chris Paul "        "Corey Maggette "    "Danny Granger "    
+[16] "David West "        "Deron Williams "    "Devin Harris "     
+[19] "Dirk Nowitzki "     "Dwight Howard "     "Dwyane Wade "      
+[22] "Jamal Crawford "    "Jason Terry "       "Joe Johnson "      
+[25] "John Salmons "      "Josh Howard "       "Kevin Durant "     
+[28] "Kevin Martin "      "Kobe Bryant "       "LaMarcus Aldridge "
+[31] "LeBron James "      "Maurice Williams "  "Michael Redd "     
+[34] "Monta Ellis "       "Nate Robinson "     "O.J. Mayo "        
+[37] "Pau Gasol "         "Paul Pierce "       "Rashard Lewis "    
+[40] "Ray Allen "         "Richard Hamilton "  "Richard Jefferson "
+[43] "Rudy Gay "          "Shaquille O'neal "  "Stephen Jackson "  
+[46] "Tim Duncan "        "Tony Parker "       "Vince Carter "     
+[49] "Yao Ming "          "Zachary Randolph " 
 ```
 A>
 ```r
