@@ -7,7 +7,7 @@ Luckily, the function `web_display()` comes to rescue. Often, all you have to
 do is to feed in the plot object, and it'll return a plot object that just 
 looks right when shown in a web browser. Below is an example.
 
-```{r}
+```{r, web_display, fig.cap="demo web display"}
 library(ezplot)
 plt = mk_scatterplot(films)
 p = plt("votes", "boxoffice", alpha = 0.2, jitter = T) %>% 

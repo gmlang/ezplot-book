@@ -121,7 +121,7 @@ add_labs(p, xlab = bquote(delta),
          caption = cap)
 ```
 
-![plot of chunk unnamed-chunk-4](images/unnamed-chunk-4-1.png)
+![Power & Sample Sizes](images/power_n_ssize-1.png)
 
 Now it's your turn. Try the following exercises for homework.
 

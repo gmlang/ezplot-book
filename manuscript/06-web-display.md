@@ -23,7 +23,7 @@ p = add_lm_line(p, eq_ypos = 0.95, eq_xpos = 0.5)
 web_display(p)
 ```
 
-![plot of chunk unnamed-chunk-4](images/unnamed-chunk-4-1.png)
+![demo web display](images/web_display-1.png)
 
 
               
