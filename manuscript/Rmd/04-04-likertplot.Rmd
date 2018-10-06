@@ -73,7 +73,8 @@ library(tidyr)
 df = ab3 %>% gather(opinion, pct, -Country)
 lvls = unique(df$opinion)
 plt = mk_likertplot(df)
-plt("pct", "Country", fillby = "opinion", fillby_lvls = lvls, x_as_pct = T) %>%
+plt("pct", "Country", fillby = "opinion", fillby_lvls = lvls, x_as_pct = T,
+    font_size = 9) %>%
     add_labs(xlab = NULL, title = "Confidence for 12 arabic countries' economy")
 ```
 

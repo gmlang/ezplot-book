@@ -51,12 +51,12 @@ head(df)
 A>
 ```
   item slope       type spp sppInv
-1    A North     native   4      4
-2    B North     native   1      1
-3    C North     native   2      2
-4    D North     native   0      0
-5    E North     native   3      3
-6    A North introduced   6     -6
+1    A North     native   2      2
+2    B North     native   6      6
+3    C North     native   6      6
+4    D North     native  11     11
+5    E North     native   6      6
+6    A North introduced   5     -5
 ```
 A>
 ```r
@@ -65,12 +65,12 @@ tail(df)
 A>
 ```
    item slope       type spp sppInv
-15    E South     native   2      2
-16    A South introduced   3     -3
-17    B South introduced   4     -4
-18    C South introduced   5     -5
-19    D South introduced   5     -5
-20    E South introduced   3     -3
+15    E South     native   5      5
+16    A South introduced   9     -9
+17    B South introduced   6     -6
+18    C South introduced   7     -7
+19    D South introduced   3     -3
+20    E South introduced   5     -5
 ```
 
 Let's focus on North for now and ignore South. 
@@ -118,7 +118,8 @@ library(tidyr)
 df = ab3 %>% gather(opinion, pct, -Country)
 lvls = unique(df$opinion)
 plt = mk_likertplot(df)
-plt("pct", "Country", fillby = "opinion", fillby_lvls = lvls, x_as_pct = T) %>%
+plt("pct", "Country", fillby = "opinion", fillby_lvls = lvls, x_as_pct = T,
+    font_size = 9) %>%
     add_labs(xlab = NULL, title = "Confidence for 12 arabic countries' economy")
 ```
 
