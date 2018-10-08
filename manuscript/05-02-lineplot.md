@@ -7,7 +7,8 @@ A>
 ```r
 library(ezplot)
 plt = mk_lineplot(btbo_by_year)
-p = plt("year", "avg", fillby = "type", font_size = 10, add_cnt_to_legend = F)
+p = plt("year", "avg", fillby = "type", font_size = 10, add_cnt_to_legend = F,
+        legend_pos = "top", legend_title = NULL)
 add_labs(p, ylab = "total amount ($billion)", xlab = NULL, subtitle = NULL,
          title = "Annual Total Budget and Boxoffice from 1913 to 2014",
          caption = "data source: IMBD.com")
@@ -30,8 +31,7 @@ df = btbo_by_year %>% select(-avg) %>% spread(type, tot) %>%
 plt = mk_lineplot(df)
 p = plt("year", "bo_bt_ratio")
 p = p + ggplot2::geom_hline(yintercept = 10, linetype = 2) +
-        ggplot2::geom_text(x = 2005, y = 20, color = "black",
-                           label = "10x line")
+        ggplot2::geom_text(x = 2005, y = 20, color = "black", label = "10x")
 add_labs(p, ylab="boxoffice/budget", xlab = NULL,
          title = "Boxoffice/Budget (1913 - 2014)",
          caption = "data source: IMDB.com")

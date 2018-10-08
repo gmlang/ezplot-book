@@ -61,6 +61,7 @@ to draw a scatter plot of `bo_bt_ratio` vs. `year` and color the points by the
 flagging variable `action`. 
 ```{r, scatterplot_bo_vs_bt_color_by_action, fig.cap="Boxoffice vs. Budget colored by action film indicator"}
 p = plt("year", "bo_bt_ratio", fillby = "action", 
+        legend_title = "Is action film?", legend_pos = "top",
         alpha = 0.5, font_size = 9) %>% 
         add_labs(ylab = "boxoffice / budget", 
                  title = "Boxoffice / Budget (1913-2014)")

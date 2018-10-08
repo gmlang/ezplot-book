@@ -42,7 +42,8 @@ With the data prep work done, we're ready to make a heatmap using the
 `mk_heatmap()` function.
 ```{r, heatmap_nba, fig.cap="NBA Performance Statistics"} 
 plt = mk_heatmap(dat)
-plt(xvar = "stats", yvar = "Name", fillby = "val_scaled") %>%
+plt(xvar = "stats", yvar = "Name", fillby = "val_scaled", 
+    legend_title = "scaled stats value") %>%
         rotate_axis_text(text_angle_x = 90, vjust_x = 0.5) %>% 
         add_labs(caption = "data source: flowingdata.com")
 ```

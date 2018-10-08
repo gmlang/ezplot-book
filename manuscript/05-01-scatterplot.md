@@ -77,6 +77,7 @@ flagging variable `action`.
 A>
 ```r
 p = plt("year", "bo_bt_ratio", fillby = "action", 
+        legend_title = "Is action film?", legend_pos = "top",
         alpha = 0.5, font_size = 9) %>% 
         add_labs(ylab = "boxoffice / budget", 
                  title = "Boxoffice / Budget (1913-2014)")
