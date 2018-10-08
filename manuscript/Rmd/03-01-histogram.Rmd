@@ -44,7 +44,7 @@ of each bin and hence the number of bins. In practice, I often set `binw` or
 `bins` a few times until I have a sufficiently large number of bins to show how 
 raw data are distributed without any smoothing.
 ```{r, hist_rating_p2, fig.cap="Avg. Ratings with Mean Line"}
-p = plt("rating", add_vline_median = FALSE, binw = 0.1) 
+p = plt("rating", add_vline_median = FALSE, binw = 0.1, legend_pos = "top") 
 print(p)
 ```
 

@@ -1,5 +1,3 @@
-# Top 10 charts
-
 ## Histogram
 
 As we've seen from chapter 2, we can use histogram, density plot, boxplot and 
@@ -60,7 +58,7 @@ raw data are distributed without any smoothing.
 
 A>
 ```r
-p = plt("rating", add_vline_median = FALSE, binw = 0.1) 
+p = plt("rating", add_vline_median = FALSE, binw = 0.1, legend_pos = "top") 
 print(p)
 ```
 
