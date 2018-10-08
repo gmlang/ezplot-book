@@ -28,8 +28,8 @@ to show percent instead of count.
 
 A>
 ```r
-plt("pct", "mpaa", fillby = "made_money", 
-    fillby_lvls = c("no", "yes"), x_as_pct = T)
+plt("pct", "mpaa", fillby = "made_money", fillby_lvls = c("no", "yes"), 
+    legend_title = "Is profitable?", x_as_pct = T)
 ```
 
 ![Percents of Profitable vs. Unprofitable Films for each MPAA rating](images/likert_mpaa_pct-1.png)
@@ -52,11 +52,11 @@ A>
 ```
   item slope       type spp sppInv
 1    A North     native   2      2
-2    B North     native   6      6
-3    C North     native   6      6
-4    D North     native  11     11
+2    B North     native   5      5
+3    C North     native   5      5
+4    D North     native   3      3
 5    E North     native   6      6
-6    A North introduced   5     -5
+6    A North introduced   7     -7
 ```
 A>
 ```r
@@ -65,12 +65,12 @@ tail(df)
 A>
 ```
    item slope       type spp sppInv
-15    E South     native   5      5
-16    A South introduced   9     -9
-17    B South introduced   6     -6
-18    C South introduced   7     -7
-19    D South introduced   3     -3
-20    E South introduced   5     -5
+15    E South     native   7      7
+16    A South introduced   3     -3
+17    B South introduced   4     -4
+18    C South introduced   6     -6
+19    D South introduced   2     -2
+20    E South introduced   3     -3
 ```
 
 Let's focus on North for now and ignore South. 
@@ -86,7 +86,8 @@ each `item`.
 
 A>
 ```r
-plt("sppInv", "item", fillby = "type", fillby_lvls = c("introduced", "native"))
+plt("sppInv", "item", fillby = "type", fillby_lvls = c("introduced", "native"),
+    legend_pos = "top")
 ```
 
 ![sppInv by type for each item](images/likert_north_sppInv-1.png)
@@ -96,7 +97,8 @@ chart to show the values of `spp` by `type` for each `item`.
 
 A>
 ```r
-plt("spp", "item", fillby = "type", fillby_lvls = c("introduced", "native"))
+plt("spp", "item", fillby = "type", fillby_lvls = c("introduced", "native"),
+    legend_pos = "bottom")
 ```
 
 ![spp by type for each item](images/likert_north_spp-1.png)
