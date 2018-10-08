@@ -27,7 +27,8 @@ plt(yvar = "year_cat", fillby = "made_money", label_size = 0)
 ```  
 
 ```{r, barploth_stacked, fig.cap="Percents of Profitable vs. Unprofitable Films for Each Time Period"} 
-plt(yvar = "year_cat", fillby="made_money", show_pct = T)
+plt(yvar = "year_cat", fillby = "made_money", show_pct = T, 
+    legend_title = "Is profitable?")
 ```  
 
 
@@ -55,7 +56,8 @@ rotate_axis_text(p, 10)
 ```  
 
 ```{r, barploth_dodged_p3, fig.cap="Votes of Profitable and Unprofitable Films for each MAPP rating"} 
-p = plt("votes", "mpaa", fillby = "made_money", label_size = 0, font_size = 9)
+p = plt("votes", "mpaa", fillby = "made_money", label_size = 0, font_size = 9,
+        legend_pos = "top")
 rotate_axis_text(p, 15)
 ```
 

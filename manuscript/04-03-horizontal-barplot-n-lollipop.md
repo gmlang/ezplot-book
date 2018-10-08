@@ -38,7 +38,8 @@ plt(yvar = "year_cat", fillby = "made_money", label_size = 0)
 
 A>
 ```r
-plt(yvar = "year_cat", fillby="made_money", show_pct = T)
+plt(yvar = "year_cat", fillby = "made_money", show_pct = T, 
+    legend_title = "Is profitable?")
 ```
 
 ![Percents of Profitable vs. Unprofitable Films for Each Time Period](images/barploth_stacked-1.png)
@@ -79,7 +80,8 @@ rotate_axis_text(p, 10)
 
 A>
 ```r
-p = plt("votes", "mpaa", fillby = "made_money", label_size = 0, font_size = 9)
+p = plt("votes", "mpaa", fillby = "made_money", label_size = 0, font_size = 9,
+        legend_pos = "top")
 rotate_axis_text(p, 15)
 ```
 
@@ -121,7 +123,6 @@ df = read.csv(text="category,pct
 df$category = reorder(df$category, df$pct)
 str(df)
 ```
-
 A>
 ```
 'data.frame':	21 obs. of  2 variables:
@@ -141,7 +142,7 @@ plt("pct", "category", yorder = "descend", font_size = 10, show_pct = T,
 
 ![Demo H Bar Chart](images/barploth_vs_lollipop_p1-1.png)
 
-A>
+
 ```r
 plt = mk_lollipop(df)
 plt("pct", "category", yorder = "descend", font_size = 10, show_pct = T,
