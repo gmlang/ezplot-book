@@ -72,6 +72,19 @@ guide to significance of difference of medians; if the notches of two boxes do
 not overlap, this offers evidence of a statistically significant difference 
 between the medians.
 
+In addtion to `xvar` and `yvar`, we can also supply a `fillby` varname to
+draw boxplot for separate groups. For example, we can show the distribution 
+of users' average ratings for profitable and unprofitable films at each period.
+
+A>
+```r
+plt = mk_boxplot(films)
+plt("year_cat", "rating", fillby = "made_money", legend_title = "Is profitable?",
+    legend_pos = "top", notched = T)
+```
+
+![Distribution of Avg Ratings, profitable vs. unprofitable films.](images/boxplot_rating_vs_year_cat_by_made_money-1.png)
+
 For homework, try the following exercises.
 
 1. Read the document of `mk_boxplot()` and run the examples. You can pull up the 
