@@ -25,7 +25,8 @@ Of course, we can also draw a stacked bar chart instead. We do that by setting
 A>
 ```r
 plt = mk_barplot_freq(films)
-plt(xvar = "year_cat", fillby="made_money", show_pct = T)
+plt(xvar = "year_cat", fillby="made_money", show_pct = T, 
+    legend_title = "Is profitable?", legend_pos = "top")
 ```
 
 ![Percents of Profitable vs. Unprofitable Films for Each Time Period](images/barplot_stacked-1.png)
@@ -42,7 +43,8 @@ the bar labels by setting `label_size = 0`, which will make the chart uncluttere
 A>
 ```r
 plt = mk_barplot_freq(films)
-plt(xvar = "made_money", fillby = "year_cat", label_size = 0)
+plt(xvar = "made_money", fillby = "year_cat", label_size = 0,
+    legend_title = NULL, legend_pos = "top")
 ```
 
 ![Number of Films at Each Period between Profitable and Unprofitable Films](images/barplot_dodged_p2-1.png)
@@ -60,7 +62,8 @@ set `yvar = "votes"` inside `plt()`, as shown in the code block below.
 A>
 ```r
 plt = mk_barplot_resp(films)
-plt(xvar = "mpaa", yvar = "votes", fillby = "made_money", label_size = 0)
+plt(xvar = "mpaa", yvar = "votes", fillby = "made_money", label_size = 0,
+    legend_title = "Is profitable?", legend_pos = "left")
 ```
 
 ![Votes of Profitable and Unprofitable Films for each MAPP rating](images/barplot_dodged_p3-1.png)
