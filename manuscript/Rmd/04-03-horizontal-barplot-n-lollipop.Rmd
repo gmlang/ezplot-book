@@ -46,7 +46,7 @@ add_labs(p, xlab = "Frequency")
 ```  
 
 ```{r, barploth_resp_mpaa_pct, fig.cap="Relative Frequency of MPAA"}   
-plt(xvar = "pct", yvar = "mpaa", show_pct = T, label_decimals = 2, font_size = 9)  
+plt(xvar = "pct", yvar = "mpaa", show_pct = T, label_decimals = 2, font_size = 9)
 ```
 
 ```{r, barploth_mpaa_vs_bo, fig.cap="Boxoffice by MPAA"} 

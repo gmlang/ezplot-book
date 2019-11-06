@@ -20,8 +20,7 @@ p = plt(xvar = "budget", yvar = "boxoffice") %>%
         add_labs(xlab="budget (in US Dollars)", 
                  ylab="boxoffice (in US Dollars)",         
                  title = "Boxoffice vs. Budget (1913-2014)",
-                 caption = "Source: IMDB"
-                 )
+                 caption = "Source: IMDB")
 p = scale_axis(p, axis = "y", scale = "log10") # use log10 scale on y-axis
 p = scale_axis(p, axis = "x", scale = "log10") # use log10 scale on x-axis
 print(p)
@@ -56,8 +55,7 @@ p = plt("votes", "boxoffice", alpha = 0.2, jitter = T) %>%
         add_labs(xlab = "number of votes", 
                  ylab = "boxoffice (in US Dollars)", 
                  title = "Boxoffice vs. Votes (1913-2014)",
-                 caption = "Source: IMDB"
-                 )
+                 caption = "Source: IMDB")
 p = scale_axis(p, "y", scale = "log10") # use log10 scale on y-axis
 p = scale_axis(p, "x", scale = "log") # use log scale on x-axis
 
@@ -96,11 +94,11 @@ details such as standard errors and t-statistics; setting `show = "eq"` (default
 we can supply a categorical variable to group and color the data points. 
 For example, consider this question: did action movies make money year after year? 
 To answer it, we'll draw a scatter plot of `bo_bt_ratio` vs. `year`, supplying the
-`fillby` parameter the value `"action"`, the name of a binary variable indicating
+`colorby` parameter the value `"action"`, the name of a binary variable indicating
 if a film is an action film or not.
 
 ```r
-p = plt("year", "bo_bt_ratio", fillby = "action", 
+p = plt("year", "bo_bt_ratio", colorby = "action", 
         legend_title = "Is action film?", legend_pos = "top",
         alpha = 0.5, font_size = 9) %>% 
         add_labs(ylab = "boxoffice / budget", 

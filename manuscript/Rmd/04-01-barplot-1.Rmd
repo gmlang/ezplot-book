@@ -3,13 +3,23 @@
 Previously, we learned four tools for displaying the distribution of a continuous
 variable. What about categorical variables? How can we show the frequencies 
 (counts) or relative frequencies (percentages) of its levels? The answer is bar 
-chart. Let's start with an example. The `mpaa` variable from the `films` dataset
-has 5 unique values: NA, "PG-13", "R", "PG", and "NC-17". Let's draw a bar chart
-to show their frequencies. We can do this easily via the ezplot function 
-`mk_barplot_freq()`. 
-```{r, barplot_freq_mpaa_cnt_p1, fig.cap="Frequency of MPAA"} 
+chart. 
+
+Let's start with an example. The `mpaa` variable from the `films` dataset
+has 5 unique values: `NA`, "PG-13", "R", "PG", and "NC-17". 
+```{r}
 library(ezplot)
-str(films$mpaa)
+unique(films$mpaa)
+```
+
+Let's first replace `NA` with "(Missing)". 
+```{r}
+films$mpaa = forcats::fct_explicit_na(films$mpaa)
+unique(films$mpaa)
+```
+
+Next we draw a bar chart to show the frequencies. We can do this easily via the ezplot function `mk_barplot_freq()`. 
+```{r, barplot_freq_mpaa_cnt_p1, fig.cap="Frequency of MPAA"} 
 plt = mk_barplot_freq(films)
 plt("mpaa")
 ```      
@@ -55,7 +65,7 @@ Notice we need to supply values to both `xvar` and `yvar` in `plt()`. Recall
 we've seen this pattern of usage before. We'll see it over and over again. Of
 course, we can show the relative frequencies by setting `yvar = "pct"`.
 ```{r, barplot_resp_mpaa_pct, fig.cap="Relative Frequency of MPAA"}   
-plt(xvar = "mpaa", yvar = "pct", show_pct = T, label_decimals = 2, font_size = 9)  
+plt(xvar = "mpaa", yvar = "pct", show_pct = T, label_decimals = 2, font_size = 9)
 ```
 
 What will happen if we set `show_pct = F`? Try it.

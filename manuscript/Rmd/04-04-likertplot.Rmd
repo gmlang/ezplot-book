@@ -6,7 +6,10 @@ Let's see an example.
 ```{r, likert_mpaa_cnt, fig.cap="Frequencies of Profitable vs. Unprofitable Films for each MPAA rating"} 
 library(ezplot)
 library(dplyr)
-df = films %>% count(mpaa, made_money) %>% group_by(mpaa) %>%
+df = films %>% 
+        # convert implicit NA to explicit "(Missing)"
+        mutate(mpaa = forcats::fct_explicit_na(mpaa)) %>% 
+        count(mpaa, made_money) %>% group_by(mpaa) %>%
         mutate(pct = n/sum(n)) %>% ungroup()
 plt = mk_likertplot(df)
 plt(xvar = "n", yvar = "mpaa", fillby = "made_money", 
