@@ -24,7 +24,7 @@ budget changed over the years. To find out, we can draw a boxplot of `budget`
 over `year_cat`. 
 ```{r, boxplot_bt_vs_year_cat_p1, fig.cap="Distribution of Budget Over the Years"}
 p = plt(xvar = "year_cat", yvar = "budget")
-scale_axis(p, "y", scale = "dollar") # apply dollar scale to y-axis 
+scale_axis(p, axis="y", scale = "dollar") # apply dollar scale to y-axis 
 ```
 
 We see budget has increased over the years. Also, there are 231 films released 
