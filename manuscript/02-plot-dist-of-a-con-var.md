@@ -6,7 +6,6 @@ A>
 ```r
 library(ezplot)
 str(films)
-
 'data.frame':	5944 obs. of  54 variables:
  $ title         : chr  "'Gung Ho!': The Story of Carlson's Makin Island Raiders" "'Til There Was You" "(500) Days of Summer" "10 Questions for the Dalai Lama" ...
  $ year          : int  1943 1997 2009 2006 1999 1983 2008 2008 1996 2000 ...
