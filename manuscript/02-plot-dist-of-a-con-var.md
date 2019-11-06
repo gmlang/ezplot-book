@@ -3,12 +3,12 @@
 Let's begin with an example. The `ezplot` package contains a dataset of films from IMBD.com. Let's load the package and look at the variables from the `films` dataset.
 
 A>
-
 ```r
 library(ezplot)
 str(films)
 ```
 
+A>
 ```
 'data.frame':	5944 obs. of  54 variables:
  $ title         : chr  "'Gung Ho!': The Story of Carlson's Makin Island Raiders" "'Til There Was You" "(500) Days of Summer" "10 Questions for the Dalai Lama" ...
@@ -72,7 +72,6 @@ If you want to learn more about this dataset, for example, the meaning of each v
 Let's focus on the variable `budget`. Its type is numeric, so it's continuous and we can examine its distribution by making a histogram.
 
 A>
-
 ```r
 plt = mk_histdens(films, "histogram") # plt is a function
 plt("budget") # plt() takes in a string
@@ -83,7 +82,6 @@ plt("budget") # plt() takes in a string
 Alternatively, we can make a density plot.
 
 A>
-
 ```r
 plt = mk_histdens(films, 'density') 
 plt("budget") 
@@ -94,7 +92,6 @@ plt("budget")
 As another alternative, we can draw a boxplot.
 
 A>
-
 ```r
 plt = mk_boxplot(films) 
 plt(yvar = "budget") 
@@ -105,7 +102,6 @@ plt(yvar = "budget")
 All three plots show pretty much same information, for example, the distribution of budget has a long right tail. We can confirm budget is NOT normally distributed by looking at its qq-normal plot, also called [normal probability plot](https://en.wikipedia.org/wiki/Normal_probability_plot). 
 
 A>
-
 ```r
 plt = mk_qqplot(films) 
 plt("budget", detrend = F) 
@@ -142,7 +138,6 @@ For example, we can add to `films` a new variable called `log_budget` by
 taking the log of `budget` and visualize `log_budget` afterwards.
 
 A>
-
 ```r
 films$log_budget = log(films$budget)
 plt2 = mk_histdens(films) # by default, we get a function for making histograms
@@ -152,7 +147,6 @@ plt2("log_budget")
 ![Histogram of log(Budget)](images/hist_log_budget-1.png)
 
 A>
-
 ```r
 plt2 = mk_histdens(films, 'density')
 plt2("log_budget")
@@ -161,7 +155,6 @@ plt2("log_budget")
 ![Density of log(Budget)](images/density_log_budget-1.png)
 
 A>
-
 ```r
 plt2 = mk_qqplot(films)
 plt2("log_budget", detrend = F)
@@ -180,4 +173,3 @@ how to make histogram, density plot, boxplot and qqplot. In chapter 4, we'll
 learn how to make regular, dodged and stacked bar charts, their horizontal
 cousins and likert plot. In chapter 5, we'll learn how to make scatterplot, 
 lineplot, dumbbell plot and heatmap.
-
