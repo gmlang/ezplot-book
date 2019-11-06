@@ -8,7 +8,6 @@ library(ezplot)
 str(films)
 ```
 
-A>
 ```
 'data.frame':	5944 obs. of  54 variables:
  $ title         : chr  "'Gung Ho!': The Story of Carlson's Makin Island Raiders" "'Til There Was You" "(500) Days of Summer" "10 Questions for the Dalai Lama" ...

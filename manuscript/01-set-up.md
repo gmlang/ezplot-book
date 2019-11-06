@@ -7,7 +7,7 @@
 * On Linux, install the R development package, usually called **r-devel** or **r-base-dev**.
 3. Install the following R packages.
 
-A> 
+A>
 ```r
 install.packages("tidyverse")
 install.packages("devtools")
@@ -15,4 +15,4 @@ devtools::install_github("gmlang/ezplot")
 ```
 
 Note: throughout this book, if when displaying plots, you encounter an error like this,
-`Error in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y,  : polygon edge not found`, just run `dev.off()` and then `print(p)`. 
+`Error in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y,  : polygon edge not found`, just run `dev.off()` and then `print(p)`.
