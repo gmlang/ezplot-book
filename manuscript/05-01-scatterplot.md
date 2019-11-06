@@ -1,4 +1,4 @@
-# Plot the Relationship of Two Variables
+# Plot the Relationship of Two or More Variables
 
 ## Scatter Plot
 
