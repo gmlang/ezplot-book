@@ -124,7 +124,6 @@ dat = nba_m %>% group_by(stats) %>% mutate(val_scaled = scales::rescale(val))
 head(dat)
 ```
 
-A>
 ```
 # A tibble: 6 x 4
 # Groups:   stats [1]

@@ -83,7 +83,6 @@ df = films %>% count(mpaa) %>% mutate(pct = n / sum(n))
 df
 ```
 
-A>
 ```
 # A tibble: 5 x 3
   mpaa          n      pct
@@ -129,7 +128,6 @@ df2 = films %>% count(mpaa, made_money) %>% mutate(pct = n / sum(n))
 df2
 ```
 
-A>
 ```
 # A tibble: 9 x 4
   mpaa      made_money     n      pct

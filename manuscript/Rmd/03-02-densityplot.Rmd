@@ -3,7 +3,7 @@
 Previously, we learned how to make histograms. Density plot is similar to histogram except it draws a smooth curve tracing out the hights of the bins instead of drawing the bins themselves. The `films` dataset has a variable `length` that measures the duration of each film in minutes. Let's draw a density plot to show its distribution. 
 ```{r, density_length, fig.cap="Distribution of Film Length"}
 library(ezplot)
-plt = mk_histdens(films, type = 'density') # there're 2 possibilities for type: 'histogram' and 'density', which will allow us to draw histogram or density plot respectively.
+plt = mk_histdens(films, type = 'density')
 p = plt("length")
 add_labs(p, xlab = "minutes", title = "Distribution of Film Length")
 ```

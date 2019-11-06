@@ -5,7 +5,7 @@ Previously, we learned how to make histograms. Density plot is similar to histog
 A>
 ```r
 library(ezplot)
-plt = mk_histdens(films, type = 'density') # there're 2 possibilities for type: 'histogram' and 'density', which will allow us to draw histogram or density plot respectively.
+plt = mk_histdens(films, type = 'density')
 p = plt("length")
 add_labs(p, xlab = "minutes", title = "Distribution of Film Length")
 ```
