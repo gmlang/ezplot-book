@@ -1,6 +1,7 @@
 # Plot the Distribution of a Continuous Variable
 
 Let's begin with an example. The `ezplot` package contains a dataset of films from IMBD.com. Let's load the package and look at the variables from the `films` dataset.
+
 A>
 
 ```r
@@ -9,7 +10,7 @@ str(films)
 ```
 
 ```
-'data.frame':	5944 obs. of  53 variables:
+'data.frame':	5944 obs. of  54 variables:
  $ title         : chr  "'Gung Ho!': The Story of Carlson's Makin Island Raiders" "'Til There Was You" "(500) Days of Summer" "10 Questions for the Dalai Lama" ...
  $ year          : int  1943 1997 2009 2006 1999 1983 2008 2008 1996 2000 ...
  $ budget        : num  866898 10000000 7500000 100000 16000000 ...
@@ -63,11 +64,13 @@ str(films)
  $ year_cat      : chr  "1913-1950" "1990-2014" "1990-2014" "1990-2014" ...
  $ bo_bt_ratio   : num  2.51 1.36 8.1 16.99 46.11 ...
  $ made_money    : Factor w/ 2 levels "no","yes": 2 2 2 2 2 2 2 1 2 2 ...
+ $ log_budget    : num  13.7 16.1 15.8 11.5 16.6 ...
 ```
 
 If you want to learn more about this dataset, for example, the meaning of each variable, you can run `?films` to pull up its documentation. 
 
 Let's focus on the variable `budget`. Its type is numeric, so it's continuous and we can examine its distribution by making a histogram.
+
 A>
 
 ```r
@@ -78,6 +81,7 @@ plt("budget") # plt() takes in a string
 ![Histogram of Budget](images/hist_budget-1.png)
 
 Alternatively, we can make a density plot.
+
 A>
 
 ```r
@@ -88,6 +92,7 @@ plt("budget")
 ![Density plot of Budget](images/density_budget-1.png)
 
 As another alternative, we can draw a boxplot.
+
 A>
 
 ```r
@@ -98,6 +103,7 @@ plt(yvar = "budget")
 ![Boxplot of Budget](images/box_budget-1.png)
 
 All three plots show pretty much same information, for example, the distribution of budget has a long right tail. We can confirm budget is NOT normally distributed by looking at its qq-normal plot, also called [normal probability plot](https://en.wikipedia.org/wiki/Normal_probability_plot). 
+
 A>
 
 ```r
@@ -134,6 +140,7 @@ distributed in the center because it's highly skewed to the right by a few
 extremely large values. To solve this, we can apply the log transformation. 
 For example, we can add to `films` a new variable called `log_budget` by 
 taking the log of `budget` and visualize `log_budget` afterwards.
+
 A>
 
 ```r

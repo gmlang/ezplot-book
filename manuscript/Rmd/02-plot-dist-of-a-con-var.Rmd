@@ -1,6 +1,7 @@
 # Plot the Distribution of a Continuous Variable
 
 Let's begin with an example. The `ezplot` package contains a dataset of films from IMBD.com. Let's load the package and look at the variables from the `films` dataset.
+
 A>
 ```{r}
 library(ezplot)
@@ -10,6 +11,7 @@ str(films)
 If you want to learn more about this dataset, for example, the meaning of each variable, you can run `?films` to pull up its documentation. 
 
 Let's focus on the variable `budget`. Its type is numeric, so it's continuous and we can examine its distribution by making a histogram.
+
 A>
 ```{r, hist_budget, fig.cap="Histogram of Budget"}
 plt = mk_histdens(films, "histogram") # plt is a function
@@ -17,6 +19,7 @@ plt("budget") # plt() takes in a string
 ```
 
 Alternatively, we can make a density plot.
+
 A>
 ```{r, density_budget, fig.cap="Density plot of Budget"}
 plt = mk_histdens(films, 'density') 
@@ -24,6 +27,7 @@ plt("budget")
 ```
 
 As another alternative, we can draw a boxplot.
+
 A>
 ```{r, box_budget, fig.cap="Boxplot of Budget"}
 plt = mk_boxplot(films) 
@@ -31,6 +35,7 @@ plt(yvar = "budget")
 ```
 
 All three plots show pretty much same information, for example, the distribution of budget has a long right tail. We can confirm budget is NOT normally distributed by looking at its qq-normal plot, also called [normal probability plot](https://en.wikipedia.org/wiki/Normal_probability_plot). 
+
 A>
 ```{r, qq_budget, fig.cap="Q-Q Normal plot of Budget"}
 plt = mk_qqplot(films) 
@@ -64,6 +69,7 @@ distributed in the center because it's highly skewed to the right by a few
 extremely large values. To solve this, we can apply the log transformation. 
 For example, we can add to `films` a new variable called `log_budget` by 
 taking the log of `budget` and visualize `log_budget` afterwards.
+
 A>
 ```{r, hist_log_budget, fig.cap="Histogram of log(Budget)"}
 films$log_budget = log(films$budget)
