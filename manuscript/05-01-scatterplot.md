@@ -62,7 +62,6 @@ p = plt("votes", "boxoffice", alpha = 0.2, jitter = T) %>%
                  caption = "Source: IMDB")
 p = scale_axis(p, "y", scale = "log10") # use log10 scale on y-axis
 p = scale_axis(p, "x", scale = "log") # use log scale on x-axis
-
 # add to the plot: best fitting line, its equation and R2, and p-val
 # overwrite the default x and y position of the equation
 add_lm_line(p, eq_tb_ypos = 0.95, eq_tb_xpos = 0.5) 
