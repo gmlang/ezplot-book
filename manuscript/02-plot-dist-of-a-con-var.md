@@ -1,73 +1,74 @@
 # Plot the Distribution of a Continuous Variable
 
 Let's begin with an example. The `ezplot` package contains a dataset of films from IMBD.com. Let's load the package and look at the variables from the `films` dataset.
+A>
 
 ```r
 library(ezplot)
-dplyr::glimpse(films)
+str(films)
 ```
 
 ```
-Observations: 5,944
-Variables: 53
-$ title          [3m[38;5;246m<chr>[39m[23m "'Gung Ho!': The Story of Carlson's Makin Island …
-$ year           [3m[38;5;246m<int>[39m[23m 1943, 1997, 2009, 2006, 1999, 1983, 2008, 2008, 1…
-$ budget         [3m[38;5;246m<dbl>[39m[23m 866898, 10000000, 7500000, 100000, 16000000, 4520…
-$ length         [3m[38;5;246m<int>[39m[23m 88, 113, 95, 86, 97, 101, 109, 104, 103, 100, 107…
-$ rating         [3m[38;5;246m<dbl>[39m[23m 6.2, 4.7, 7.8, 7.5, 7.2, 6.2, 5.0, 5.6, 5.6, 4.8,…
-$ votes          [3m[38;5;246m<dbl>[39m[23m 898, 2214, 320459, 568, 187762, 3722, 98539, 9447…
-$ r1             [3m[38;5;246m<dbl>[39m[23m 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5,…
-$ r2             [3m[38;5;246m<dbl>[39m[23m 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5,…
-$ r3             [3m[38;5;246m<dbl>[39m[23m 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 14.5…
-$ r4             [3m[38;5;246m<dbl>[39m[23m 4.5, 14.5, 4.5, 4.5, 4.5, 4.5, 14.5, 14.5, 14.5, …
-$ r5             [3m[38;5;246m<dbl>[39m[23m 14.5, 14.5, 4.5, 4.5, 4.5, 14.5, 14.5, 14.5, 24.5…
-$ r6             [3m[38;5;246m<dbl>[39m[23m 24.5, 14.5, 4.5, 4.5, 14.5, 24.5, 14.5, 24.5, 24.…
-$ r7             [3m[38;5;246m<dbl>[39m[23m 14.5, 4.5, 14.5, 14.5, 24.5, 24.5, 14.5, 14.5, 14…
-$ r8             [3m[38;5;246m<dbl>[39m[23m 14.5, 4.5, 34.5, 24.5, 24.5, 14.5, 4.5, 4.5, 4.5,…
-$ r9             [3m[38;5;246m<dbl>[39m[23m 4.5, 4.5, 14.5, 14.5, 14.5, 4.5, 4.5, 4.5, 4.5, 4…
-$ r10            [3m[38;5;246m<dbl>[39m[23m 4.5, 4.5, 14.5, 24.5, 14.5, 4.5, 4.5, 4.5, 4.5, 4…
-$ mpaa           [3m[38;5;246m<chr>[39m[23m NA, "PG-13", "PG-13", NA, "PG-13", NA, "PG-13", "…
-$ boxoffice      [3m[38;5;246m<dbl>[39m[23m 2176489, 13564657, 60722734, 1698530, 737720177, …
-$ actor          [3m[38;5;246m<chr>[39m[23m "Wong,Bruce(I)", "Winant,Bruce", "Woodward,JonMor…
-$ actress        [3m[38;5;246m<chr>[39m[23m "McDonald,Grace", "Zima,Yvonne", "Weiss,Gelsey", …
-$ director       [3m[38;5;246m<chr>[39m[23m "Enright,Ray", "Winant,Scott(I)", "Webb,Marc(I)",…
-$ writer         [3m[38;5;246m<chr>[39m[23m "LeFran\xe7ois,W.S.", "Holzman,Winnie", "Weber,Mi…
-$ short          [3m[38;5;246m<fct>[39m[23m 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-$ drama          [3m[38;5;246m<fct>[39m[23m 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0…
-$ comedy         [3m[38;5;246m<fct>[39m[23m 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1…
-$ documentary    [3m[38;5;246m<fct>[39m[23m 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-$ adult          [3m[38;5;246m<fct>[39m[23m 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-$ action         [3m[38;5;246m<fct>[39m[23m 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0…
-$ romance        [3m[38;5;246m<fct>[39m[23m 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1…
-$ thriller       [3m[38;5;246m<fct>[39m[23m 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0…
-$ animation      [3m[38;5;246m<fct>[39m[23m 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-$ family         [3m[38;5;246m<fct>[39m[23m 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0…
-$ crime          [3m[38;5;246m<fct>[39m[23m 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0…
-$ horror         [3m[38;5;246m<fct>[39m[23m 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-$ music          [3m[38;5;246m<fct>[39m[23m 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-$ adventure      [3m[38;5;246m<fct>[39m[23m 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0…
-$ fantasy        [3m[38;5;246m<fct>[39m[23m 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1…
-$ sci_fi         [3m[38;5;246m<fct>[39m[23m 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-$ mystery        [3m[38;5;246m<fct>[39m[23m 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-$ biography      [3m[38;5;246m<fct>[39m[23m 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0…
-$ history        [3m[38;5;246m<fct>[39m[23m 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0…
-$ sport          [3m[38;5;246m<fct>[39m[23m 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-$ musical        [3m[38;5;246m<fct>[39m[23m 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-$ western        [3m[38;5;246m<fct>[39m[23m 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-$ war            [3m[38;5;246m<fct>[39m[23m 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0…
-$ reality_tv     [3m[38;5;246m<fct>[39m[23m 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-$ news           [3m[38;5;246m<fct>[39m[23m 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-$ talk_show      [3m[38;5;246m<fct>[39m[23m 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-$ film_noir      [3m[38;5;246m<fct>[39m[23m 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-$ yrs_since_1913 [3m[38;5;246m<int>[39m[23m 30, 84, 96, 93, 86, 70, 95, 95, 83, 87, 93, 94, 9…
-$ year_cat       [3m[38;5;246m<chr>[39m[23m "1913-1950", "1990-2014", "1990-2014", "1990-2014…
-$ bo_bt_ratio    [3m[38;5;246m<dbl>[39m[23m 2.5106633, 1.3564657, 8.0963645, 16.9853000, 46.1…
-$ made_money     [3m[38;5;246m<fct>[39m[23m yes, yes, yes, yes, yes, yes, yes, no, yes, yes, …
+'data.frame':	5944 obs. of  53 variables:
+ $ title         : chr  "'Gung Ho!': The Story of Carlson's Makin Island Raiders" "'Til There Was You" "(500) Days of Summer" "10 Questions for the Dalai Lama" ...
+ $ year          : int  1943 1997 2009 2006 1999 1983 2008 2008 1996 2000 ...
+ $ budget        : num  866898 10000000 7500000 100000 16000000 ...
+ $ length        : int  88 113 95 86 97 101 109 104 103 100 ...
+ $ rating        : num  6.2 4.7 7.8 7.5 7.2 6.2 5 5.6 5.6 4.8 ...
+ $ votes         : num  898 2214 320459 568 187762 ...
+ $ r1            : num  4.5 4.5 4.5 4.5 4.5 4.5 4.5 4.5 4.5 4.5 ...
+ $ r2            : num  4.5 4.5 4.5 4.5 4.5 4.5 4.5 4.5 4.5 4.5 ...
+ $ r3            : num  4.5 4.5 4.5 4.5 4.5 4.5 4.5 4.5 4.5 14.5 ...
+ $ r4            : num  4.5 14.5 4.5 4.5 4.5 4.5 14.5 14.5 14.5 14.5 ...
+ $ r5            : num  14.5 14.5 4.5 4.5 4.5 14.5 14.5 14.5 24.5 24.5 ...
+ $ r6            : num  24.5 14.5 4.5 4.5 14.5 24.5 14.5 24.5 24.5 14.5 ...
+ $ r7            : num  14.5 4.5 14.5 14.5 24.5 24.5 14.5 14.5 14.5 4.5 ...
+ $ r8            : num  14.5 4.5 34.5 24.5 24.5 14.5 4.5 4.5 4.5 4.5 ...
+ $ r9            : num  4.5 4.5 14.5 14.5 14.5 4.5 4.5 4.5 4.5 4.5 ...
+ $ r10           : num  4.5 4.5 14.5 24.5 14.5 4.5 4.5 4.5 4.5 4.5 ...
+ $ mpaa          : chr  NA "PG-13" "PG-13" NA ...
+ $ boxoffice     : num  2176489 13564657 60722734 1698530 737720177 ...
+ $ actor         : chr  "Wong,Bruce(I)" "Winant,Bruce" "Woodward,JonMorgan" "Tethong,Tenzin" ...
+ $ actress       : chr  "McDonald,Grace" "Zima,Yvonne" "Weiss,Gelsey" NA ...
+ $ director      : chr  "Enright,Ray" "Winant,Scott(I)" "Webb,Marc(I)" "Ray,Rick(II)" ...
+ $ writer        : chr  "LeFran\xe7ois,W.S." "Holzman,Winnie" "Weber,MichaelH." "Ray,Rick(II)" ...
+ $ short         : Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 1 1 1 ...
+ $ drama         : Factor w/ 2 levels "0","1": 2 1 2 1 2 2 2 1 1 1 ...
+ $ comedy        : Factor w/ 2 levels "0","1": 1 2 2 1 2 1 1 1 2 2 ...
+ $ documentary   : Factor w/ 2 levels "0","1": 1 1 1 2 1 1 1 1 1 1 ...
+ $ adult         : Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 1 1 1 ...
+ $ action        : Factor w/ 2 levels "0","1": 1 1 1 1 1 1 2 1 1 1 ...
+ $ romance       : Factor w/ 2 levels "0","1": 1 2 2 1 2 1 1 1 1 1 ...
+ $ thriller      : Factor w/ 2 levels "0","1": 1 1 1 1 1 2 1 2 1 1 ...
+ $ animation     : Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 1 1 1 ...
+ $ family        : Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 1 2 2 ...
+ $ crime         : Factor w/ 2 levels "0","1": 1 1 1 1 1 2 1 1 1 1 ...
+ $ horror        : Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 2 1 1 ...
+ $ music         : Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 1 1 1 ...
+ $ adventure     : Factor w/ 2 levels "0","1": 1 1 1 1 1 1 2 1 2 2 ...
+ $ fantasy       : Factor w/ 2 levels "0","1": 1 1 1 1 1 1 2 1 1 1 ...
+ $ sci_fi        : Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 1 1 1 ...
+ $ mystery       : Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 2 1 1 ...
+ $ biography     : Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 1 1 1 ...
+ $ history       : Factor w/ 2 levels "0","1": 2 1 1 1 1 1 1 1 1 1 ...
+ $ sport         : Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 1 1 1 ...
+ $ musical       : Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 1 1 1 ...
+ $ western       : Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 1 1 1 ...
+ $ war           : Factor w/ 2 levels "0","1": 2 1 1 1 1 1 1 1 1 1 ...
+ $ reality_tv    : Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 1 1 1 ...
+ $ news          : Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 1 1 1 ...
+ $ talk_show     : Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 1 1 1 ...
+ $ film_noir     : Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 1 1 1 ...
+ $ yrs_since_1913: int  30 84 96 93 86 70 95 95 83 87 ...
+ $ year_cat      : chr  "1913-1950" "1990-2014" "1990-2014" "1990-2014" ...
+ $ bo_bt_ratio   : num  2.51 1.36 8.1 16.99 46.11 ...
+ $ made_money    : Factor w/ 2 levels "no","yes": 2 2 2 2 2 2 2 1 2 2 ...
 ```
 
 If you want to learn more about this dataset, for example, the meaning of each variable, you can run `?films` to pull up its documentation. 
 
 Let's focus on the variable `budget`. Its type is numeric, so it's continuous and we can examine its distribution by making a histogram.
+A>
 
 ```r
 plt = mk_histdens(films, "histogram") # plt is a function
@@ -77,6 +78,7 @@ plt("budget") # plt() takes in a string
 ![Histogram of Budget](images/hist_budget-1.png)
 
 Alternatively, we can make a density plot.
+A>
 
 ```r
 plt = mk_histdens(films, 'density') 
@@ -86,6 +88,7 @@ plt("budget")
 ![Density plot of Budget](images/density_budget-1.png)
 
 As another alternative, we can draw a boxplot.
+A>
 
 ```r
 plt = mk_boxplot(films) 
@@ -95,6 +98,7 @@ plt(yvar = "budget")
 ![Boxplot of Budget](images/box_budget-1.png)
 
 All three plots show pretty much same information, for example, the distribution of budget has a long right tail. We can confirm budget is NOT normally distributed by looking at its qq-normal plot, also called [normal probability plot](https://en.wikipedia.org/wiki/Normal_probability_plot). 
+A>
 
 ```r
 plt = mk_qqplot(films) 
@@ -130,6 +134,7 @@ distributed in the center because it's highly skewed to the right by a few
 extremely large values. To solve this, we can apply the log transformation. 
 For example, we can add to `films` a new variable called `log_budget` by 
 taking the log of `budget` and visualize `log_budget` afterwards.
+A>
 
 ```r
 films$log_budget = log(films$budget)
@@ -139,6 +144,7 @@ plt2("log_budget")
 
 ![Histogram of log(Budget)](images/hist_log_budget-1.png)
 
+A>
 
 ```r
 plt2 = mk_histdens(films, 'density')
@@ -147,6 +153,7 @@ plt2("log_budget")
 
 ![Density of log(Budget)](images/density_log_budget-1.png)
 
+A>
 
 ```r
 plt2 = mk_qqplot(films)
