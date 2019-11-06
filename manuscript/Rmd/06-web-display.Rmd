@@ -1,4 +1,4 @@
-## Web Display
+# Web Display
 
 The plots created so far are too small for web display. If you are making an 
 analytic web app, you may want bigger font size and everything. Luckily, the 

@@ -1,3 +1,5 @@
+# Plot the Relationship of Two Variables
+
 ## Scatter Plot
 
 A scatter plot shows the relationship between two continuous variables. Let's 

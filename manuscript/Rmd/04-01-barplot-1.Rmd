@@ -1,3 +1,5 @@
+# Plot the Distribution of a Categorical Variable
+
 ## Regular Bar Chart
 
 Previously, we learned four tools for displaying the distribution of a continuous
