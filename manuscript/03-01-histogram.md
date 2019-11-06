@@ -11,6 +11,10 @@ A>
 ```r
 library(ezplot)
 str(films$rating)
+```
+
+A>
+```
  num [1:5944] 6.2 4.7 7.8 7.5 7.2 6.2 5 5.6 5.6 4.8 ...
 ```
 
@@ -61,6 +65,10 @@ that didn't? We can answer this question by bringing in another variable called
 A>
 ```r
 str(films$made_money)
+```
+
+A>
+```
  Factor w/ 2 levels "no","yes": 2 2 2 2 2 2 2 1 2 2 ...
 ```
 
@@ -83,6 +91,11 @@ Let's check if this is true.
 A>
 ```r
 table(films$made_money)
+```
+
+A>
+```
+
   no  yes 
 1831 4113 
 ```
@@ -90,4 +103,4 @@ table(films$made_money)
 We see the number of profitable films is more than twice of the unprofitable 
 ones. Oh, there's another thing I want to point out. The colors in those
 charts we made are color-blind friendly. For homework, read the document of
-`mk_histdens()` (`?mk_histogram`) and run the examples.
+`mk_histdens()` (`?mk_histogram`) and run the examples. 

@@ -6,7 +6,11 @@ A>
 ```r
 library(ezplot)
 str(films)
-'data.frame':	5944 obs. of  54 variables:
+```
+
+A>
+```
+'data.frame':	5944 obs. of  53 variables:
  $ title         : chr  "'Gung Ho!': The Story of Carlson's Makin Island Raiders" "'Til There Was You" "(500) Days of Summer" "10 Questions for the Dalai Lama" ...
  $ year          : int  1943 1997 2009 2006 1999 1983 2008 2008 1996 2000 ...
  $ budget        : num  866898 10000000 7500000 100000 16000000 ...
@@ -60,7 +64,6 @@ str(films)
  $ year_cat      : chr  "1913-1950" "1990-2014" "1990-2014" "1990-2014" ...
  $ bo_bt_ratio   : num  2.51 1.36 8.1 16.99 46.11 ...
  $ made_money    : Factor w/ 2 levels "no","yes": 2 2 2 2 2 2 2 1 2 2 ...
- $ log_budget    : num  13.7 16.1 15.8 11.5 16.6 ...
 ```
 
 If you want to learn more about this dataset, for example, the meaning of each variable, you can run `?films` to pull up its documentation. 
@@ -169,3 +172,4 @@ how to make histogram, density plot, boxplot and qqplot. In chapter 4, we'll
 learn how to make regular, dodged and stacked bar charts, their horizontal
 cousins and likert plot. In chapter 5, we'll learn how to make scatterplot, 
 lineplot, dumbbell plot and heatmap.
+
