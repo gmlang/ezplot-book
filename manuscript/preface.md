@@ -6,7 +6,9 @@ Ezplot has made me happier. A plot that used to takes me 30 minutes now takes me
 
 In this book, I'll show you the nuances of ezplot with example code and comments. You'll watch your productivity soar. After working through this book, you will be able to make the following 10 most used statistical charts in less than 1/30th of the time you use now.
 
-* histogram & density plot
+* histogram
+* density plot
+* CDF plot
 * boxplot
 * qqplot
 * barplot
@@ -16,7 +18,6 @@ In this book, I'll show you the nuances of ezplot with example code and comments
 * lineplot
 * dumbbell plot
 * heatmap
-
 
 You will get most out of this book by typing and running the code given in the book. Do NOT just copy and paste. Type the code. This will help you become a better R programmer. If you run into typos or errors, please let me know at gmlang@cabaceo.com.
 

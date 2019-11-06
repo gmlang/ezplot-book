@@ -16,9 +16,8 @@ The output `num` says that its type is numeric. Looking at the first few data va
 ```{r, hist_rating_p1, fig.cap="Avg. Ratings with Mean and Median Lines"}
 plt = mk_histdens(films, 'histogram')
 p = plt("rating") 
-p = add_labs(p, xlab = "IMDB Users' Average Rating", 
-             title = "Distribution of Users' Average Ratings (1913-2014)")
-print(p)
+add_labs(p, xlab = "IMDB Users' Average Rating", 
+         title = "Distribution of Users' Average Ratings (1913-2014)")
 ```
 
 We first called the function `mk_histdens()` on the data frame `films`, and 
@@ -35,8 +34,7 @@ of each bin and hence the number of bins. In practice, I often set `binwidth` or
 `bins` a few times until I have a sufficiently large number of bins to show how 
 raw data are distributed without any smoothing.
 ```{r, hist_rating_p2, fig.cap="Avg. Ratings with Mean Line"}
-p = plt("rating", add_vline_median = FALSE, binwidth = 0.1, legend_pos = "top") 
-print(p)
+plt("rating", add_vline_median = FALSE, binwidth = 0.1, legend_pos = "top") 
 ```
 
 Now I want you to run `?mk_histdens()` and read the documentation. When you 
@@ -55,8 +53,7 @@ So `made_money` is a factor with two levels (yes, no), indicating if a film made
 money or not. We can create 2 facets, one with a histogram of profitable films
 and the other of unprofitable films, by simply setting `facet_by = "made_money"`.    
 ```{r, hist_rating_by_made_money, fig.cap="Avg. Ratings of Two Film Groups"}
-p = plt("rating", facet_by = "made_money", binwidth=0.1, add_vline_mean = F) 
-print(p)
+plt("rating", facet_by = "made_money", binwidth=0.1, add_vline_mean = F) 
 ```
 
 We see profitable films do have a higher median average rating, and it seems

@@ -24,9 +24,8 @@ A>
 ```r
 plt = mk_histdens(films, 'histogram')
 p = plt("rating") 
-p = add_labs(p, xlab = "IMDB Users' Average Rating", 
-             title = "Distribution of Users' Average Ratings (1913-2014)")
-print(p)
+add_labs(p, xlab = "IMDB Users' Average Rating", 
+         title = "Distribution of Users' Average Ratings (1913-2014)")
 ```
 
 ![Avg. Ratings with Mean and Median Lines](images/hist_rating_p1-1.png)
@@ -47,8 +46,7 @@ raw data are distributed without any smoothing.
 
 A>
 ```r
-p = plt("rating", add_vline_median = FALSE, binwidth = 0.1, legend_pos = "top") 
-print(p)
+plt("rating", add_vline_median = FALSE, binwidth = 0.1, legend_pos = "top") 
 ```
 
 ![Avg. Ratings with Mean Line](images/hist_rating_p2-1.png)
@@ -78,8 +76,7 @@ and the other of unprofitable films, by simply setting `facet_by = "made_money"`
 
 A>
 ```r
-p = plt("rating", facet_by = "made_money", binwidth=0.1, add_vline_mean = F) 
-print(p)
+plt("rating", facet_by = "made_money", binwidth=0.1, add_vline_mean = F) 
 ```
 
 ![Avg. Ratings of Two Film Groups](images/hist_rating_by_made_money-1.png)
