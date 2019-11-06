@@ -41,7 +41,7 @@ ezplot function `add_labs()` and gave it a new x-axis label and title.
 The function `plt()` also takes other arguments in addition to the variable name
 of interest. For example, we can set `add_vline_median = FALSE` to only show
 the vertical line at the mean. We can also set `binwidth = 0.1` to change the size
-of each bin and hence the number of bins. In practice, I often set `binw` or 
+of each bin and hence the number of bins. In practice, I often set `binwidth` or 
 `bins` a few times until I have a sufficiently large number of bins to show how 
 raw data are distributed without any smoothing.
 
@@ -95,7 +95,6 @@ table(films$made_money)
 
 A>
 ```
-
   no  yes 
 1831 4113 
 ```
