@@ -1,39 +1,38 @@
 # Plot the Distribution of a Continuous Variable
 
-Let's begin with an example. First, we load the ezplot package, which contains 
-a dataset of films from IMBD.com. 
+Let's begin with an example. The `ezplot` package contains a dataset of films from IMBD.com. Let's load the package and look at the variables from the `films` dataset.
 ```{r}
 library(ezplot)
-?films
+dplyr::glimpse(films)
 ```
 
-The variable `budget` is continuous, and we can draw a histogram using the 
-`mk_histogram()` function. 
+If you want to learn more about this dataset, for example, the meaning of each variable, you can run `?films` to pull up its documentation. 
+
+Let's focus on the variable `budget`. Its type is numeric, so it's continuous and we can examine its distribution by making a histogram.
 ```{r, hist_budget, fig.cap="Histogram of Budget"}
-plt = mk_histogram(films) # plt is a function
-plt("budget") # note the quotation marks around budget
+plt = mk_histdens(films, "histogram") # plt is a function
+plt("budget") # plt() takes in a string
 ```
 
-We can also draw a density plot.
+Alternatively, we can make a density plot.
 ```{r, density_budget, fig.cap="Density plot of Budget"}
-plt = mk_densityplot(films) 
+plt = mk_histdens(films, 'density') 
 plt("budget") 
 ```
 
-Or a boxplot.
+As another alternative, we can draw a boxplot.
 ```{r, box_budget, fig.cap="Boxplot of Budget"}
 plt = mk_boxplot(films) 
 plt(yvar = "budget") 
 ```
 
-These plots show the distribution of budget has a long right tail. We can
-confirm budget is not normally distributed by looking at its qq-normal plot. 
+All three plots show pretty much same information, for example, the distribution of budget has a long right tail. We can confirm budget is NOT normally distributed by looking at its qq-normal plot, also called [normal probability plot](https://en.wikipedia.org/wiki/Normal_probability_plot). 
 ```{r, qq_budget, fig.cap="Q-Q Normal plot of Budget"}
 plt = mk_qqplot(films) 
 plt("budget", detrend = F) 
 ```
 
-A normal distribution would have most of data points aligned linearly along the 
+A normal distribution would have the data points aligned linearly along the 
 trend line connecting the bottom left corner to the upper right corner. 
 
 Pay attention to how we used the `mk_xxxx()` functions. First, we passed in
@@ -62,12 +61,12 @@ For example, we can add to `films` a new variable called `log_budget` by
 taking the log of `budget` and visualize `log_budget` afterwards.
 ```{r, hist_log_budget, fig.cap="Histogram of log(Budget)"}
 films$log_budget = log(films$budget)
-plt2 = mk_histogram(films)
+plt2 = mk_histdens(films) # by default, we get a function for making histograms
 plt2("log_budget")
 ```
 
 ```{r, density_log_budget, fig.cap="Density of log(Budget)"}
-plt2 = mk_densityplot(films)
+plt2 = mk_histdens(films, 'density')
 plt2("log_budget")
 ```
 
