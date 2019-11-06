@@ -11,9 +11,7 @@ A>
 ```r
 library(ezplot)
 str(films$rating)
-```
 
-```
  num [1:5944] 6.2 4.7 7.8 7.5 7.2 6.2 5 5.6 5.6 4.8 ...
 ```
 
@@ -64,9 +62,7 @@ that didn't? We can answer this question by bringing in another variable called
 A>
 ```r
 str(films$made_money)
-```
 
-```
  Factor w/ 2 levels "no","yes": 2 2 2 2 2 2 2 1 2 2 ...
 ```
 
@@ -89,9 +85,6 @@ Let's check if this is true.
 A>
 ```r
 table(films$made_money)
-```
-
-```
 
   no  yes 
 1831 4113 
