@@ -6,7 +6,7 @@ function `web_display()` comes to rescue. Often, all you have to
 do is to feed in the plot object, and it'll return a plot object that looks 
 just right when shown in a web browser. Below is an example.
 
-
+A>
 ```r
 library(ezplot)
 library(dplyr)
@@ -23,6 +23,3 @@ web_display(p)
 ```
 
 ![demo web display](images/web_display-1.png)
-
-
-              

@@ -123,6 +123,7 @@ df = read.csv(text="category,pct
 df$category = reorder(df$category, df$pct)
 str(df)
 ```
+
 A>
 ```
 'data.frame':	21 obs. of  2 variables:
@@ -142,7 +143,7 @@ plt("pct", "category", yorder = "descend", font_size = 10, show_pct = T,
 
 ![Demo H Bar Chart](images/barploth_vs_lollipop_p1-1.png)
 
-
+A>
 ```r
 plt = mk_lollipop(df)
 plt("pct", "category", yorder = "descend", font_size = 10, show_pct = T,

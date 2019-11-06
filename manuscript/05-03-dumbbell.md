@@ -13,6 +13,7 @@ df = data.frame(trt=LETTERS[1:5],
                 )
 df
 ```
+
 A>
 ```
   trt   lt   rt
@@ -56,6 +57,7 @@ df = data_frame(country = c("Germany", "France", "Vietnam", "Japan", "Poland",
 head(df)
 ```
 
+A>
 ```
 # A tibble: 6 x 3
   country age35 age18to34

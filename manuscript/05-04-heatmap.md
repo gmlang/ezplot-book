@@ -10,6 +10,7 @@ library(ezplot)
 # look at the first 5 rows and 8 columns
 nba[1:5, 1:8]
 ```
+
 A>
 ```
             Name  G  MIN  PTS  FGM  FGA   FGP FTM
@@ -19,20 +20,24 @@ A>
 4 Dirk Nowitzki  81 37.7 25.9  9.6 20.0 0.479 6.0
 5 Danny Granger  67 36.2 25.8  8.5 19.1 0.447 6.0
 ```
+
 A>
 ```r
 # check the dimensions
 dim(nba)
 ```
+
 A>
 ```
 [1] 50 21
 ```
+
 A>
 ```r
 # check the colnames
 colnames(nba)
 ```
+
 A>
 ```
  [1] "Name" "G"    "MIN"  "PTS"  "FGM"  "FGA"  "FGP"  "FTM"  "FTA"  "FTP" 
@@ -48,6 +53,7 @@ A>
 ```r
 str(nba$Name)
 ```
+
 A>
 ```
  Factor w/ 50 levels "Nate Robinson ",..: 50 49 48 47 46 45 44 43 42 41 ...
@@ -55,10 +61,12 @@ A>
   ..- attr(*, "dimnames")=List of 1
   .. ..$ : chr [1:50] "Al Harrington " "Al Jefferson " "Allen Iverson " "Amare Stoudemire " ...
 ```
+
 A>
 ```r
 levels(nba$Name)
 ```
+
 A>
 ```
  [1] "Nate Robinson "     "Allen Iverson "     "Chauncey Billups " 
@@ -79,6 +87,7 @@ A>
 [46] "Danny Granger "     "Dirk Nowitzki "     "Kobe Bryant "      
 [49] "LeBron James "      "Dwyane Wade "      
 ```
+
 A>
 ```r
 nba$Name = with(nba, reorder(Name, PTS))
@@ -94,6 +103,7 @@ A>
 nba_m = nba %>% gather(stats, val, -Name)
 head(nba_m)
 ```
+
 A>
 ```
             Name stats val
@@ -114,6 +124,7 @@ dat = nba_m %>% group_by(stats) %>% mutate(val_scaled = scales::rescale(val))
 head(dat)
 ```
 
+A>
 ```
 # A tibble: 6 x 4
 # Groups:   stats [1]
@@ -154,6 +165,7 @@ A>
 ```r
 str(attacks_by_country)
 ```
+
 A>
 ```
 Classes 'tbl_df', 'tbl' and 'data.frame':	1680 obs. of  5 variables:

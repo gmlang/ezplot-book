@@ -3,6 +3,7 @@
 Line plots are good for showing trends over time. For example, let's plot the
 annual average budget (and boxoffice) over the years.
 
+A>
 ```r
 library(ezplot)
 plt = mk_lineplot(btbo_by_year)
@@ -21,6 +22,7 @@ and re-run. What's changed on the plot?
 Alternatively, we can calculate and plot the annual boxoffice/budget ratios over
 the years.
 
+A>
 ```r
 library(dplyr)
 library(tidyr)
@@ -45,20 +47,23 @@ However, the `plt()` function also works with a x variable of type character or
 factor. For example, the `films` dataset has a character variable `year_cat` 
 with only 4 unique values. 
 
+A>
 ```r
 str(films$year_cat)
 ```
 
+A>
 ```
  chr [1:5944] "1913-1950" "1990-2014" "1990-2014" "1990-2014" ...
 ```
 
+A>
 ```r
 table(films$year_cat)
 ```
 
+A>
 ```
-
 1913-1950 1950-1970 1970-1990 1990-2014 
       231       243       876      4594 
 ```
@@ -66,6 +71,7 @@ table(films$year_cat)
 Instead of plotting the films of each period on a bar chart, we can use a line 
 plot because there's a time order to the periods.
 
+A>
 ```r
 films_cnt = films %>% group_by(year_cat) %>% summarise(n = n())
 plt = mk_lineplot(films_cnt)
@@ -87,10 +93,12 @@ some cellular chemical differences between Male and Female rats. The variable
 from each animal, `delta` is the effect size, and `rho` is the correlation among
 different cells. 
 
+A>
 ```r
 head(power_n_ssize_gender)
 ```
 
+A>
 ```
   ssize csize delta rho   Power
 1    30     3    30 0.4      NA
@@ -104,6 +112,7 @@ head(power_n_ssize_gender)
 We can draw a faceted line plot using `mk_facet_lineplot()` to show all 5 
 variables at once.
 
+A>
 ```r
 plt = mk_facet_lineplot(power_n_ssize_gender)
 p = plt("delta", "Power", xvar_top = "csize", yvar_rt = "ssize", colorby = "rho",

@@ -5,6 +5,7 @@ apply the ezplot function `mk_scatterplot()` to the data frame `films` to
 get a function that we can use to make scatter plots for any two continuous 
 variables in `films`.
 
+A>
 ```r
 library(dplyr)
 library(ezplot)
@@ -15,6 +16,7 @@ For example, we can use `plt()` to draw a scatter plot of `boxoffice` vs.
 `budget`. We'll use `log10` scale on both axes because the two variables are 
 heavily right-skewed.
 
+A>
 ```r
 p = plt(xvar = "budget", yvar = "boxoffice") %>% 
         add_labs(xlab="budget (in US Dollars)", 
@@ -35,6 +37,7 @@ automatically. It adds to the plot the best fitting line, and displays its
 equation by default. In addtion, it also shows the R-squared value and the 
 p-value associated with the coefficient estimate of x. Let's run `add_lm_line()` now. 
 
+A>
 ```r
 add_lm_line(p)
 ```
@@ -50,6 +53,7 @@ find the correlation between boxoffice and budget (both at log10 scale) to be
 The function `plt()` can be re-used for other variables in the same data frame. 
 For example, we can draw a scatter plot of `boxoffice` vs. `votes`:
 
+A>
 ```r
 p = plt("votes", "boxoffice", alpha = 0.2, jitter = T) %>% 
         add_labs(xlab = "number of votes", 
@@ -75,6 +79,7 @@ statistically significant by the tiny p-value.
 Instead of the equation, we can show a table of more quantities related with the 
 best line by setting `show = "tb"`:
 
+A>
 ```r
 add_lm_line(p, show = "tb") 
 ```
@@ -97,6 +102,7 @@ To answer it, we'll draw a scatter plot of `bo_bt_ratio` vs. `year`, supplying t
 `colorby` parameter the value `"action"`, the name of a binary variable indicating
 if a film is an action film or not.
 
+A>
 ```r
 p = plt("year", "bo_bt_ratio", colorby = "action", 
         legend_title = "Is action film?", legend_pos = "top",
