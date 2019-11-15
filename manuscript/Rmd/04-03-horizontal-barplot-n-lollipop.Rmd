@@ -86,7 +86,6 @@ df = read.csv(text="category,pct
               stringsAsFactors = FALSE, sep = ",", header = TRUE)
 # change category to factor and order its levels in ascending order of pct 
 df$category = reorder(df$category, df$pct)
-str(df)
 ```
 
 ```{r, barploth_vs_lollipop_p1, fig.cap="Horizontal Bar Chart Demo"} 

@@ -1,4 +1,4 @@
 frontmatter.md
 preface.md
 mainmatter.md
-05-01-scatterplot.md
+02-06-check-dist-convars.md
