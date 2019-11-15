@@ -71,8 +71,8 @@ Let's focus on the variable `budget`. Its type is numeric, so it's continuous an
 
 
 ```r
-plt = mk_histdens(films, "histogram") # plt is a function
-plt("budget", bins = 100) 
+plt = mk_histdens(films) # plt is a function
+plt("budget", bins = 100) # plot histogram by default
 ```
 
 ![Histogram of budget](images/hist_budget-1.png)
@@ -81,8 +81,7 @@ Alternatively, we can make a density plot.
 
 
 ```r
-plt = mk_histdens(films, 'density') 
-plt("budget") 
+plt("budget", type = 'density') 
 ```
 
 ![Density plot of budget](images/density_budget-1.png)
@@ -139,16 +138,15 @@ extremely large values. To solve this, we take the log of `budget` and visualize
 
 ```r
 films$log_budget = log(films$budget)
-plt2 = mk_histdens(films) # returns a function for making histograms by default
-plt2("log_budget", bins = 100)
+plt2 = mk_histdens(films) 
+plt2("log_budget", bins = 100) # draw histogram by default
 ```
 
 ![Histogram of log(budget)](images/hist_log_budget-1.png)
 
 
 ```r
-plt2 = mk_histdens(films, 'density')
-plt2("log_budget")
+plt2("log_budget", type = 'density', adjust = 0.6) 
 ```
 
 ![Density of log(budget)](images/density_log_budget-1.png)
