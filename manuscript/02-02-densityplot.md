@@ -5,8 +5,8 @@ Previously we learned how to make histograms. A density plot is similar to a his
 
 ```r
 library(ezplot)
-plt = mk_histdens(films, type = 'density')
-p = plt("length")
+plt = mk_histdens(films)
+p = plt("length", type = 'density', legend_pos = 'bottom')
 add_labs(p, xlab = "minutes", title = "Empirical PDF of film length")
 ```
 
@@ -16,8 +16,9 @@ We can also draw two density curves of `length`, one for profitable films and on
 
 
 ```r
-p = plt(xvar = "length", facet_by = "made_money", facet_ncol = 2,
-        add_vline_mean = FALSE) 
+p = plt(xvar = "length", type = 'density', 
+        facet_by = "made_money", facet_ncol = 2,
+        add_vline_mean = FALSE, legend_pos = 'top') 
 add_labs(p, xlab = "minutes", ylab = "made money?", 
          title = "Empirical PDF of film length")
 ```
@@ -28,7 +29,8 @@ As another example, let's plot the density of `rating` by `year_cat`.
 
 
 ```r
-plt("rating", facet_by = "year_cat", font_size = 9, add_vline_mean = FALSE) 
+plt("rating", type = 'density', facet_by = "year_cat", 
+    font_size = 9, add_vline_mean = FALSE, legend_pos = 'top') 
 ```
 
 ![Empirical PDF of film length by decades](images/density_rating_by_year_cat-1.png)

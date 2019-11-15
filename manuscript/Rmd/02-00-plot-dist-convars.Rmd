@@ -11,34 +11,34 @@ If you want to learn more about this dataset, for example, the meaning of each v
 
 Let's focus on the variable `budget`. Its type is numeric, so it's continuous and we can examine its distribution by making a histogram.
 
-```{r, hist_budget, fig.cap="Histogram of budget", dpi=300, fig.width=4, fig.height=4}
+```{r, hist_budget, fig.cap="Histogram of budget", dpi=300, fig.width=5, fig.height=5}
 plt = mk_histdens(films) # plt is a function
 plt("budget", bins = 100, legend_pos = 'bottom') # plot histogram by default
 ```
 
 Alternatively, we can make a density plot.
 
-```{r, density_budget, fig.cap="Density plot of budget", dpi=300, fig.width=4, fig.height=4}
+```{r, density_budget, fig.cap="Density plot of budget", dpi=300, fig.width=5, fig.height=5}
 plt("budget", type = 'density', legend_pos = 'bottom') 
 ```
 
 Instead of looking at its density curve, we can plot its Cumulative Distribution Function (CDF).
 
-```{r, cdf_budget, fig.cap="CDF plot of budget", dpi=300, fig.width=4, fig.height=4}
+```{r, cdf_budget, fig.cap="CDF plot of budget", dpi=300, fig.width=5, fig.height=5}
 plt = mk_cdfplot(films) 
 plt("budget", add_vline_median = TRUE) 
 ```
 
 Finally, we can also draw a boxplot.
 
-```{r, box_budget, fig.cap="Boxplot of budget", dpi=300, fig.width=4, fig.height=4}
+```{r, box_budget, fig.cap="Boxplot of budget", dpi=300, fig.width=5, fig.height=5}
 plt = mk_boxplot(films) 
 plt(yvar = "budget") 
 ```
 
 All four plots tell the same story, for example, that the distribution of budget has a long right tail and it's not normal. (It may take you sometime to learn how to read the CDF plot. But once you get used to it, you'll find it's very powerful.) We can further confirm `budget` is NOT normally distributed by looking at its [normal probability plot](https://en.wikipedia.org/wiki/Normal_probability_plot). A normal distribution would have all the dots scattered along the trend line within the blue-grayish confidence band.
 
-```{r, qq_budget, fig.cap="Normal probability plot of budget", dpi=300, fig.width=4, fig.height=4}
+```{r, qq_budget, fig.cap="Normal probability plot of budget", dpi=300, fig.width=5, fig.height=5}
 plt = mk_qqplot(films) 
 plt("budget") 
 ```
@@ -62,27 +62,27 @@ Coming back to the distribution of `budget`, it's hard to see how it's
 distributed in the center because it's highly skewed to the right by a few 
 extremely large values. To solve this, we take the log of `budget` and visualize its log values afterwards.
 
-```{r, hist_log_budget, fig.cap="Histogram of log(budget)", dpi=300, fig.width=4, fig.height=4}
+```{r, hist_log_budget, fig.cap="Histogram of log(budget)", dpi=300, fig.width=5, fig.height=5}
 films$log_budget = log(films$budget)
 plt2 = mk_histdens(films) 
 plt2("log_budget", bins = 100, legend_pos = 'bottom') # draw histogram by default
 ```
 
-```{r, density_log_budget, fig.cap="Density of log(budget)", dpi=300, fig.width=4, fig.height=4}
+```{r, density_log_budget, fig.cap="Density of log(budget)", dpi=300, fig.width=5, fig.height=5}
 plt2("log_budget", type = 'density', adjust = 0.6, legend_pos = 'bottom') 
 ```
 
-```{r, cdf_log_budget, fig.cap="CDF of log(budget)", dpi=300, fig.width=4, fig.height=4}
+```{r, cdf_log_budget, fig.cap="CDF of log(budget)", dpi=300, fig.width=5, fig.height=5}
 plt2 = mk_cdfplot(films)
 plt2("log_budget", add_vline_median = TRUE)
 ```
 
-```{r, boxplot_log_budget, fig.cap="Boxplot of log(budget)", dpi=300, fig.width=4, fig.height=4}
+```{r, boxplot_log_budget, fig.cap="Boxplot of log(budget)", dpi=300, fig.width=5, fig.height=5}
 plt2 = mk_boxplot(films)
 plt2(yvar = "log_budget")
 ```
 
-```{r, qq_log_budget, fig.cap="Normal probability plot of log(budget)", dpi=300, fig.width=4, fig.height=4}
+```{r, qq_log_budget, fig.cap="Normal probability plot of log(budget)", dpi=300, fig.width=5, fig.height=5}
 plt2 = mk_qqplot(films)
 plt2("log_budget")
 ```

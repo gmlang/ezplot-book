@@ -16,8 +16,8 @@ The output `num` says that its type is numeric. Looking at the first few data va
 
 
 ```r
-plt = mk_histdens(films, 'histogram')
-p = plt("rating", bins = 80) 
+plt = mk_histdens(films)
+p = plt("rating", bins = 80, legend_pos = 'bottom') 
 add_labs(p, xlab = "IMDB Users' Average Rating", 
          title = "Distribution of Users' Average Ratings (1913-2014)")
 ```
