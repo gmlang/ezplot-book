@@ -9,7 +9,7 @@ library(dplyr)
 
 The exponential distribution is the probability distribution of the time between events in a process in which events occur continuously and independently at a constant average rate. Its mean and standard deviation are equal to the inverse of the rate. In the section on CDF plot, we've already established `births$diffs` can be modeled by the exponential distribution. Instead of making separate CDF and CCDF plots one by one manually like we did before, we can use the `check_expdist()` function to produce both plots at one shot and display them side by side. Moreover, `check_expdist()` also automatically calculates the parameter (rate) estimate of the best fitting exponential model based on the observed data. 
 
-```{r, check_exp_time_bt_births, fig.cap="Does time between births follow the exponential distribution?", dpi=300, fig.width=7, fig.height=7}
+```{r, check_exp_time_bt_births, fig.cap="Does time between births follow the exponential distribution?", dpi=300, fig.width=12, fig.height=7}
 df = births %>% filter(!is.na(diffs))
 f = check_expdist(df)
 f('diffs', linew = 1.2, xlab = 'Minutes between births',
@@ -22,7 +22,7 @@ f('diffs', linew = 1.2, xlab = 'Minutes between births',
 
 The `iris` dataset contains a variable `Sepal.Length`. Let's check if it follows the normal distribution. 
 
-```{r, check_norm_sepallen, fig.cap="Does sepal length follow the normal distribution?", dpi=300, fig.width=7, fig.height=7}
+```{r, check_norm_sepallen, fig.cap="Does sepal length follow the normal distribution?", dpi=300, fig.width=12, fig.height=7}
 plt = check_normality(iris)
 plt("Sepal.Length", add_vline_median = TRUE,
     caption_right = 'Sepal length is almost normal except at the left tail.')
@@ -34,7 +34,7 @@ We see `check_normality()` produces a funtion that draws the CDF plot and the No
 
 Sometimes the data do not follow the normal distribution, but their log-transformations do. When this happens, we say the data follow the lognormal distribution. To check if some observed data are lognormal, we can add their log values to the data frame and `check_normality` of the log values. Let's look at an example. The 2012 population of every incorporated city and town in the United States was stored in the `pops` dataset. Let's focus on populations that are less than 100 million and see if they can be modeled by the lognormal distribution.
 
-```{r, check_lognorm_pop, fig.cap="Does population (< 100 million) follow the lognormal distribution?", dpi=300, fig.width=7, fig.height=7}
+```{r, check_lognorm_pop, fig.cap="Does population (< 100 million) follow the lognormal distribution?", dpi=300, fig.width=12, fig.height=7}
 # focus on cities/towns with <100 million people
 df = pops %>% filter(!is.na(pop), pop < 10^5) %>% # pop is in thousands
         mutate(logpop = log(pop)) 
@@ -51,7 +51,7 @@ In the above code block, we first filtered out records with population < 100 mil
 
 The pareto distribution is a power-law probability distribution that describes the phenomenon that a large portion of something (for example, wealth or income) is concentrated in a small fraction of the population. To check if some observed data values are consistent with samples generated from a Pareto distribution, we can plot the CCDF (1 - CDF) on a log10-log10 scale. If their empirical CCDF on a log10-log10 scale is a straight line, the observed data can be modeled by a pareto distribution with a shape parameter of -slope, and a location parameter of 10^(intercept / -slope). Let's take the same `pops` dataset and focus on the 289 cities and towns with 100 million or more people. Let's use `check_pareto()` to see if the populations of those mega cities follow a pareto distribution.
 
-```{r, check_pareto_pop, fig.cap="Does population (100+ million) follow the pareto distribution?", dpi=300, fig.width=7, fig.height=7}
+```{r, check_pareto_pop, fig.cap="Does population (100+ million) follow the pareto distribution?", dpi=300, fig.width=12, fig.height=7}
 # focus on cities/towns with 100+ million people
 df = pops %>% filter(!is.na(pop), pop >= 10^5) # pop is in thousands
 f = check_pareto(df)
