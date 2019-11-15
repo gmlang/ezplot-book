@@ -9,12 +9,10 @@ A>
 ```r
 df = data.frame(trt=LETTERS[1:5],
                 lt =c(20.5, 40.3, 10.5, 30.2, 50.4),
-                rt =c(70.2, 50.9, 30.3, 60.8, 80.1)
-                )
+                rt =c(70.2, 50.9, 30.3, 60.8, 80.1))
 df
 ```
 
-A>
 ```
   trt   lt   rt
 1   A 20.5 70.2
@@ -44,7 +42,7 @@ dataset of social media usage of two different age groups across 18 countries.
 
 A>
 ```r
-df = data_frame(country = c("Germany", "France", "Vietnam", "Japan", "Poland",
+df = data.frame(country = c("Germany", "France", "Vietnam", "Japan", "Poland",
                             "Lebanon", "Australia", "South\nKorea", "Canada",
                             "Spain", "Italy", "Peru", "U.S.", "UK", "Mexico",
                             "Chile", "China", "India"),
@@ -58,15 +56,13 @@ head(df)
 ```
 
 ```
-# A tibble: 6 x 3
   country age35 age18to34
-  <chr>   <dbl>     <dbl>
-1 Germany 0.39       0.81
-2 France  0.42       0.83
-3 Vietnam 0.49       0.86
-4 Japan   0.43       0.78
-5 Poland  0.51       0.86
-6 Lebanon 0.570      0.9 
+1 Germany  0.39      0.81
+2  France  0.42      0.83
+3 Vietnam  0.49      0.86
+4   Japan  0.43      0.78
+5  Poland  0.51      0.86
+6 Lebanon  0.57      0.90
 ```
 
 Let's use a dumbbell plot to display the data.
@@ -97,7 +93,7 @@ Notice ezplot automatically uses the two x-variable names (age35 and
 age18to34) as the labels of the points. It also calculates the differences 
 between the two x-variables under the hood, and displays them on the plot. 
 
-Now it's your turn. Try the following exercises for homework.
+Now it's your turn. Try the following exercises.
 
 1. Read the document of `mk_dumbbell()` by running `?mk_dumbbell` in Rstudio. 
 2. Find some data online that can be displayed with a dumbbell chart and make

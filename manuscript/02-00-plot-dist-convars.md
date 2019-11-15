@@ -7,7 +7,6 @@ A>
 library(ezplot)
 str(films)
 ```
-
 A>
 ```
 'data.frame':	5944 obs. of  53 variables:
@@ -73,10 +72,10 @@ Let's focus on the variable `budget`. Its type is numeric, so it's continuous an
 A>
 ```r
 plt = mk_histdens(films, "histogram") # plt is a function
-plt("budget") # plt() takes in a string
+plt("budget", bins = 100) 
 ```
 
-![Histogram of Budget](images/hist_budget-1.png)
+![Histogram of budget](images/hist_budget-1.png)
 
 Alternatively, we can make a density plot.
 
@@ -86,9 +85,19 @@ plt = mk_histdens(films, 'density')
 plt("budget") 
 ```
 
-![Density plot of Budget](images/density_budget-1.png)
+![Density plot of budget](images/density_budget-1.png)
 
-As another alternative, we can draw a boxplot.
+Instead of looking at its density curve, we can plot its Cumulative Distribution Function (CDF).
+
+A>
+```r
+plt = mk_cdfplot(films) 
+plt("budget", add_vline_median = TRUE) 
+```
+
+![CDF plot of budget](images/cdf_budget-1.png)
+
+Finally, we can also draw a boxplot.
 
 A>
 ```r
@@ -96,27 +105,20 @@ plt = mk_boxplot(films)
 plt(yvar = "budget") 
 ```
 
-![Boxplot of Budget](images/box_budget-1.png)
+![Boxplot of budget](images/box_budget-1.png)
 
-All three plots show pretty much same information, for example, the distribution of budget has a long right tail. We can confirm budget is NOT normally distributed by looking at its qq-normal plot, also called [normal probability plot](https://en.wikipedia.org/wiki/Normal_probability_plot). 
+All four plots tell the same story, for example, that the distribution of budget has a long right tail and it's not normal. (It may take you sometime to learn how to read the CDF plot. But once you get used to it, you'll find it's very powerful.) We can further confirm `budget` is NOT normally distributed by looking at its [normal probability plot](https://en.wikipedia.org/wiki/Normal_probability_plot). A normal distribution would have all the dots scattered along the trend line within the blue-grayish confidence band.
 
 A>
 ```r
 plt = mk_qqplot(films) 
-plt("budget", detrend = F) 
+plt("budget") 
 ```
 
-![Q-Q Normal plot of Budget](images/qq_budget-1.png)
-
-A normal distribution would have the data points aligned linearly along the 
-trend line connecting the bottom left corner to the upper right corner. 
+![Normal probability plot of budget](images/qq_budget-1.png)
 
 Pay attention to how we used the `mk_xxxx()` functions. First, we passed in
-the data frame `films` and got back a function `plt`. Next, we called 
-`plt()` with the name of the variable we want to visualize (`"budget"`) as an
-argument. As you'll see in later chapters, this usage pattern will occur over 
-and over again. All ezplot plotting functions are designed as [functions that return functions](http://masterr.org/r/functions-that-return-functions/), which has two 
-benefits: 
+the data frame `films` and got back a function `plt`. Next, we called `plt()` with the name of the variable we want to visualize (`"budget"`) as an argument. As you'll see in later chapters, this usage pattern will occur over and over again. All ezplot plotting functions are designed as [functions that return functions](http://masterr.org/r/functions-that-return-functions/), which has two benefits: 
 
 1. Consistent Interface. Every plotting function takes a data frame as the only
 input and returns a function. The consistent interface allows you to focus on 
@@ -132,18 +134,16 @@ exploratory analyses.
 
 Coming back to the distribution of `budget`, it's hard to see how it's 
 distributed in the center because it's highly skewed to the right by a few 
-extremely large values. To solve this, we can apply the log transformation. 
-For example, we can add to `films` a new variable called `log_budget` by 
-taking the log of `budget` and visualize `log_budget` afterwards.
+extremely large values. To solve this, we take the log of `budget` and visualize its log values afterwards.
 
 A>
 ```r
 films$log_budget = log(films$budget)
-plt2 = mk_histdens(films) # by default, we get a function for making histograms
-plt2("log_budget")
+plt2 = mk_histdens(films) # returns a function for making histograms by default
+plt2("log_budget", bins = 100)
 ```
 
-![Histogram of log(Budget)](images/hist_log_budget-1.png)
+![Histogram of log(budget)](images/hist_log_budget-1.png)
 
 A>
 ```r
@@ -151,25 +151,30 @@ plt2 = mk_histdens(films, 'density')
 plt2("log_budget")
 ```
 
-![Density of log(Budget)](images/density_log_budget-1.png)
+![Density of log(budget)](images/density_log_budget-1.png)
+
+A>
+```r
+plt2 = mk_cdfplot(films)
+plt2("log_budget", add_vline_median = TRUE)
+```
+
+![CDF of log(budget)](images/cdf_log_budget-1.png)
+
+A>
+```r
+plt2 = mk_boxplot(films)
+plt2(yvar = "log_budget")
+```
+
+![Boxplot of log(budget)](images/boxplot_log_budget-1.png)
 
 A>
 ```r
 plt2 = mk_qqplot(films)
-plt2("log_budget", detrend = F)
+plt2("log_budget")
 ```
 
-![Q-Q Normal plot of log(Budget)](images/qq_log_budget-1.png)
+![Normal probability plot of log(budget)](images/qq_log_budget-1.png)
 
-We see that after taking log, budget becomes a bit left-skewed and is still
-not normal. By the way, the reason why we care about normality is that many 
-statistical methods, for example, linear regression, are devised based on the 
-assumption of normal distribution. When encountering long right tailed data, 
-we can often make it approximately normal by taking the log. 
-
-The rest of the book is organized into four chapters. In chapter 3, we'll learn
-how to make histogram, density plot, boxplot and qqplot. In chapter 4, we'll 
-learn how to make regular, dodged and stacked bar charts, their horizontal
-cousins and likert plot. In chapter 5, we'll learn how to make scatterplot, 
-lineplot, dumbbell plot and heatmap.
-
+We see the distribution of the log values of `budget` is also not normal. By the way, the reason why we care about normality is because many statistical models, such as linear regression, require the outcome variable to be normally distributed. When encountering long right-tailed data, we can often make it approximately normal by taking the log transformation. 

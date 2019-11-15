@@ -51,17 +51,14 @@ A>
 ```r
 str(films$year_cat)
 ```
-
 A>
 ```
  chr [1:5944] "1913-1950" "1990-2014" "1990-2014" "1990-2014" ...
 ```
-
 A>
 ```r
 table(films$year_cat)
 ```
-
 A>
 ```
 1913-1950 1950-1970 1970-1990 1990-2014 
@@ -83,7 +80,7 @@ plt("year_cat", "n") %>%
 
 ![Films at 4 periods 1913 - 2014](images/lineplot_films-1.png)
 
-Line plot can also be used to show complex relationships among upto 5 variables.
+Line plot can be used to show complex relationships among upto 5 variables.
 For example, it's a common task to calculate powers and sample sizes over a 
 grid of effect sizes. Their relationships can be revealed best with a line plot, 
 combined with facets when necessary. Consider the dataset `power_n_ssize_gender`. 
@@ -98,7 +95,6 @@ A>
 head(power_n_ssize_gender)
 ```
 
-A>
 ```
   ssize csize delta rho   Power
 1    30     3    30 0.4      NA
@@ -127,7 +123,7 @@ add_labs(p, xlab = bquote(delta),
 
 ![Power & Sample Sizes](images/power_n_ssize-1.png)
 
-Now it's your turn. Try the following exercises for homework.
+Now it's your turn. Try the following exercises.
 
 1. Read the document of `mk_lineplot()` by running `?mk_lineplot` in Rstudio. 
 2. Make a line plot to show the trend of annual average boxoffice and votes over 

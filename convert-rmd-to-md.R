@@ -14,25 +14,34 @@ manu_path = file.path(proj_path, "manuscript")
 setwd(manu_path)
 rmd_path = file.path(manu_path, "Rmd")
 
-# file_in = file.path(rmd_path, "02-plot-dist-of-a-con-var.Rmd")
+# file_in = file.path(rmd_path, "02-00-plot-dist-convars.Rmd")
 # knitr::knit(file_in)
 
-# file_in = file.path(rmd_path, "03-01-histogram.Rmd")
+# file_in = file.path(rmd_path, "02-01-histogram.Rmd")
 # knitr::knit(file_in)
 
-# file_in = file.path(rmd_path, "03-02-densityplot.Rmd")
+# file_in = file.path(rmd_path, "02-02-densityplot.Rmd")
 # knitr::knit(file_in)
 
-# file_in = file.path(rmd_path, "03-03-boxplot.Rmd")
+# file_in = file.path(rmd_path, "02-03-boxplot.Rmd")
 # knitr::knit(file_in)
 
-# file_in = file.path(rmd_path, "03-04-qqplot.Rmd")
+# file_in = file.path(rmd_path, "02-04-cdfplot.Rmd")
 # knitr::knit(file_in)
 
-# file_in = file.path(rmd_path, "04-01-barplot-1.Rmd")
+# file_in = file.path(rmd_path, "02-05-qqplot.Rmd")
 # knitr::knit(file_in)
 
-# file_in = file.path(rmd_path, "04-02-barplot-2.Rmd")
+# file_in = file.path(rmd_path, "02-06-check-dist-convars.Rmd")
+# knitr::knit(file_in)
+
+# file_in = file.path(rmd_path, "04-00-plot-dist-catvars.Rmd")
+# knitr::knit(file_in)
+
+# file_in = file.path(rmd_path, "04-01-regular-barchart.Rmd")
+# knitr::knit(file_in)
+
+# file_in = file.path(rmd_path, "04-02-dodged-n-stacked-barchart.Rmd")
 # knitr::knit(file_in)
 
 # file_in = file.path(rmd_path, "04-03-horizontal-barplot-n-lollipop.Rmd")

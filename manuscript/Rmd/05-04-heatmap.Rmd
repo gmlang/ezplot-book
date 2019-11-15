@@ -1,6 +1,7 @@
 ## Heatmap
 
-Let's start with an example. Consider the dataset `nba`.
+Let's start with an example. Consider the `nba` data frame.
+
 ```{r}
 library(dplyr)
 library(tidyr)
@@ -16,6 +17,7 @@ colnames(nba)
 The variable `Name` contains players' names. It's a factor with levels ordered 
 alphabetically. Let's reorder the levels in ascending order of the points the 
 players scored.
+
 ```{r} 
 str(nba$Name)
 levels(nba$Name)
@@ -26,6 +28,7 @@ The other variables are various performance statistics. In order to visualize
 the data in a heatmap, we first need to put the data in long format, a.k.a., we 
 need to gather the names of the statistics in one column and their values in 
 another column.
+
 ```{r} 
 nba_m = nba %>% gather(stats, val, -Name)
 head(nba_m)
@@ -33,6 +36,7 @@ head(nba_m)
 
 Let's scale the values of every performance statistics so that they are between 
 0 and 1. 
+
 ```{r}
 dat = nba_m %>% group_by(stats) %>% mutate(val_scaled = scales::rescale(val))
 head(dat)
@@ -40,6 +44,7 @@ head(dat)
 
 With the data prep work done, we're ready to make a heatmap using the 
 `mk_heatmap()` function.
+
 ```{r, heatmap_nba, fig.cap="NBA Performance Statistics"} 
 plt = mk_heatmap(dat)
 plt(xvar = "stats", yvar = "Name", fillby = "val_scaled", 
@@ -56,6 +61,7 @@ Not only `mk_heatmap()` allows us to make one heatmap quickly, it also enables
 us to make multiple heatmaps in one plot with no sweat. Let's see another 
 example. The dataset `attacks_by_country` has the number of internet 
 attacks of ten countries for each hour of a day during a fixed time period. 
+
 ```{r}
 str(attacks_by_country)
 ```
@@ -63,12 +69,12 @@ str(attacks_by_country)
 We can draw a heatmap for each country, showing the severity of attacks over 
 time. Pay attention to the usage of `facet_by` and `facet_ncol` parameters in
 the following code.
+
 ```{r, heatmap_attacks_by_country, fig.cap="Internet Attacks overtime by country"}
 plt = mk_heatmap(attacks_by_country)
 plt("hour", "wkday", fillby ="n", facet_by = "country", facet_ncol = 2) %>%
         add_labs(title = "Attacks per weekday & time of day by country")
 ```
-
 
 Now it's your turn. Try the following exercises for homework.
 
@@ -82,4 +88,3 @@ display the data.
 3. Read the document of `mk_heatmap()` by running `?mk_heatmap` in Rstudio. 
 What does the parameter `palette` do? Repeat exercise 1 and 2 using different 
 values for `palette`.
-

@@ -1,13 +1,9 @@
 ## Horizontal Bar Chart & Lollipop Plot
 
-Previously, we mastered two ezplot functions, `mk_barplot_freq()` and 
-`mk_barplot_resp()`. We can use them to easily make regular, dodged and stacked 
-bar charts. There're two other ezplot functions, namely, 
-`mk_barploth_freq()` and `mk_barploth_resp()` that can be used to create 
-horizontal versions of the same bar charts. Let's make the horizontal versions
-of the same bar charts we made in the last two sections.
+We've discussed two ezplot functions: `mk_barplot_freq()` and 
+`mk_barplot_resp()`. They allow us to easily make vertical bar charts. They have two counterparts: `mk_barploth_freq()` and `mk_barploth_resp()`, which can be used to make horizontal bar charts. Let's produce the horizontal versions of the bar charts we made previously.
 
-The following 4 examples show how to use `mk_barploth_freq()`.
+The following examples show how to use `mk_barploth_freq()`.
 
 A>
 ```r
@@ -38,14 +34,13 @@ plt(yvar = "year_cat", fillby = "made_money", label_size = 0)
 
 A>
 ```r
-plt(yvar = "year_cat", fillby = "made_money", show_pct = T, 
+plt(yvar = "year_cat", fillby = "made_money", show_pct = TRUE, 
     legend_title = "Is profitable?")
 ```
 
 ![Percents of Profitable vs. Unprofitable Films for Each Time Period](images/barploth_stacked-1.png)
 
-
-The next 4 examples show how to use `mk_barploth_resp()`.
+The next examples show how to use `mk_barploth_resp()`.
 
 A>
 ```r
@@ -56,15 +51,16 @@ plt = mk_barploth_resp(df)
 
 A>
 ```r
-p = plt(xvar = "n", yvar = "mpaa", label_decimals = 0) # default uses 1 decimal 
-add_labs(p, xlab = "Frequency")
+plt(xvar = "n", yvar = "mpaa", label_decimals = 0) %>% 
+        add_labs(xlab = "Frequency")
 ```
 
 ![Frequency of MPAA](images/barploth_resp_mpaa_cnt-1.png)
 
 A>
 ```r
-plt(xvar = "pct", yvar = "mpaa", show_pct = T, label_decimals = 2, font_size = 9)  
+plt(xvar = "pct", yvar = "mpaa", show_pct = TRUE, 
+    label_decimals = 2, font_size = 9)
 ```
 
 ![Relative Frequency of MPAA](images/barploth_resp_mpaa_pct-1.png)
@@ -72,27 +68,23 @@ plt(xvar = "pct", yvar = "mpaa", show_pct = T, label_decimals = 2, font_size = 9
 A>
 ```r
 plt = mk_barploth_resp(films)
-p = plt("boxoffice", "mpaa", yorder = "descend", font_size = 10, label_decimals = 0)
-rotate_axis_text(p, 10)
+plt("boxoffice", "mpaa", yorder = "descend", 
+    font_size = 10, label_decimals = 0) %>% 
+        rotate_axis_text(10)
 ```
 
 ![Boxoffice by MPAA](images/barploth_mpaa_vs_bo-1.png)
 
 A>
 ```r
-p = plt("votes", "mpaa", fillby = "made_money", label_size = 0, font_size = 9,
-        legend_pos = "top")
-rotate_axis_text(p, 15)
+plt("votes", "mpaa", fillby = "made_money", label_size = 0, 
+    font_size = 9, legend_pos = "top") %>% 
+        rotate_axis_text(15)
 ```
 
 ![Votes of Profitable and Unprofitable Films for each MAPP rating](images/barploth_dodged_p3-1.png)
 
-The next example shows how to create horizontal bar chart and lollipop chart 
-using a common data set. 
-
-Horizontal bar chart and lollipop chart are exchangeable. So if you use a lot of 
-horizontal bar charts, maybe you want to switch to horizontal lollipop chart for
-a change. Let's draw both using the following dataset.
+An alternative of horizontal bar chart is the lollipop chart. They are exchangeable. Let's make both charts with the following dataset.
 
 A>
 ```r
@@ -123,7 +115,6 @@ df = read.csv(text="category,pct
 df$category = reorder(df$category, df$pct)
 str(df)
 ```
-
 A>
 ```
 'data.frame':	21 obs. of  2 variables:
@@ -137,23 +128,17 @@ A>
 A>
 ```r
 plt = mk_barploth_resp(df)
-plt("pct", "category", yorder = "descend", font_size = 10, show_pct = T,
-    label_decimals = 0)
+plt("pct", "category", yorder = "descend", 
+    font_size = 10, show_pct = TRUE, label_decimals = 0)
 ```
 
-![Demo H Bar Chart](images/barploth_vs_lollipop_p1-1.png)
+![Horizontal Bar Chart Demo](images/barploth_vs_lollipop_p1-1.png)
 
 A>
 ```r
 plt = mk_lollipop(df)
-plt("pct", "category", yorder = "descend", font_size = 10, show_pct = T,
-    label_decimals = 0)
+plt("pct", "category", yorder = "descend", 
+    font_size = 10, show_pct = TRUE, label_decimals = 0)
 ```
 
-![Demo H Lollipop Chart](images/barploth_vs_lollipop_p2-1.png)
-
-
-
-
-
-
+![Lollipop Chart Demo](images/barploth_vs_lollipop_p2-1.png)
