@@ -2,12 +2,12 @@
 
 Let's begin with an example. The `ezplot` package contains a dataset of films from IMBD.com. Let's load the package and look at the variables from the `films` dataset.
 
-A>
+
 ```r
 library(ezplot)
 str(films)
 ```
-A>
+
 ```
 'data.frame':	5944 obs. of  53 variables:
  $ title         : chr  "'Gung Ho!': The Story of Carlson's Makin Island Raiders" "'Til There Was You" "(500) Days of Summer" "10 Questions for the Dalai Lama" ...
@@ -69,7 +69,7 @@ If you want to learn more about this dataset, for example, the meaning of each v
 
 Let's focus on the variable `budget`. Its type is numeric, so it's continuous and we can examine its distribution by making a histogram.
 
-A>
+
 ```r
 plt = mk_histdens(films, "histogram") # plt is a function
 plt("budget", bins = 100) 
@@ -79,7 +79,7 @@ plt("budget", bins = 100)
 
 Alternatively, we can make a density plot.
 
-A>
+
 ```r
 plt = mk_histdens(films, 'density') 
 plt("budget") 
@@ -89,7 +89,7 @@ plt("budget")
 
 Instead of looking at its density curve, we can plot its Cumulative Distribution Function (CDF).
 
-A>
+
 ```r
 plt = mk_cdfplot(films) 
 plt("budget", add_vline_median = TRUE) 
@@ -99,7 +99,7 @@ plt("budget", add_vline_median = TRUE)
 
 Finally, we can also draw a boxplot.
 
-A>
+
 ```r
 plt = mk_boxplot(films) 
 plt(yvar = "budget") 
@@ -109,7 +109,7 @@ plt(yvar = "budget")
 
 All four plots tell the same story, for example, that the distribution of budget has a long right tail and it's not normal. (It may take you sometime to learn how to read the CDF plot. But once you get used to it, you'll find it's very powerful.) We can further confirm `budget` is NOT normally distributed by looking at its [normal probability plot](https://en.wikipedia.org/wiki/Normal_probability_plot). A normal distribution would have all the dots scattered along the trend line within the blue-grayish confidence band.
 
-A>
+
 ```r
 plt = mk_qqplot(films) 
 plt("budget") 
@@ -136,7 +136,7 @@ Coming back to the distribution of `budget`, it's hard to see how it's
 distributed in the center because it's highly skewed to the right by a few 
 extremely large values. To solve this, we take the log of `budget` and visualize its log values afterwards.
 
-A>
+
 ```r
 films$log_budget = log(films$budget)
 plt2 = mk_histdens(films) # returns a function for making histograms by default
@@ -145,7 +145,7 @@ plt2("log_budget", bins = 100)
 
 ![Histogram of log(budget)](images/hist_log_budget-1.png)
 
-A>
+
 ```r
 plt2 = mk_histdens(films, 'density')
 plt2("log_budget")
@@ -153,7 +153,7 @@ plt2("log_budget")
 
 ![Density of log(budget)](images/density_log_budget-1.png)
 
-A>
+
 ```r
 plt2 = mk_cdfplot(films)
 plt2("log_budget", add_vline_median = TRUE)
@@ -161,7 +161,7 @@ plt2("log_budget", add_vline_median = TRUE)
 
 ![CDF of log(budget)](images/cdf_log_budget-1.png)
 
-A>
+
 ```r
 plt2 = mk_boxplot(films)
 plt2(yvar = "log_budget")
@@ -169,7 +169,7 @@ plt2(yvar = "log_budget")
 
 ![Boxplot of log(budget)](images/boxplot_log_budget-1.png)
 
-A>
+
 ```r
 plt2 = mk_qqplot(films)
 plt2("log_budget")

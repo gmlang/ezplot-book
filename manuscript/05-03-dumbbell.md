@@ -5,7 +5,7 @@ the levels of a categorical variable. The two variables in comparison can
 measure before and after values, beginning and end values, or male and female 
 values, and etc. Let's see an example. Consider the following fake data.
 
-A>
+
 ```r
 df = data.frame(trt=LETTERS[1:5],
                 lt =c(20.5, 40.3, 10.5, 30.2, 50.4),
@@ -26,7 +26,7 @@ We can draw a dumbbell plot to show `lt` and `rt` across different levels of
 `trt`. What's attractive about dumbbell plot is that it displays both the 
 original values of the variables in comparison and their differences. 
 
-A>
+
 ```r
 plt = mk_dumbbell(df)
 plt(xvar_left = "lt", xvar_right = "rt", yvar = "trt")
@@ -40,7 +40,7 @@ above example, the data frame has 5 rows, and each has a unique `trt` value: A,
 B, C, D, and E. Let's see a more interesting example. Consider the following
 dataset of social media usage of two different age groups across 18 countries.
 
-A>
+
 ```r
 df = data.frame(country = c("Germany", "France", "Vietnam", "Japan", "Poland",
                             "Lebanon", "Australia", "South\nKorea", "Canada",
@@ -67,7 +67,7 @@ head(df)
 
 Let's use a dumbbell plot to display the data.
 
-A>
+
 ```r
 plt = mk_dumbbell(df)
 plt(xvar_left = "age35", xvar_right = "age18to34", yvar = "country", 
@@ -81,7 +81,7 @@ between the two age groups by setting `yorder = "ascend"`. We can also sort
 them in descending order. Plus, because all values are between 0 and 1, we can
 choose to show them in % format by setting `show_pct = T`.
 
-A>
+
 ```r
 plt("age35", "age18to34", "country", yorder = "descend", show_pct = T,
     label_decimals = 0)

@@ -2,7 +2,7 @@
 
 What if we're given a summary dataset where the frequencies are already tallied? How can we visualize the frequencies on a bar chart? For example, let's create a data frame with counts and percentages of the `mpaa` categories. 
 
-A>
+
 ```r
 library(dplyr)
 df = films %>% count(mpaa) %>% mutate(pct = n / sum(n))
@@ -22,7 +22,7 @@ df
 
 How can we make a bar chart to visualize the `n` values? The answer lies in a different ezplot function, `mk_barplot_resp()`. 
 
-A>
+
 ```r
 plt = mk_barplot_resp(df)
 p = plt(xvar = "mpaa", yvar = "n", label_decimals = 0)
@@ -33,7 +33,7 @@ add_labs(p, ylab = "Frequency")
 
 Notice that in addition to supplying a categorical variable name to `xvar`, we also need to supply a continuous variable name to `yvar`. We created the above chart by setting `yvar = "n"`, and we now set `yvar = "pct"` to visualize the relative frequencies.
 
-A>
+
 ```r
 plt(xvar = "mpaa", yvar = "pct", show_pct = TRUE, 
     label_decimals = 2, font_size = 9)
@@ -45,7 +45,7 @@ What will happen if you set `show_pct = FALSE`? Try it.
 
 The function `mk_barplot_resp()` is actually more powerful than the example I just gave. Consider the following dataset, which further splits the counts of each MPAA category according to if the films made money or not.
 
-A>
+
 ```r
 df2 = films %>% count(mpaa, made_money) %>% mutate(pct = n / sum(n))
 df2
@@ -68,7 +68,7 @@ df2
 
 What will happen if we make a bar chart using `df2`? We'll get exactly the same bar chart as when using `df`! This is because `mk_barplot_resp()` is smart enough to aggregate the `n` values for the same `mpaa` category.
 
-A>
+
 ```r
 plt = mk_barplot_resp(df2)
 p = plt(xvar = "mpaa", yvar = "n", label_decimals = 0) 
@@ -79,7 +79,7 @@ add_labs(p, ylab = "Frequency")
 
 To summarise, `mk_barplot_resp()` aggregates the y values for each x category before making a bar chart. Now we know this, we can use it to plot the total boxoffice for each MPAA rating.
 
-A>
+
 ```r
 plt = mk_barplot_resp(films)
 plt("mpaa", "boxoffice", xorder = "descend", 

@@ -4,13 +4,13 @@ Previously we learned histograms and density plots. When visualizing
 the distribution of a continuous variable, there's yet another type of plot we 
 can use, the boxplot. A boxplot shows the minimum, the 25th percentile, the median, (optionally the mean,) the 75th percentile and the maximum. It also shows outliers that are far away from the majority of data points. Let's start with an example by making a boxplot for `budget`.
 
-A>
+
 ```r
 library(ezplot)
 library(dplyr)
 ```
 
-A>
+
 ```r
 plt = mk_boxplot(films)
 p = plt(yvar = "budget")
@@ -26,7 +26,7 @@ observations. If we want to show how `budget` is distributed for different group
 budget changed over the years. To find out, we can draw a boxplot of `budget` 
 vs. `year_cat`. 
 
-A>
+
 ```r
 p = plt(xvar = "year_cat", yvar = "budget")
 scale_axis(p, axis="y", scale = "dollar") # apply dollar scale to y-axis 
@@ -41,18 +41,18 @@ each boxplot. You can choose not to show them by setting `label_size = 0` inside
 
 Here's a caveat: when making a boxplot, the x variable must be character or factor type, and cannot be integer or numeric. For example, if we try to plot `budget` by `year`,  it'll throw an error because `year` has type integer.
 
-A>
+
 ```r
 plt(xvar = "year", yvar = "budget") # throws error since "year" is integer
 ```
-A>
+
 ```
 Error in plt(xvar = "year", yvar = "budget"): The x variable, year, is integer or numeric. Change to factor or character.
 ```
 
 To make it work, we can change `year` to factor first. 
 
-A>
+
 ```r
 plt = mk_boxplot(
         films %>% filter(year %in% 2010:2014) %>% 
@@ -69,14 +69,14 @@ setting `notched = T`. Notches are useful in offering a rough guide to the signi
 In addtion to `xvar` and `yvar`, we can also supply a `fillby` varname to
 draw boxplots in different colors for different groups. For example, we can show the distribution of users' average ratings for profitable and unprofitable films at each period.
 
-A>
+
 ```r
 plt = mk_boxplot(films)
 plt("year_cat", "rating", fillby = "made_money", 
     legend_title = "Is profitable?", legend_pos = "top", notched = T)
 ```
 
-![Distribution of avg ratings, profitable vs. unprofitable films.](images/boxplot_rating_vs_year_cat_by_made_money-1.png)
+![Distribution of avg ratings, profitable vs. unprofitable films](images/boxplot_rating_vs_year_cat_by_made_money-1.png)
 
 For homework, try the following exercises.
 

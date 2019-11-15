@@ -2,7 +2,7 @@
 
 A special kind of horizontal bar chart is the horizontal diverging bar chart, also called the likert chart. Let's see an example.
 
-A>
+
 ```r
 library(ezplot)
 library(dplyr)
@@ -19,7 +19,7 @@ plt(xvar = "n", yvar = "mpaa", fillby = "made_money",
 
 We've already seen how to use `xvar`, `yvar`, `fillby`, and `yorder` before. The only parameter new here is `fillby_lvls`. We need to give it a character vector containing the unique levels of the `fillby` variable. The order of these values from left to right corresponds to the colored stacked bars from left to right. In this example, we set `fillby_lvls = c("no", "yes")`, as a result, the bars to the left of `x = 0` correspond to `made_money = no`, and to the right of `x = 0` correspond to `made_money = yes`. We can also show percent instead of raw count.
 
-A>
+
 ```r
 plt("pct", "mpaa", fillby = "made_money", fillby_lvls = c("no", "yes"), 
     legend_title = "Is profitable?", x_as_pct = TRUE)
@@ -29,7 +29,7 @@ plt("pct", "mpaa", fillby = "made_money", fillby_lvls = c("no", "yes"),
 
 Let's consider another example by first making some fake data.
 
-A>
+
 ```r
 df = data.frame(item = rep(LETTERS[1:5], 4),
                 slope = c(rep("North", 10), rep("South", 10)),
@@ -50,7 +50,7 @@ head(df)
 5    E North     native   7      7
 6    A North introduced   4     -4
 ```
-A>
+
 ```r
 tail(df)
 ```
@@ -67,7 +67,7 @@ tail(df)
 
 Let's focus on North and ignore South. 
 
-A>
+
 ```r
 plt = mk_likertplot(df %>% filter(slope == "North"))
 ```
@@ -76,7 +76,7 @@ The variable `sppInv` is < 0 when `type` is "introduced", and > 0 when type is
 "native". We can make a likert chart to show the values of `sppInv` by `type` for
 each `item`.
 
-A>
+
 ```r
 plt("sppInv", "item", fillby = "type", 
     fillby_lvls = c("introduced", "native"),
@@ -88,7 +88,7 @@ plt("sppInv", "item", fillby = "type",
 On the other hand, the variable `spp` is always > 0. Let's also make a likert 
 chart to show the values of `spp` by `type` for each `item`.
 
-A>
+
 ```r
 plt("spp", "item", fillby = "type", 
     fillby_lvls = c("introduced", "native"),
@@ -102,7 +102,7 @@ and show correct x-tick labels. When x-values are negative, the negative x-axis 
 
 Liker charts are commonly used for survey response data. For example, the dataset `ab3` contains respondents' confidence ratings for the future economy of 12 Arabic countries. Respondents were asked, "What do you think will be the economic situation in your country during the next few years (3-5 years) compared to the current situation?". We can visualize the info on a likert chart. 
 
-A>
+
 ```r
 df = ab3 %>% tidyr::gather(opinion, pct, -Country)
 lvls = unique(df$opinion)

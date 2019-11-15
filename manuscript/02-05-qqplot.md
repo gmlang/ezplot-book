@@ -2,7 +2,7 @@
 
 In the last section, we learned how to use cdf and ccdf plots to detect if observed data follow a well-known probability distribution such as the exponential or the normal distribution. An alternative visual tool for that purpose is the Q-Q plot. Let's start with an example. Let's generate 500 data points from a standard normal distribution and draw a Normal Q-Q plot (also called Normal Probability Plot) of the sampled data.
 
-A>
+
 ```r
 library(ezplot)
 library(dplyr)
@@ -19,7 +19,7 @@ the point-wise confidence band. This tells us the data are normally
 distributed. (What else can it be? The data are randomly drawn from a standard 
 normal distribution.) Alternatively, we can draw the Aldor-Noiman tail-sensitive confidence band by setting `ci_band_type = "ts"`.
 
-A>
+
 ```r
 plt("x", ci_band_type = "ts")
 ```
@@ -29,7 +29,7 @@ plt("x", ci_band_type = "ts")
 Not only qqplot can be used to check normality, it can also be used to check if
 observed data follow these distributions: beta, cauchy, chi-squared, exponential, F, gamma, geometric, log-normal, logistic, binomial, poisson, t, and weibull. For example, let's check if the ozone levels from the air quality data are exponentially distributed.
 
-A>
+
 ```r
 plt = mk_qqplot(airquality)
 plt("Ozone", dist = "exp", dparams = list(rate = 0.022)) %>% 

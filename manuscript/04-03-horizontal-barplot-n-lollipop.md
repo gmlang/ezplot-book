@@ -5,34 +5,34 @@ We've discussed two ezplot functions: `mk_barplot_freq()` and
 
 The following examples show how to use `mk_barploth_freq()`.
 
-A>
+
 ```r
 library(ezplot)
 plt = mk_barploth_freq(films)
 ```
 
-A>
+
 ```r
 plt("mpaa", yorder = "descend", label_decimals = 2)
 ```
 
 ![Frequency of MPAA](images/barploth_freq_mpaa_cnt-1.png)
 
-A>
+
 ```r
 plt("mpaa", show_pct = T, yorder = "descend") 
 ```
 
 ![Relative Frequency of MPAA](images/barploth_freq_mpaa_pct-1.png)
 
-A>
+
 ```r
 plt(yvar = "year_cat", fillby = "made_money", label_size = 0) 
 ```
 
 ![Number of Profitable vs. Unprofitable Films for Each Time Period](images/barploth_dodged-1.png)
 
-A>
+
 ```r
 plt(yvar = "year_cat", fillby = "made_money", show_pct = TRUE, 
     legend_title = "Is profitable?")
@@ -42,14 +42,14 @@ plt(yvar = "year_cat", fillby = "made_money", show_pct = TRUE,
 
 The next examples show how to use `mk_barploth_resp()`.
 
-A>
+
 ```r
 library(dplyr)
 df = films %>% count(mpaa) %>% mutate(pct = n / sum(n))
 plt = mk_barploth_resp(df)
 ```
 
-A>
+
 ```r
 plt(xvar = "n", yvar = "mpaa", label_decimals = 0) %>% 
         add_labs(xlab = "Frequency")
@@ -57,7 +57,7 @@ plt(xvar = "n", yvar = "mpaa", label_decimals = 0) %>%
 
 ![Frequency of MPAA](images/barploth_resp_mpaa_cnt-1.png)
 
-A>
+
 ```r
 plt(xvar = "pct", yvar = "mpaa", show_pct = TRUE, 
     label_decimals = 2, font_size = 9)
@@ -65,7 +65,7 @@ plt(xvar = "pct", yvar = "mpaa", show_pct = TRUE,
 
 ![Relative Frequency of MPAA](images/barploth_resp_mpaa_pct-1.png)
 
-A>
+
 ```r
 plt = mk_barploth_resp(films)
 plt("boxoffice", "mpaa", yorder = "descend", 
@@ -75,7 +75,7 @@ plt("boxoffice", "mpaa", yorder = "descend",
 
 ![Boxoffice by MPAA](images/barploth_mpaa_vs_bo-1.png)
 
-A>
+
 ```r
 plt("votes", "mpaa", fillby = "made_money", label_size = 0, 
     font_size = 9, legend_pos = "top") %>% 
@@ -86,7 +86,7 @@ plt("votes", "mpaa", fillby = "made_money", label_size = 0,
 
 An alternative of horizontal bar chart is the lollipop chart. They are exchangeable. Let's make both charts with the following dataset.
 
-A>
+
 ```r
 df = read.csv(text="category,pct
                Other,0.09
@@ -113,19 +113,9 @@ df = read.csv(text="category,pct
               stringsAsFactors = FALSE, sep = ",", header = TRUE)
 # change category to factor and order its levels in ascending order of pct 
 df$category = reorder(df$category, df$pct)
-str(df)
-```
-A>
-```
-'data.frame':	21 obs. of  2 variables:
- $ category: Factor w/ 21 levels "               Other",..: 1 2 3 4 5 6 7 8 9 10 ...
-  ..- attr(*, "scores")= num [1:21(1d)] 0.34 0.67 0.49 0.52 0.34 0.87 0.21 0.85 0.69 0.79 ...
-  .. ..- attr(*, "dimnames")=List of 1
-  .. .. ..$ : chr  "               Africa/Pan Africa/African Americans" "               Caribbean/Caribbean Americans" "               Disability Advocacy" "               European/European Americans" ...
- $ pct     : num  0.09 0.12 0.21 0.25 0.29 0.34 0.34 0.49 0.52 0.54 ...
 ```
 
-A>
+
 ```r
 plt = mk_barploth_resp(df)
 plt("pct", "category", yorder = "descend", 
@@ -134,7 +124,7 @@ plt("pct", "category", yorder = "descend",
 
 ![Horizontal Bar Chart Demo](images/barploth_vs_lollipop_p1-1.png)
 
-A>
+
 ```r
 plt = mk_lollipop(df)
 plt("pct", "category", yorder = "descend", 

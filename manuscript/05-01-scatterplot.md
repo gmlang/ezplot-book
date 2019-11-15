@@ -5,7 +5,7 @@
 A scatter plot shows the relationship between two continuous variables. Let's 
 apply the function `mk_scatterplot()` to the data frame `films` to get a function for making scatter plots of any two continuous variables in `films`.
 
-A>
+
 ```r
 library(dplyr)
 library(ezplot)
@@ -16,7 +16,7 @@ For example, we can use `plt()` to draw a scatter plot of `boxoffice` vs.
 `budget`. We'll use `log10` scale on both axes because the two variables are 
 heavily right-skewed.
 
-A>
+
 ```r
 p = plt(xvar = "budget", yvar = "boxoffice") %>% 
         add_labs(xlab="budget (in US Dollars)", 
@@ -37,7 +37,7 @@ automatically. It adds to the plot the best fitting line, and displays its
 equation by default. In addtion, it also shows the R-squared value and the 
 p-value associated with the coefficient estimate of x. 
 
-A>
+
 ```r
 add_lm_line(p)
 ```
@@ -52,7 +52,7 @@ find the correlation between boxoffice and budget (both at log10 scale) is 0.61.
 The function `plt()` can be re-used for other variables in the same data frame. 
 For example, we can draw a scatter plot of `boxoffice` vs. `votes`.
 
-A>
+
 ```r
 p = plt("votes", "boxoffice", alpha = 0.2, jitter = T) %>% 
         add_labs(xlab = "number of votes", 
@@ -76,7 +76,7 @@ statistically significant by the tiny p-value.
 Instead of the equation, we can show a table of quantities associated with the 
 best fitting line by setting `show = "tb"`.
 
-A>
+
 ```r
 add_lm_line(p, show = "tb") 
 ```
@@ -88,7 +88,7 @@ The table gives more information than the equation. In particular, it reports th
 To summarize, setting `show = "tb"` inside `add_lm_line()` displays a table of
 details such as standard errors and t-statistics; setting `show = "eq"` (default) displays the equation of the best fitting line without those details. When showing the equation, we can optionally supply a categorical variable name to `colorby` and this will color the data points by different groups. Consider this question: did action movies make money year after year? To find out, we'll draw a scatter plot of `bo_bt_ratio` vs. `year`, setting `colorby = "action"`, where `action` is a binary flag indicating if a film is an action film or not.
 
-A>
+
 ```r
 p = plt("year", "bo_bt_ratio", colorby = "action", 
         legend_title = "Is action film?", legend_pos = "top",
