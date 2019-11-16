@@ -10,21 +10,21 @@ library(ezplot)
 plt = mk_barploth_freq(films)
 ```
 
-```{r, barploth_freq_mpaa_cnt, fig.cap="Frequency of MPAA", dpi=300, fig.width=7, fig.height=7} 
-plt("mpaa", yorder = "descend", label_decimals = 2)
+```{r, barploth_freq_mpaa_cnt, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
+plt("mpaa", yorder = "descend", label_decimals = 2, font_size = 8)
 ```      
 
-```{r, barploth_freq_mpaa_pct, fig.cap="Relative Frequency of MPAA", dpi=300, fig.width=7, fig.height=7} 
-plt("mpaa", show_pct = T, yorder = "descend") 
+```{r, barploth_freq_mpaa_pct, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
+plt("mpaa", show_pct = TRUE, yorder = "descend", font_size = 8) 
 ```
 
-```{r, barploth_dodged, fig.cap="Number of Profitable vs. Unprofitable Films for Each Time Period", dpi=300, fig.width=7, fig.height=7} 
-plt(yvar = "year_cat", fillby = "made_money", label_size = 0) 
+```{r, barploth_dodged, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
+plt(yvar = "year_cat", fillby = "made_money", label_size = 0, font_size = 8) 
 ```  
 
-```{r, barploth_stacked, fig.cap="Percents of Profitable vs. Unprofitable Films for Each Time Period", dpi=300, fig.width=7, fig.height=7} 
+```{r, barploth_stacked, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
 plt(yvar = "year_cat", fillby = "made_money", show_pct = TRUE, 
-    legend_title = "Is profitable?")
+    legend_title = "Is profitable?", font_size = 8)
 ```  
 
 The next examples show how to use `mk_barploth_resp()`.
@@ -35,26 +35,27 @@ df = films %>% count(mpaa) %>% mutate(pct = n / sum(n))
 plt = mk_barploth_resp(df)
 ```
 
-```{r, barploth_resp_mpaa_cnt, fig.cap="Frequency of MPAA", dpi=300, fig.width=7, fig.height=7} 
-plt(xvar = "n", yvar = "mpaa", label_decimals = 0) %>% 
+```{r, barploth_resp_mpaa_cnt, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
+plt(xvar = "n", yvar = "mpaa", label_decimals = 0, font_size = 8) %>% 
         add_labs(xlab = "Frequency")
 ```  
 
-```{r, barploth_resp_mpaa_pct, fig.cap="Relative Frequency of MPAA", dpi=300, fig.width=7, fig.height=7}   
+```{r, barploth_resp_mpaa_pct, fig.cap="", dpi=300, fig.width=4, fig.height=4}   
 plt(xvar = "pct", yvar = "mpaa", show_pct = TRUE, 
-    label_decimals = 2, font_size = 9)
+    label_decimals = 2, font_size = 8) %>% 
+        add_labs(xlab = 'Relative Frequency')
 ```
 
-```{r, barploth_mpaa_vs_bo, fig.cap="Boxoffice by MPAA", dpi=300, fig.width=7, fig.height=7} 
+```{r, barploth_mpaa_vs_bo, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
 plt = mk_barploth_resp(films)
 plt("boxoffice", "mpaa", yorder = "descend", 
-    font_size = 10, label_decimals = 0) %>% 
+    font_size = 8, label_decimals = 0) %>% 
         rotate_axis_text(10)
 ```  
 
-```{r, barploth_dodged_p3, fig.cap="Votes of Profitable and Unprofitable Films for each MAPP rating", dpi=300, fig.width=7, fig.height=7} 
+```{r, barploth_dodged_p3, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
 plt("votes", "mpaa", fillby = "made_money", label_size = 0, 
-    font_size = 9, legend_pos = "top") %>% 
+    font_size = 8, legend_pos = "top") %>% 
         rotate_axis_text(15)
 ```
 
@@ -88,14 +89,14 @@ df = read.csv(text="category,pct
 df$category = reorder(df$category, df$pct)
 ```
 
-```{r, barploth_vs_lollipop_p1, fig.cap="Horizontal Bar Chart Demo", dpi=300, fig.width=7, fig.height=7} 
+```{r, barploth_vs_lollipop_p1, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
 plt = mk_barploth_resp(df)
 plt("pct", "category", yorder = "descend", 
-    font_size = 10, show_pct = TRUE, label_decimals = 0)
+    font_size = 8, show_pct = TRUE, label_decimals = 0)
 ```
 
-```{r, barploth_vs_lollipop_p2, fig.cap="Lollipop Chart Demo", dpi=300, fig.width=7, fig.height=7} 
+```{r, barploth_vs_lollipop_p2, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
 plt = mk_lollipop(df)
 plt("pct", "category", yorder = "descend", 
-    font_size = 10, show_pct = TRUE, label_decimals = 0)
+    font_size = 8, show_pct = TRUE, label_decimals = 0)
 ```

@@ -1,4 +1,2 @@
 frontmatter.md
-preface.md
-mainmatter.md
-04-02-dodged-n-stacked-barchart.md
+04-03-horizontal-barplot-n-lollipop.md
