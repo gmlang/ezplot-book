@@ -1,4 +1,4 @@
 frontmatter.md
 preface.md
 mainmatter.md
-02-05-qqplot.md
+02-06-check-dist-convars.md

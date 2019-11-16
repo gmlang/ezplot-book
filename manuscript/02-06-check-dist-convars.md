@@ -14,7 +14,7 @@ The exponential distribution is the probability distribution of the time between
 ```r
 df = births %>% filter(!is.na(diffs))
 f = check_expdist(df)
-f('diffs', linew = 1.2, xlab = 'Minutes between births',
+f('diffs', linew = 0.5, font_size = 8, xlab = 'Minutes between births',
   title_left = 'CDF of interarrival time between births',
   title_right = 'Is interarrival time exponential?',
   add_vline_median = TRUE, digits = 3)
@@ -29,7 +29,7 @@ The `iris` dataset contains a variable `Sepal.Length`. Let's check if it follows
 
 ```r
 plt = check_normality(iris)
-plt("Sepal.Length", add_vline_median = TRUE,
+plt("Sepal.Length", add_vline_median = TRUE, linew = 0.5, font_size = 8, 
     caption_right = 'Sepal length is almost normal except at the left tail.')
 ```
 
@@ -47,7 +47,7 @@ Sometimes the data do not follow the normal distribution, but their log-transfor
 df = pops %>% filter(!is.na(pop), pop < 10^5) %>% # pop is in thousands
         mutate(logpop = log(pop)) 
 plt = check_normality(df)
-plt('logpop', 
+plt('logpop', linew = 0.5, font_size = 8, 
     xlab_left = 'log(Population)',
     title_left = 'Population (< 100 million) of US cities/towns',
     title_right = 'Is log(Population) normal?')
@@ -66,10 +66,10 @@ The pareto distribution is a power-law probability distribution that describes t
 # focus on cities/towns with 100+ million people
 df = pops %>% filter(!is.na(pop), pop >= 10^5) # pop is in thousands
 f = check_pareto(df)
-f('pop', xlab = 'Population (in thousands)',
+f('pop', linew = 1, font_size = 8, digits = 1,
+  xlab = 'Population (in thousands)',
   title_left = 'Population (100+ million) of US cities/towns',
-  title_right = 'Is population pareto?',
-  linew = 1, digits = 1)
+  title_right = 'Is population pareto?')
 ```
 
 ![Does population (100+ million) follow the pareto distribution?](images/check_pareto_pop-1.png)
