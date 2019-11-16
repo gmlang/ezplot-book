@@ -10,7 +10,7 @@ set.seed(123923)
 df = rbind(data.frame(x = rnorm(100), type = 'Norm(0, 1)'),
            data.frame(x = rt(100, df = 3), type = 't(3)'))
 plt = mk_cdfplot(df)
-plt('x', colorby='type', add_vline_median = TRUE, font_size = 10, 
+plt('x', colorby='type', add_vline_median = TRUE, font_size = 9, 
     legend_title = NULL, legend_pos = 'top', pad = FALSE) %>% 
         square_fig()
 ```
@@ -33,7 +33,7 @@ dat = rbind(births %>% filter(!is.na(diffs)) %>%
             )
 # plot CDFs of observed data and sample data from exponential model
 f = mk_cdfplot(dat)
-f("diffs", colorby = 'type', pad = F, font_size = 10, 
+f("diffs", colorby = 'type', pad = F, font_size = 9, 
   legend_title = NULL, legend_pos = 'top',
   add_vline_median = T, show_label_median = F) %>%
         scale_axis(axis = 'x', nticks = 10) %>%
@@ -47,7 +47,7 @@ We see the blue (data) and the orange (model) curves overlap up to about 60 minu
 
 ```r
 f("diffs", complement = TRUE, colorby = 'type', pad = FALSE, 
-  legend_title = NULL, legend_pos = 'top', font_size = 10, 
+  legend_title = NULL, legend_pos = 'top', font_size = 9, 
   add_vline_median = T, show_label_median = F) %>%
         scale_axis(axis = 'y', scale = 'log') %>%
         scale_axis(axis = 'x', nticks = 10) %>%
