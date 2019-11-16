@@ -8,14 +8,13 @@ library(dplyr)
 library(ezplot)
 set.seed(123923)
 df = rbind(data.frame(x = rnorm(100), type = 'Norm(0, 1)'),
-           data.frame(x = rt(100, df = 3), type = 't(3)')
-           )
+           data.frame(x = rt(100, df = 3), type = 't(3)'))
 plt = mk_cdfplot(df)
 plt('x', colorby='type', add_vline_median = TRUE, legend_title = NULL,
     pad = FALSE)
 ```
 
-![Empirical CDFs of normal and t random samples](images/cdfplot_simu-1.png)
+![](images/cdfplot_simu-1.png)
 
 We see both distributions are symmetric, but the t-distribution has heavier tails, meaning that it is more prone to producing values that are far from its mean and median. See how the blue curve stops at x = -2.5 and x = 2.5, while the orange curve extends beyond -5 and 5. 
 
@@ -37,10 +36,10 @@ f("diffs", colorby = 'type', pad = F,
   legend_title = NULL, legend_pos = 'top',
   add_vline_median = T, show_label_median = F) %>%
         scale_axis(axis = 'x', nticks = 10) %>%
-        add_labs(xlab = 'Minutes between births')
+        add_labs(xlab = 'Time (in minutes) between births')
 ```
 
-![Empirical CDF of time between births](images/cdfplot_time_bw_births-1.png)
+![](images/cdfplot_time_bw_births-1.png)
 
 We see the blue (data) and the orange (model) curves overlap up to about 60 minutes and then start separating a little. This tells us the time between births of those 44 babies up to 60 minutes can be modeled by an exponential distribution with rate 0.03056, and beyond 60 minutes, the exponential model fails to fit the data well. We can also plot the Compliment CDF (CCDF), which is calculated as `1 - CDF`. If data were from an exponential distribution, their CCDF on a log-y scale would be a line with a negative slope, and the absolute value of the slope would be a good estimate to the rate of the exponential distribution from which the data were drawn. Let's plot the CCDF of the `diffs` data on a log-y scale. We see blue (data) curve is a straight line up to 60 minutes, and this confirms with what we saw in the cdf plot. 
 
@@ -51,10 +50,11 @@ f("diffs", complement = TRUE, colorby = 'type', pad = FALSE,
   add_vline_median = T, show_label_median = F) %>%
         scale_axis(axis = 'y', scale = 'log') %>%
         scale_axis(axis = 'x', nticks = 10) %>%
-        add_labs(xlab = 'Minutes between births')
+        add_labs(xlab = 'Time (in minutes) between births',
+                 subtitle = 'Compliment CDF of time between births')
 ```
 
-![Compliment CDF of time between births](images/ccdfplot_time_bw_births-1.png)
+![](images/ccdfplot_time_bw_births-1.png)
 
 Now it's your turn. Try the following exercises for homework.
 

@@ -1,4 +1,4 @@
 frontmatter.md
 preface.md
 mainmatter.md
-02-03-boxplot.md
+02-04-cdfplot.md
