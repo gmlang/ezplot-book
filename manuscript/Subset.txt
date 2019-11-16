@@ -1,6 +1,4 @@
 frontmatter.md
 preface.md
 mainmatter.md
-02-00-plot-dist-convars.md
-02-01-histogram.md
-02-02-densityplot.md
+02-03-boxplot.md

@@ -14,11 +14,12 @@ library(dplyr)
 ```r
 plt = mk_boxplot(films)
 p = plt(yvar = "budget")
-p = add_labs(p, ylab = "budget ($)", title = "Distribution of budget") 
-scale_axis(p, axis = "y", scale = "log10") # use log10 scale on y-axis
+p = scale_axis(p, axis = "y", scale = "log10") # use log10 scale on y-axis
+add_labs(p, ylab = "budget ($)", title = "Distribution of budget",
+         subtitle = 'on a log10-y scale') 
 ```
 
-![Distribution of budget](images/boxplot_budget-1.png)
+![](images/boxplot_budget-1.png)
 
 Notice we didn't specify `xvar` inside the function `plt()`, so `plt()` uses
 the default setting `xvar = '1'`. The number 5944 is the total number of 
@@ -28,11 +29,12 @@ vs. `year_cat`.
 
 
 ```r
-p = plt(xvar = "year_cat", yvar = "budget")
-scale_axis(p, axis="y", scale = "dollar") # apply dollar scale to y-axis 
+plt(xvar = "year_cat", yvar = "budget") %>% 
+        # apply dollar scale to y-axis 
+        scale_axis(axis="y", scale = "dollar") 
 ```
 
-![Distribution of budget over the decades](images/boxplot_bt_vs_year_cat_p1-1.png)
+![](images/boxplot_bt_vs_year_cat_p1-1.png)
 
 We see budget has increased over the decades. There were only 231 films released between 1913 and 1950, but 4594 films released between 1990 and 2014. Yes, 
 ezplot is smart enough to tally these numbers and display them at the top of 
@@ -54,14 +56,15 @@ To make it work, we can change `year` to factor first.
 
 
 ```r
-plt = mk_boxplot(
+f = mk_boxplot(
         films %>% filter(year %in% 2010:2014) %>% 
                 mutate(year = factor(year))
         )
-plt("year", "budget", notched = T) # draw notched boxplot
+f("year", "budget", notched = T) %>% # draw notched boxplot
+        add_labs(caption = 'data period: 2010 - 2014')
 ```
 
-![Distribution of budget 2010 - 2014](images/boxplot_bt_vs_year_p1-1.png)
+![](images/boxplot_bt_vs_year_p1-1.png)
 
 Notice the "notches" or narrowing of the box around the median. We did that by 
 setting `notched = T`. Notches are useful in offering a rough guide to the significance of difference of medians. If the notches of two boxes do not overlap, we have evidence of a statistically significant difference between the medians.
@@ -71,12 +74,11 @@ draw boxplots in different colors for different groups. For example, we can show
 
 
 ```r
-plt = mk_boxplot(films)
-plt("year_cat", "rating", fillby = "made_money", 
-    legend_title = "Is profitable?", legend_pos = "top", notched = T)
+plt("year_cat", "rating", fillby = "made_money", notched = TRUE,
+    legend_title = "Is profitable?", legend_pos = "top")
 ```
 
-![Distribution of avg ratings, profitable vs. unprofitable films](images/boxplot_rating_vs_year_cat_by_made_money-1.png)
+![](images/boxplot_rating_vs_year_cat_by_made_money-1.png)
 
 For homework, try the following exercises.
 

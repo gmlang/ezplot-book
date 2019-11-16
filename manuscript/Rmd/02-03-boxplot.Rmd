@@ -9,11 +9,12 @@ library(ezplot)
 library(dplyr)
 ```
 
-```{r, boxplot_budget, fig.cap="Distribution of budget", dpi=300, fig.width=7, fig.height=7}
+```{r, boxplot_budget, fig.cap="", dpi=300, fig.width=5, fig.height=5}
 plt = mk_boxplot(films)
 p = plt(yvar = "budget")
-p = add_labs(p, ylab = "budget ($)", title = "Distribution of budget") 
-scale_axis(p, axis = "y", scale = "log10") # use log10 scale on y-axis
+p = scale_axis(p, axis = "y", scale = "log10") # use log10 scale on y-axis
+add_labs(p, ylab = "budget ($)", title = "Distribution of budget",
+         subtitle = 'on a log10-y scale') 
 ```
 
 Notice we didn't specify `xvar` inside the function `plt()`, so `plt()` uses
@@ -22,9 +23,10 @@ observations. If we want to show how `budget` is distributed for different group
 budget changed over the years. To find out, we can draw a boxplot of `budget` 
 vs. `year_cat`. 
 
-```{r, boxplot_bt_vs_year_cat_p1, fig.cap="Distribution of budget over the decades", dpi=300, fig.width=7, fig.height=7}
-p = plt(xvar = "year_cat", yvar = "budget")
-scale_axis(p, axis="y", scale = "dollar") # apply dollar scale to y-axis 
+```{r, boxplot_bt_vs_year_cat_p1, fig.cap="", dpi=300, fig.width=5, fig.height=5}
+plt(xvar = "year_cat", yvar = "budget") %>% 
+        # apply dollar scale to y-axis 
+        scale_axis(axis="y", scale = "dollar") 
 ```
 
 We see budget has increased over the decades. There were only 231 films released between 1913 and 1950, but 4594 films released between 1990 and 2014. Yes, 
@@ -40,12 +42,13 @@ plt(xvar = "year", yvar = "budget") # throws error since "year" is integer
 
 To make it work, we can change `year` to factor first. 
 
-```{r, boxplot_bt_vs_year_p1, fig.cap="Distribution of budget 2010 - 2014", dpi=300, fig.width=7, fig.height=7}
-plt = mk_boxplot(
+```{r, boxplot_bt_vs_year_p1, fig.cap="", dpi=300, fig.width=5, fig.height=5}
+f = mk_boxplot(
         films %>% filter(year %in% 2010:2014) %>% 
                 mutate(year = factor(year))
         )
-plt("year", "budget", notched = T) # draw notched boxplot
+f("year", "budget", notched = T) %>% # draw notched boxplot
+        add_labs(caption = 'data period: 2010 - 2014')
 ```
 
 Notice the "notches" or narrowing of the box around the median. We did that by 
@@ -54,10 +57,9 @@ setting `notched = T`. Notches are useful in offering a rough guide to the signi
 In addtion to `xvar` and `yvar`, we can also supply a `fillby` varname to
 draw boxplots in different colors for different groups. For example, we can show the distribution of users' average ratings for profitable and unprofitable films at each period.
 
-```{r, boxplot_rating_vs_year_cat_by_made_money, fig.cap="Distribution of avg ratings, profitable vs. unprofitable films", dpi=300, fig.width=7, fig.height=7}
-plt = mk_boxplot(films)
-plt("year_cat", "rating", fillby = "made_money", 
-    legend_title = "Is profitable?", legend_pos = "top", notched = T)
+```{r, boxplot_rating_vs_year_cat_by_made_money, fig.cap="", dpi=300, fig.width=5, fig.height=5}
+plt("year_cat", "rating", fillby = "made_money", notched = TRUE,
+    legend_title = "Is profitable?", legend_pos = "top")
 ```
 
 For homework, try the following exercises.
