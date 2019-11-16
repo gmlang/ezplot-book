@@ -18,11 +18,10 @@ The output `num` says that its type is numeric. Looking at the first few data va
 ```r
 plt = mk_histdens(films)
 p = plt("rating", bins = 80, legend_pos = 'bottom') 
-add_labs(p, xlab = "IMDB Users' Average Rating", 
-         title = "Distribution of Users' Average Ratings (1913-2014)")
+add_labs(p, xlab = "Rating", title = "IMBD Users' Average Ratings (1913-2014)")
 ```
 
-![Avg. Ratings with Mean and Median Lines](images/hist_rating_p1-1.png)
+![plot of chunk hist_rating_p1](images/hist_rating_p1-1.png)
 
 We first called the function `mk_histdens()` on the data frame `films`, and 
 obtained another function `plt()` in return. We then passed the string `"rating"` into `plt()` to draw the histogram. Note `"rating"` is the name of the variable, not the variable symbol. The object returned by `plt()` is a ggplot2 chart. We passed it into the function `add_labs()` to give it a new x-axis label and title. 
@@ -35,7 +34,7 @@ of each bin, and this will overwrite the number of bins. In practice, I often pl
 plt("rating", binwidth = 0.1, add_vline_median = FALSE, legend_pos = "top") 
 ```
 
-![Avg. Ratings with Mean Line](images/hist_rating_p2-1.png)
+![plot of chunk hist_rating_p2](images/hist_rating_p2-1.png)
 
 Now I want you to run `?mk_histdens()` and read the documentation. Pay attention to the bullet point `facet_by`.
 
@@ -56,10 +55,11 @@ and the other of unprofitable films, by simply setting `facet_by = "made_money"`
 
 
 ```r
-plt("rating", facet_by = "made_money", bins=100, add_vline_mean = F) 
+p = plt("rating", facet_by = "made_money", bins=100, add_vline_mean = F)
+add_labs(p, subtitle = 'Avg. ratings of unrofitable vs. profitable films')
 ```
 
-![Avg. Ratings of Two Film Groups](images/hist_rating_by_made_money-1.png)
+![plot of chunk hist_rating_by_made_money](images/hist_rating_by_made_money-1.png)
 
 We see profitable films have a higher median average rating, and it seems
 there're more profitable films (the height of the bottom histogram is higher).

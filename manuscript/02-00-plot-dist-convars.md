@@ -72,7 +72,7 @@ Let's focus on the variable `budget`. Its type is numeric, so it's continuous an
 
 ```r
 plt = mk_histdens(films) # plt is a function
-plt("budget", bins = 100, legend_pos = 'bottom') # plot histogram by default
+plt("budget", bins = 100, legend_pos = 'top') # plot histogram by default
 ```
 
 ![Histogram of budget](images/hist_budget-1.png)
@@ -81,7 +81,7 @@ Alternatively, we can make a density plot.
 
 
 ```r
-plt("budget", type = 'density', legend_pos = 'bottom') 
+plt("budget", type = 'density', legend_pos = 'top') 
 ```
 
 ![Density plot of budget](images/density_budget-1.png)
@@ -94,7 +94,7 @@ plt = mk_cdfplot(films)
 plt("budget", add_vline_median = TRUE) 
 ```
 
-![CDF plot of budget](images/cdf_budget-1.png)
+![Empirical CDF of budget](images/cdf_budget-1.png)
 
 Finally, we can also draw a boxplot.
 
@@ -149,7 +149,7 @@ plt2("log_budget", bins = 100, legend_pos = 'bottom') # draw histogram by defaul
 plt2("log_budget", type = 'density', adjust = 0.6, legend_pos = 'bottom') 
 ```
 
-![Density of log(budget)](images/density_log_budget-1.png)
+![Density plot of log(budget)](images/density_log_budget-1.png)
 
 
 ```r
@@ -157,7 +157,7 @@ plt2 = mk_cdfplot(films)
 plt2("log_budget", add_vline_median = TRUE)
 ```
 
-![CDF of log(budget)](images/cdf_log_budget-1.png)
+![Empirical CDF of log(budget)](images/cdf_log_budget-1.png)
 
 
 ```r

@@ -13,18 +13,18 @@ Let's focus on the variable `budget`. Its type is numeric, so it's continuous an
 
 ```{r, hist_budget, fig.cap="Histogram of budget", dpi=300, fig.width=5, fig.height=5}
 plt = mk_histdens(films) # plt is a function
-plt("budget", bins = 100, legend_pos = 'bottom') # plot histogram by default
+plt("budget", bins = 100, legend_pos = 'top') # plot histogram by default
 ```
 
 Alternatively, we can make a density plot.
 
 ```{r, density_budget, fig.cap="Density plot of budget", dpi=300, fig.width=5, fig.height=5}
-plt("budget", type = 'density', legend_pos = 'bottom') 
+plt("budget", type = 'density', legend_pos = 'top') 
 ```
 
 Instead of looking at its density curve, we can plot its Cumulative Distribution Function (CDF).
 
-```{r, cdf_budget, fig.cap="CDF plot of budget", dpi=300, fig.width=5, fig.height=5}
+```{r, cdf_budget, fig.cap="Empirical CDF of budget", dpi=300, fig.width=5, fig.height=5}
 plt = mk_cdfplot(films) 
 plt("budget", add_vline_median = TRUE) 
 ```
@@ -68,11 +68,11 @@ plt2 = mk_histdens(films)
 plt2("log_budget", bins = 100, legend_pos = 'bottom') # draw histogram by default
 ```
 
-```{r, density_log_budget, fig.cap="Density of log(budget)", dpi=300, fig.width=5, fig.height=5}
+```{r, density_log_budget, fig.cap="Density plot of log(budget)", dpi=300, fig.width=5, fig.height=5}
 plt2("log_budget", type = 'density', adjust = 0.6, legend_pos = 'bottom') 
 ```
 
-```{r, cdf_log_budget, fig.cap="CDF of log(budget)", dpi=300, fig.width=5, fig.height=5}
+```{r, cdf_log_budget, fig.cap="Empirical CDF of log(budget)", dpi=300, fig.width=5, fig.height=5}
 plt2 = mk_cdfplot(films)
 plt2("log_budget", add_vline_median = TRUE)
 ```
