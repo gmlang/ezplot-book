@@ -10,8 +10,9 @@ set.seed(123923)
 df = rbind(data.frame(x = rnorm(100), type = 'Norm(0, 1)'),
            data.frame(x = rt(100, df = 3), type = 't(3)'))
 plt = mk_cdfplot(df)
-plt('x', colorby='type', add_vline_median = TRUE, legend_title = NULL,
-    pad = FALSE)
+plt('x', colorby='type', add_vline_median = TRUE, 
+    legend_title = NULL, legend_pos = 'top', pad = FALSE) %>% 
+        square_fig()
 ```
 
 ![](images/cdfplot_simu-1.png)
