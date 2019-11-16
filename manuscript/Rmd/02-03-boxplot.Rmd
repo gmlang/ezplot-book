@@ -23,7 +23,7 @@ observations. If we want to show how `budget` is distributed for different group
 budget changed over the years. To find out, we can draw a boxplot of `budget` 
 vs. `year_cat`. 
 
-```{r, boxplot_bt_vs_year_cat_p1, fig.cap="", dpi=300, fig.width=5, fig.height=5}
+```{r, boxplot_bt_vs_year_cat_p1, fig.cap="", dpi=300, fig.width=6, fig.height=6}
 plt(xvar = "year_cat", yvar = "budget") %>% 
         # apply dollar scale to y-axis 
         scale_axis(axis="y", scale = "dollar") 
