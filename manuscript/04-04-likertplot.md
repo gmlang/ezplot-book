@@ -12,20 +12,22 @@ df = films %>% # convert implicit NA to explicit "(Missing)"
         mutate(pct = n/sum(n)) %>% ungroup()
 plt = mk_likertplot(df)
 plt(xvar = "n", yvar = "mpaa", fillby = "made_money", 
-    fillby_lvls = c("no", "yes"), yorder = "ascend")
+    fillby_lvls = c("no", "yes"), yorder = "ascend", font_size = 8) %>% 
+        add_labs(xlab = 'Frequency')
 ```
 
-![Frequencies of Profitable vs. Unprofitable Films for each MPAA rating](images/likert_mpaa_cnt-1.png)
+![](images/likert_mpaa_cnt-1.png)
 
 We've already seen how to use `xvar`, `yvar`, `fillby`, and `yorder` before. The only parameter new here is `fillby_lvls`. We need to give it a character vector containing the unique levels of the `fillby` variable. The order of these values from left to right corresponds to the colored stacked bars from left to right. In this example, we set `fillby_lvls = c("no", "yes")`, as a result, the bars to the left of `x = 0` correspond to `made_money = no`, and to the right of `x = 0` correspond to `made_money = yes`. We can also show percent instead of raw count.
 
 
 ```r
 plt("pct", "mpaa", fillby = "made_money", fillby_lvls = c("no", "yes"), 
-    legend_title = "Is profitable?", x_as_pct = TRUE)
+    legend_title = "Is profitable?", x_as_pct = TRUE, font_size = 8) %>% 
+        add_labs(xlab = 'Relative Frequency')
 ```
 
-![Percents of Profitable vs. Unprofitable Films for each MPAA rating](images/likert_mpaa_pct-1.png)
+![](images/likert_mpaa_pct-1.png)
 
 Let's consider another example by first making some fake data.
 
@@ -43,12 +45,12 @@ head(df)
 
 ```
   item slope       type spp sppInv
-1    A North     native   5      5
-2    B North     native   4      4
-3    C North     native   7      7
-4    D North     native   2      2
-5    E North     native   7      7
-6    A North introduced   4     -4
+1    A North     native   6      6
+2    B North     native   5      5
+3    C North     native   4      4
+4    D North     native   4      4
+5    E North     native   4      4
+6    A North introduced   6     -6
 ```
 
 ```r
@@ -57,12 +59,12 @@ tail(df)
 
 ```
    item slope       type spp sppInv
-15    E South     native   1      1
-16    A South introduced   9     -9
-17    B South introduced   5     -5
-18    C South introduced   5     -5
-19    D South introduced   8     -8
-20    E South introduced   6     -6
+15    E South     native   4      4
+16    A South introduced   7     -7
+17    B South introduced   4     -4
+18    C South introduced   4     -4
+19    D South introduced   7     -7
+20    E South introduced   2     -2
 ```
 
 Let's focus on North and ignore South. 
@@ -78,24 +80,22 @@ each `item`.
 
 
 ```r
-plt("sppInv", "item", fillby = "type", 
-    fillby_lvls = c("introduced", "native"),
-    legend_pos = "top")
+plt("sppInv", "item", fillby = "type", fillby_lvls = c("introduced", "native"),
+    legend_pos = "top", font_size = 8)
 ```
 
-![sppInv by type for each item](images/likert_north_sppInv-1.png)
+![](images/likert_north_sppInv-1.png)
 
 On the other hand, the variable `spp` is always > 0. Let's also make a likert 
 chart to show the values of `spp` by `type` for each `item`.
 
 
 ```r
-plt("spp", "item", fillby = "type", 
-    fillby_lvls = c("introduced", "native"),
-    legend_pos = "bottom")
+plt("spp", "item", fillby = "type", fillby_lvls = c("introduced", "native"),
+    legend_pos = "bottom", font_size = 8)
 ```
 
-![spp by type for each item](images/likert_north_spp-1.png)
+![](images/likert_north_spp-1.png)
 
 To summarize, `mk_likertplot()` can work with both positive and negative x values
 and show correct x-tick labels. When x-values are negative, the negative x-axis labels the ticks with negative numbers. When x-values are positive, the positive x-axis labels the ticks with positive numbers. 
@@ -108,7 +108,7 @@ df = ab3 %>% tidyr::gather(opinion, pct, -Country)
 lvls = unique(df$opinion)
 plt = mk_likertplot(df)
 plt("pct", "Country", fillby = "opinion", fillby_lvls = lvls, 
-    x_as_pct = TRUE, font_size = 9) %>%
+    x_as_pct = TRUE, font_size = 8) %>%
     add_labs(xlab = NULL, 
              title = "Confidence for 12 arabic countries' economy")
 ```
