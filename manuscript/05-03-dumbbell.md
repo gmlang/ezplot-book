@@ -32,7 +32,7 @@ plt = mk_dumbbell(df)
 plt(xvar_left = "lt", xvar_right = "rt", yvar = "trt")
 ```
 
-![lt vs. rt across trt](images/dumbbell_fake-1.png)
+![](images/dumbbell_fake-1.png)
 
 When making a dumbbell plot, the data frame must already be in a form such that
 the categorical variable to be used has no repeated levels. For example, in the
@@ -71,10 +71,11 @@ Let's use a dumbbell plot to display the data.
 ```r
 plt = mk_dumbbell(df)
 plt(xvar_left = "age35", xvar_right = "age18to34", yvar = "country", 
-    yorder = "ascend", label_decimals = 2)
+    yorder = "ascend", label_decimals = 2) %>% 
+        add_labs(title = 'Social media usage comparison \nbetween two age groups')
 ```
 
-![Social Media Usage of 2 Age Groups](images/dumbbell_sm_p1-1.png)
+![](images/dumbbell_sm_p1-1.png)
 
 In the chart above, we sorted the countries in ascending order of the differences
 between the two age groups by setting `yorder = "ascend"`. We can also sort 
@@ -84,10 +85,11 @@ choose to show them in % format by setting `show_pct = T`.
 
 ```r
 plt("age35", "age18to34", "country", yorder = "descend", show_pct = T,
-    label_decimals = 0)
+    label_decimals = 0) %>% 
+        add_labs(title = 'Social media usage comparison \nbetween two age groups')
 ```
 
-![Social Media Usage of 2 Age Groups](images/dumbbell_sm_p2-1.png)
+![](images/dumbbell_sm_p2-1.png)
 
 Notice ezplot automatically uses the two x-variable names (age35 and 
 age18to34) as the labels of the points. It also calculates the differences 
