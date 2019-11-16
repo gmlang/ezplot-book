@@ -43,9 +43,10 @@ add_labs(p, ylab = "Frequency")
 
 To summarise, `mk_barplot_resp()` aggregates the y values for each x category before making a bar chart. Now we know this, we can use it to plot the total boxoffice for each MPAA rating.
 
-```{r, barplot_mpaa_vs_bo, fig.cap="", dpi=300, fig.width=5, fig.height=5} 
+```{r, barplot_mpaa_vs_bo, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
 plt = mk_barplot_resp(films)
-plt("mpaa", "boxoffice", xorder = "descend", font_size = 7, label_decimals = 0)
+plt("mpaa", "boxoffice", xorder = "descend", font_size = 8, label_decimals = 0,
+    label_size = 1.5)
 ```  
 
 Now try the following exercises for homework.
