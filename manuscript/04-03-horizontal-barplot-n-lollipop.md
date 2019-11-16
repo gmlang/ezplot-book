@@ -81,7 +81,7 @@ plt("boxoffice", "mpaa", yorder = "descend", label_decimals = 0,
 ```r
 plt("votes", "mpaa", fillby = "made_money", label_size = 0, 
     font_size = 8, legend_pos = "top") %>% 
-        rotate_axis_text(15)
+        rotate_axis_text(20)
 ```
 
 ![](images/barploth_dodged_p3-1.png)
@@ -120,7 +120,8 @@ df$category = reorder(df$category, df$pct)
 
 ```r
 plt = mk_barploth_resp(df)
-plt("pct", "category", yorder = "descend", show_pct = TRUE, label_decimals = 0)
+plt("pct", "category", yorder = "descend", show_pct = TRUE, label_decimals = 0,
+    font_size = 8)
 ```
 
 ![](images/barploth_vs_lollipop_p1-1.png)
@@ -128,7 +129,8 @@ plt("pct", "category", yorder = "descend", show_pct = TRUE, label_decimals = 0)
 
 ```r
 plt = mk_lollipop(df)
-plt("pct", "category", yorder = "descend", show_pct = TRUE, label_decimals = 0)
+plt("pct", "category", yorder = "descend", show_pct = TRUE, label_decimals = 0,
+    font_size = 8)
 ```
 
 ![](images/barploth_vs_lollipop_p2-1.png)

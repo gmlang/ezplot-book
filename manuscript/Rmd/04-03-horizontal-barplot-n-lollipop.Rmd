@@ -57,7 +57,7 @@ plt("boxoffice", "mpaa", yorder = "descend", label_decimals = 0,
 ```{r, barploth_dodged_p3, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
 plt("votes", "mpaa", fillby = "made_money", label_size = 0, 
     font_size = 8, legend_pos = "top") %>% 
-        rotate_axis_text(15)
+        rotate_axis_text(20)
 ```
 
 An alternative of horizontal bar chart is the lollipop chart. They are exchangeable. Let's make both charts with the following dataset.
@@ -90,12 +90,14 @@ df = read.csv(text="category,pct
 df$category = reorder(df$category, df$pct)
 ```
 
-```{r, barploth_vs_lollipop_p1, fig.cap="", dpi=300, fig.width=6, fig.height=6} 
+```{r, barploth_vs_lollipop_p1, fig.cap="", dpi=300, fig.width=7, fig.height=7} 
 plt = mk_barploth_resp(df)
-plt("pct", "category", yorder = "descend", show_pct = TRUE, label_decimals = 0)
+plt("pct", "category", yorder = "descend", show_pct = TRUE, label_decimals = 0,
+    font_size = 8)
 ```
 
-```{r, barploth_vs_lollipop_p2, fig.cap="", dpi=300, fig.width=6, fig.height=6} 
+```{r, barploth_vs_lollipop_p2, fig.cap="", dpi=300, fig.width=7, fig.height=7} 
 plt = mk_lollipop(df)
-plt("pct", "category", yorder = "descend", show_pct = TRUE, label_decimals = 0)
+plt("pct", "category", yorder = "descend", show_pct = TRUE, label_decimals = 0,
+    font_size = 8)
 ```
