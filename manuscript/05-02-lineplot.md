@@ -7,14 +7,14 @@ annual average budget (and boxoffice) over the years.
 ```r
 library(ezplot)
 plt = mk_lineplot(btbo_by_year)
-p = plt("year", "avg", colorby = "type", font_size = 10, add_cnt_to_legend = F,
+p = plt("year", "avg", colorby = "type", font_size = 8, add_cnt_to_legend = F,
         legend_pos = "top", legend_title = NULL)
-add_labs(p, ylab = "total amount ($billion)", xlab = NULL, subtitle = NULL,
-         title = "Annual Total Budget and Boxoffice from 1913 to 2014",
+add_labs(p, ylab = "Avg amount ($billion)", xlab = NULL, subtitle = NULL,
+         title = "Annual Avg Budget and Boxoffice from 1913 to 2014",
          caption = "data source: IMBD.com")
 ```
 
-![Annual Mean Budget and Boxoffice 1913-2014](images/lineplot_bobt-1.png)
+![](images/lineplot_bobt-1.png)
 
 Notice we set `add_cnt_to_legend = F` above. Change it to `add_cnt_to_legend = T` 
 and re-run. What's changed on the plot? 
@@ -29,7 +29,7 @@ library(tidyr)
 df = btbo_by_year %>% select(-avg) %>% spread(type, tot) %>% 
         mutate(bo_bt_ratio = boxoffice / budget)
 plt = mk_lineplot(df)
-p = plt("year", "bo_bt_ratio")
+p = plt("year", "bo_bt_ratio", font_size = 8)
 p = p + ggplot2::geom_hline(yintercept = 10, linetype = 2) +
         ggplot2::geom_text(x = 2005, y = 20, color = "black", label = "10x")
 add_labs(p, ylab="boxoffice/budget", xlab = NULL,
@@ -37,7 +37,7 @@ add_labs(p, ylab="boxoffice/budget", xlab = NULL,
          caption = "data source: IMDB.com")
 ```
 
-![Boxoffice/Budget Ratio 1913-2014](images/lineplot_bobt_ratio-1.png)
+![](images/lineplot_bobt_ratio-1.png)
 
 We see it has become difficult for boxoffice to exceed 10x (dashed line 
 level) of budget since 1990. 
@@ -73,13 +73,13 @@ plot because there's a time order to the periods.
 ```r
 films_cnt = films %>% group_by(year_cat) %>% summarise(n = n())
 plt = mk_lineplot(films_cnt)
-plt("year_cat", "n") %>% 
-        add_labs(title = "Films at 4 periods between 1913 and 2014",
+plt("year_cat", "n", font_size = 8) %>% 
+        add_labs(title = "Film Counts, 1913 - 2014",
                  subtitle = NULL, caption = "data source: IMDB.com",
                  ylab = "Number of films", xlab = NULL)
 ```
 
-![Films at 4 periods 1913 - 2014](images/lineplot_films-1.png)
+![](images/lineplot_films-1.png)
 
 Line plot can be used to show complex relationships among upto 5 variables.
 For example, it's a common task to calculate powers and sample sizes over a 
@@ -112,8 +112,9 @@ variables at once.
 
 ```r
 plt = mk_facet_lineplot(power_n_ssize_gender)
-p = plt("delta", "Power", xvar_top = "csize", yvar_rt = "ssize", colorby = "rho",
-        ylab_rt = "Sample Size", legend_title = bquote(rho))
+p = plt("delta", "Power", xvar_top = "csize", yvar_rt = "ssize", 
+        colorby = "rho", ylab_rt = "Sample Size", 
+        legend_title = bquote(rho), font_size = 8)
 cap = "delta: outcome difference between male and female;
          rho: correlation coefficient within animal."
 add_labs(p, xlab = bquote(delta),
@@ -122,7 +123,7 @@ add_labs(p, xlab = bquote(delta),
          caption = cap)
 ```
 
-![Power & Sample Sizes](images/power_n_ssize-1.png)
+![](images/power_n_ssize-1.png)
 
 Now it's your turn. Try the following exercises.
 
