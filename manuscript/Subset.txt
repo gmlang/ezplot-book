@@ -1,4 +1,4 @@
 frontmatter.md
 preface.md
 mainmatter.md
-04-01-regular-barchart.md
+04-02-dodged-n-stacked-barchart.md
