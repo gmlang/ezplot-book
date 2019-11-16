@@ -45,7 +45,7 @@ To summarise, `mk_barplot_resp()` aggregates the y values for each x category be
 
 ```{r, barplot_mpaa_vs_bo, fig.cap="", dpi=300, fig.width=5, fig.height=5} 
 plt = mk_barplot_resp(films)
-plt("mpaa", "boxoffice", xorder = "descend", font_size = 8, label_decimals = 0)
+plt("mpaa", "boxoffice", xorder = "descend", font_size = 7, label_decimals = 0)
 ```  
 
 Now try the following exercises for homework.

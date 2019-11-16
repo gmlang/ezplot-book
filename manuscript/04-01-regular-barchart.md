@@ -83,7 +83,7 @@ To summarise, `mk_barplot_resp()` aggregates the y values for each x category be
 
 ```r
 plt = mk_barplot_resp(films)
-plt("mpaa", "boxoffice", xorder = "descend", font_size = 8, label_decimals = 0)
+plt("mpaa", "boxoffice", xorder = "descend", font_size = 7, label_decimals = 0)
 ```
 
 ![](images/barplot_mpaa_vs_bo-1.png)
