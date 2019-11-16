@@ -18,17 +18,17 @@ heavily right-skewed.
 
 
 ```r
-p = plt(xvar = "budget", yvar = "boxoffice") %>% 
+p = plt(xvar = "budget", yvar = "boxoffice", font_size = 8) %>% 
         add_labs(xlab="budget (in US Dollars)", 
                  ylab="boxoffice (in US Dollars)",         
                  title = "Boxoffice vs. Budget (1913-2014)",
-                 caption = "Source: IMDB")
-p = scale_axis(p, axis = "y", scale = "log10") 
-p = scale_axis(p, axis = "x", scale = "log10") 
+                 caption = "Source: IMDB") %>% 
+        scale_axis(axis = "y", scale = "log10") %>% 
+        scale_axis(axis = "x", scale = "log10") 
 print(p)
 ```
 
-![Boxoffice vs. Budget](images/scatterplot_bo_vs_bt-1.png)
+![](images/scatterplot_bo_vs_bt-1.png)
 
 There's a clear positive linear trend between boxoffice and budget. What's
 the best line that summarizes this relationship? To find out the answer, we need 
@@ -42,7 +42,7 @@ p-value associated with the coefficient estimate of x.
 add_lm_line(p)
 ```
 
-![Boxoffice vs. Budget](images/scatterplot_bo_vs_bt_wline-1.png)
+![](images/scatterplot_bo_vs_bt_wline-1.png)
 
 The tiny p-value implies the linear relationship is statistically significant. 
 The R-squared value says that 41% of the variation in boxoffice can be explained
@@ -54,19 +54,19 @@ For example, we can draw a scatter plot of `boxoffice` vs. `votes`.
 
 
 ```r
-p = plt("votes", "boxoffice", alpha = 0.2, jitter = T) %>% 
+p = plt("votes", "boxoffice", alpha = 0.2, jitter = T, font_size = 8) %>% 
         add_labs(xlab = "number of votes", 
                  ylab = "boxoffice (in US Dollars)", 
                  title = "Boxoffice vs. Votes (1913-2014)",
-                 caption = "Source: IMDB")
-p = scale_axis(p, "y", scale = "log10") # use log10 scale on y-axis
-p = scale_axis(p, "x", scale = "log") # use log scale on x-axis
+                 caption = "Source: IMDB") %>% 
+        scale_axis(axis = "y", scale = "log10") %>% 
+        scale_axis(axis = "x", scale = "log") 
 # add to the plot: best fitting line, its equation and R2, and p-val, and
 # overwrite the default x and y position of the equation
 add_lm_line(p, eq_tb_ypos = 0.95, eq_tb_xpos = 0.5) 
 ```
 
-![Boxoffice vs. Votes](images/scatterplot_bo_vs_votes-1.png)
+![](images/scatterplot_bo_vs_votes-1.png)
 
 We see there's also a clear linear relationship between boxoffice and votes at log10 scale. The R-squared value is the percent (35%) of variance 
 in boxoffice that can be explained by the variance in votes, which translates
@@ -81,7 +81,7 @@ best fitting line by setting `show = "tb"`.
 add_lm_line(p, show = "tb") 
 ```
 
-![Boxoffice vs. Votes](images/scatterplot_bo_vs_votes_tb-1.png)
+![](images/scatterplot_bo_vs_votes_tb-1.png)
 
 The table gives more information than the equation. In particular, it reports the standard errors of the coefficient estimates. We can thus calculate the margin of error and confidence interval of the x coefficient. For example, from the table display above we know the slope is 0.327 with a SE of 0.00581. The margin of error of the slope is thus 0.0114 (0.00581 * 1.96). This means that for every unit increase in log10(votes), we can expect an 0.327-unit increase in log10(boxoffice), give or take 0.0114-unit. 
 
@@ -92,7 +92,7 @@ details such as standard errors and t-statistics; setting `show = "eq"` (default
 ```r
 p = plt("year", "bo_bt_ratio", colorby = "action", 
         legend_title = "Is action film?", legend_pos = "top",
-        alpha = 0.5, font_size = 9) %>% 
+        alpha = 0.5, font_size = 8) %>% 
         add_labs(ylab = "boxoffice / budget", 
                  title = "Boxoffice / Budget (1913-2014)")
 p = p + ggplot2::geom_hline(yintercept = 1)
@@ -100,7 +100,7 @@ p = scale_axis(p, scale="log10")
 add_lm_line(p, pv_r2_xpos = "left")
 ```
 
-![Boxoffice vs. Budget colored by action film indicator](images/scatterplot_bo_vs_bt_color_by_action-1.png)
+![](images/scatterplot_bo_vs_bt_color_by_action-1.png)
 
 The orange dots are action films, while the blue dots are non-action films. 
 First, notice there are more blue dots than orange dots. Second, the orange line 

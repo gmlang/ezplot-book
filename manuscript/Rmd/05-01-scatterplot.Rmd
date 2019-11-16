@@ -15,14 +15,14 @@ For example, we can use `plt()` to draw a scatter plot of `boxoffice` vs.
 `budget`. We'll use `log10` scale on both axes because the two variables are 
 heavily right-skewed.
 
-```{r, scatterplot_bo_vs_bt, fig.cap="Boxoffice vs. Budget", dpi=300, fig.width=7, fig.height=7}
-p = plt(xvar = "budget", yvar = "boxoffice") %>% 
+```{r, scatterplot_bo_vs_bt, fig.cap="", dpi=300, fig.width=4, fig.height=4}
+p = plt(xvar = "budget", yvar = "boxoffice", font_size = 8) %>% 
         add_labs(xlab="budget (in US Dollars)", 
                  ylab="boxoffice (in US Dollars)",         
                  title = "Boxoffice vs. Budget (1913-2014)",
-                 caption = "Source: IMDB")
-p = scale_axis(p, axis = "y", scale = "log10") 
-p = scale_axis(p, axis = "x", scale = "log10") 
+                 caption = "Source: IMDB") %>% 
+        scale_axis(axis = "y", scale = "log10") %>% 
+        scale_axis(axis = "x", scale = "log10") 
 print(p)
 ```
 
@@ -33,7 +33,7 @@ automatically. It adds to the plot the best fitting line, and displays its
 equation by default. In addtion, it also shows the R-squared value and the 
 p-value associated with the coefficient estimate of x. 
 
-```{r, scatterplot_bo_vs_bt_wline, fig.cap="Boxoffice vs. Budget", dpi=300, fig.width=7, fig.height=7}
+```{r, scatterplot_bo_vs_bt_wline, fig.cap="", dpi=300, fig.width=4, fig.height=4}
 add_lm_line(p)
 ```
 
@@ -45,14 +45,14 @@ find the correlation between boxoffice and budget (both at log10 scale) is 0.61.
 The function `plt()` can be re-used for other variables in the same data frame. 
 For example, we can draw a scatter plot of `boxoffice` vs. `votes`.
 
-```{r, scatterplot_bo_vs_votes, fig.cap="Boxoffice vs. Votes", dpi=300, fig.width=7, fig.height=7}
-p = plt("votes", "boxoffice", alpha = 0.2, jitter = T) %>% 
+```{r, scatterplot_bo_vs_votes, fig.cap="", dpi=300, fig.width=4, fig.height=4}
+p = plt("votes", "boxoffice", alpha = 0.2, jitter = T, font_size = 8) %>% 
         add_labs(xlab = "number of votes", 
                  ylab = "boxoffice (in US Dollars)", 
                  title = "Boxoffice vs. Votes (1913-2014)",
-                 caption = "Source: IMDB")
-p = scale_axis(p, "y", scale = "log10") # use log10 scale on y-axis
-p = scale_axis(p, "x", scale = "log") # use log scale on x-axis
+                 caption = "Source: IMDB") %>% 
+        scale_axis(axis = "y", scale = "log10") %>% 
+        scale_axis(axis = "x", scale = "log") 
 # add to the plot: best fitting line, its equation and R2, and p-val, and
 # overwrite the default x and y position of the equation
 add_lm_line(p, eq_tb_ypos = 0.95, eq_tb_xpos = 0.5) 
@@ -66,7 +66,7 @@ statistically significant by the tiny p-value.
 Instead of the equation, we can show a table of quantities associated with the 
 best fitting line by setting `show = "tb"`.
 
-```{r, scatterplot_bo_vs_votes_tb, fig.cap="Boxoffice vs. Votes", dpi=300, fig.width=7, fig.height=7}
+```{r, scatterplot_bo_vs_votes_tb, fig.cap="", dpi=300, fig.width=4, fig.height=4}
 add_lm_line(p, show = "tb") 
 ```
 
@@ -75,10 +75,10 @@ The table gives more information than the equation. In particular, it reports th
 To summarize, setting `show = "tb"` inside `add_lm_line()` displays a table of
 details such as standard errors and t-statistics; setting `show = "eq"` (default) displays the equation of the best fitting line without those details. When showing the equation, we can optionally supply a categorical variable name to `colorby` and this will color the data points by different groups. Consider this question: did action movies make money year after year? To find out, we'll draw a scatter plot of `bo_bt_ratio` vs. `year`, setting `colorby = "action"`, where `action` is a binary flag indicating if a film is an action film or not.
 
-```{r, scatterplot_bo_vs_bt_color_by_action, fig.cap="Boxoffice vs. Budget colored by action film indicator", dpi=300, fig.width=7, fig.height=7}
+```{r, scatterplot_bo_vs_bt_color_by_action, fig.cap="", dpi=300, fig.width=4, fig.height=4}
 p = plt("year", "bo_bt_ratio", colorby = "action", 
         legend_title = "Is action film?", legend_pos = "top",
-        alpha = 0.5, font_size = 9) %>% 
+        alpha = 0.5, font_size = 8) %>% 
         add_labs(ylab = "boxoffice / budget", 
                  title = "Boxoffice / Budget (1913-2014)")
 p = p + ggplot2::geom_hline(yintercept = 1)
