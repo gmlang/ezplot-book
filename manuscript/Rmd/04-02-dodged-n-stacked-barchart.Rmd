@@ -6,7 +6,8 @@ categorical and one continous variables. For example, take `year_cat` and `made_
 ```{r, barplot_dodged, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
 library(ezplot)
 plt = mk_barplot_freq(films)
-plt(xvar = "year_cat", fillby = "made_money", legend_pos = 'top', font_size = 8)
+plt(xvar = "year_cat", fillby = "made_money", legend_pos = 'top', 
+    label_size = 2, font_size = 8)
 ```  
  
 We see that there are more profitable films than unprofitable ones at each time 

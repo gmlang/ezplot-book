@@ -7,7 +7,8 @@ categorical and one continous variables. For example, take `year_cat` and `made_
 ```r
 library(ezplot)
 plt = mk_barplot_freq(films)
-plt(xvar = "year_cat", fillby = "made_money", legend_pos = 'top', font_size = 8)
+plt(xvar = "year_cat", fillby = "made_money", legend_pos = 'top', 
+    label_size = 2, font_size = 8)
 ```
 
 ![](images/barplot_dodged-1.png)
