@@ -13,14 +13,15 @@ plt = mk_barploth_freq(films)
 
 
 ```r
-plt("mpaa", yorder = "descend", label_decimals = 2, font_size = 8)
+plt("mpaa", yorder = "descend", label_decimals = 2, label_size = 2, 
+    font_size = 8)
 ```
 
 ![](images/barploth_freq_mpaa_cnt-1.png)
 
 
 ```r
-plt("mpaa", show_pct = TRUE, yorder = "descend", font_size = 8) 
+plt("mpaa", show_pct = TRUE, yorder = "descend", label_size = 2, font_size = 8) 
 ```
 
 ![](images/barploth_freq_mpaa_pct-1.png)
@@ -35,7 +36,7 @@ plt(yvar = "year_cat", fillby = "made_money", label_size = 0, font_size = 8)
 
 ```r
 plt(yvar = "year_cat", fillby = "made_money", show_pct = TRUE, 
-    legend_title = "Is profitable?", font_size = 8)
+    legend_title = "Is profitable?", label_size = 2, font_size = 8)
 ```
 
 ![](images/barploth_stacked-1.png)
@@ -51,16 +52,16 @@ plt = mk_barploth_resp(df)
 
 
 ```r
-plt(xvar = "n", yvar = "mpaa", label_decimals = 0, font_size = 8) %>% 
-        add_labs(xlab = "Frequency")
+plt(xvar = "n", yvar = "mpaa", label_decimals = 0, label_size = 2, 
+    font_size = 8) %>% add_labs(xlab = "Frequency")
 ```
 
 ![](images/barploth_resp_mpaa_cnt-1.png)
 
 
 ```r
-plt(xvar = "pct", yvar = "mpaa", show_pct = TRUE, 
-    label_decimals = 2, font_size = 8) %>% 
+plt(xvar = "pct", yvar = "mpaa", show_pct = TRUE, label_decimals = 2, 
+    label_size = 2, font_size = 8) %>% 
         add_labs(xlab = 'Relative Frequency')
 ```
 
@@ -69,9 +70,9 @@ plt(xvar = "pct", yvar = "mpaa", show_pct = TRUE,
 
 ```r
 plt = mk_barploth_resp(films)
-plt("boxoffice", "mpaa", yorder = "descend", 
-    font_size = 8, label_decimals = 0) %>% 
-        rotate_axis_text(10)
+plt("boxoffice", "mpaa", yorder = "descend", label_decimals = 0, 
+    label_size = 2, font_size = 8) %>% 
+        rotate_axis_text(15)
 ```
 
 ![](images/barploth_mpaa_vs_bo-1.png)
@@ -119,8 +120,7 @@ df$category = reorder(df$category, df$pct)
 
 ```r
 plt = mk_barploth_resp(df)
-plt("pct", "category", yorder = "descend", 
-    font_size = 8, show_pct = TRUE, label_decimals = 0)
+plt("pct", "category", yorder = "descend", show_pct = TRUE, label_decimals = 0)
 ```
 
 ![](images/barploth_vs_lollipop_p1-1.png)
@@ -128,8 +128,7 @@ plt("pct", "category", yorder = "descend",
 
 ```r
 plt = mk_lollipop(df)
-plt("pct", "category", yorder = "descend", 
-    font_size = 8, show_pct = TRUE, label_decimals = 0)
+plt("pct", "category", yorder = "descend", show_pct = TRUE, label_decimals = 0)
 ```
 
 ![](images/barploth_vs_lollipop_p2-1.png)
