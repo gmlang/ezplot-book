@@ -1,4 +1,4 @@
 frontmatter.md
 preface.md
 mainmatter.md
-02-04-cdfplot.md
+02-05-qqplot.md
