@@ -11,7 +11,7 @@ plt = mk_qqplot(smp)
 plt("x", dist = 'norm', font_size = 8) %>% 
         add_labs(title = 'Normal Probability Plot',
                  subtitle = 'with point-wise confidence band',
-                 caption = 'Data source: 500 random numbers from the standard normal distribution')
+                 caption = 'Data source: 500 random numbers from Norm(0, 1)')
 ```
 
 We see almost all data points are along the 45 degree diagonal line and within 
@@ -23,7 +23,7 @@ normal distribution.) Alternatively, we can draw the Aldor-Noiman tail-sensitive
 plt("x", ci_band_type = "ts", font_size = 8) %>% 
         add_labs(title = 'Normal Probability Plot',
                  subtitle = 'with tail-sensitive confidence band',
-                 caption = 'Data source: 500 random numbers from the standard normal distribution')
+                 caption = 'Data source: 500 random numbers from Norm(0, 1)')
 ```
 
 Not only qqplot can be used to check normality, it can also be used to check if

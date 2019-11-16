@@ -12,7 +12,7 @@ plt = mk_qqplot(smp)
 plt("x", dist = 'norm', font_size = 8) %>% 
         add_labs(title = 'Normal Probability Plot',
                  subtitle = 'with point-wise confidence band',
-                 caption = 'Data source: 500 random numbers from the standard normal distribution')
+                 caption = 'Data source: 500 random numbers from Norm(0, 1)')
 ```
 
 ![](images/qqplot_smp_p1-1.png)
@@ -27,7 +27,7 @@ normal distribution.) Alternatively, we can draw the Aldor-Noiman tail-sensitive
 plt("x", ci_band_type = "ts", font_size = 8) %>% 
         add_labs(title = 'Normal Probability Plot',
                  subtitle = 'with tail-sensitive confidence band',
-                 caption = 'Data source: 500 random numbers from the standard normal distribution')
+                 caption = 'Data source: 500 random numbers from Norm(0, 1)')
 ```
 
 ![](images/qqplot_smp_p2-1.png)
