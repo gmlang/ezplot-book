@@ -10,7 +10,7 @@ p = plt("length", type = 'density', legend_pos = 'bottom')
 add_labs(p, xlab = "minutes", title = "Empirical PDF of film length")
 ```
 
-![plot of chunk density_length](images/density_length-1.png)
+![](images/density_length-1.png)
 
 We can also draw two density curves of `length`, one for profitable films and one for unprofitable films, by setting `facet_by = "made_money"`, where `"made_money"` is the name of a categorical variable indicating if a film made money or not.
 
@@ -24,7 +24,7 @@ add_labs(p, xlab = "minutes",
          subtitle = "unprofitable vs. profitable films")
 ```
 
-![plot of chunk density_length_by_made_money](images/density_length_by_made_money-1.png)
+![](images/density_length_by_made_money-1.png)
 
 As another example, let's plot the density of `rating` by `year_cat`.
 
@@ -37,7 +37,7 @@ add_labs(p, xlab = "Rating",
          subtitle = "by different decades")
 ```
 
-![plot of chunk density_rating_by_year_cat](images/density_rating_by_year_cat-1.png)
+![](images/density_rating_by_year_cat-1.png)
 
 For homework, read the document of `mk_histdens()` and run the examples. 
 You can pull up the document by running `?mk_histdens()`. 
