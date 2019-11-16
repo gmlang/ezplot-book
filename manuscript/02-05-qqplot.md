@@ -9,10 +9,13 @@ library(dplyr)
 set.seed(0)
 smp = data.frame(x = rnorm(500))
 plt = mk_qqplot(smp)
-plt("x", dist = 'norm')
+plt("x", dist = 'norm', font_size = 8) %>% 
+        add_labs(title = 'Normal Probability Plot',
+                 subtitle = 'with point-wise confidence band',
+                 caption = 'Data source: 500 random numbers from the standard normal distribution')
 ```
 
-![Q-Q plot of standard normal sample data with point-wise confidence band](images/qqplot_smp_p1-1.png)
+![](images/qqplot_smp_p1-1.png)
 
 We see almost all data points are along the 45 degree diagonal line and within 
 the point-wise confidence band. This tells us the data are normally 
@@ -21,10 +24,13 @@ normal distribution.) Alternatively, we can draw the Aldor-Noiman tail-sensitive
 
 
 ```r
-plt("x", ci_band_type = "ts")
+plt("x", ci_band_type = "ts", font_size = 8) %>% 
+        add_labs(title = 'Normal Probability Plot',
+                 subtitle = 'with tail-sensitive confidence band',
+                 caption = 'Data source: 500 random numbers from the standard normal distribution')
 ```
 
-![Q-Q plot of standard normal sample data with tail-sensitive confidence band](images/qqplot_smp_p2-1.png)
+![](images/qqplot_smp_p2-1.png)
 
 Not only qqplot can be used to check normality, it can also be used to check if
 observed data follow these distributions: beta, cauchy, chi-squared, exponential, F, gamma, geometric, log-normal, logistic, binomial, poisson, t, and weibull. For example, let's check if the ozone levels from the air quality data are exponentially distributed.
@@ -32,12 +38,12 @@ observed data follow these distributions: beta, cauchy, chi-squared, exponential
 
 ```r
 plt = mk_qqplot(airquality)
-plt("Ozone", dist = "exp", dparams = list(rate = 0.022)) %>% 
+plt("Ozone", dist = "exp", dparams = list(rate = 0.022), font_size = 8) %>% 
         add_labs(title = "Ozone levels are more or less exponential",
                  caption = "Model: Exponential(rate = 0.022)")
 ```
 
-![Exponential Q-Q Plot of Ozone Levels](images/qqplot_ozone-1.png)
+![](images/qqplot_ozone-1.png)
 
 In the code block above, we set `dist = "exp", dparams = list(rate = 0.022)`. 
 This tells `plt()` to compare the empirical distribution of the observed ozone levels with an exponential distribution of rate 0.022. 
