@@ -19,7 +19,8 @@ We've already seen how to use `xvar`, `yvar`, `fillby`, and `yorder` before. The
 
 ```{r, likert_mpaa_pct, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
 plt("pct", "mpaa", fillby = "made_money", fillby_lvls = c("no", "yes"), 
-    legend_title = "Is profitable?", x_as_pct = TRUE, font_size = 8) %>% 
+    legend_title = "Is profitable?", legend_pos = 'top', 
+    x_as_pct = TRUE, font_size = 8) %>% 
         add_labs(xlab = 'Relative Frequency')
 ```
 
@@ -65,7 +66,7 @@ and show correct x-tick labels. When x-values are negative, the negative x-axis 
 
 Liker charts are commonly used for survey response data. For example, the dataset `ab3` contains respondents' confidence ratings for the future economy of 12 Arabic countries. Respondents were asked, "What do you think will be the economic situation in your country during the next few years (3-5 years) compared to the current situation?". We can visualize the info on a likert chart. 
 
-```{r, likert_ab3, fig.cap="12 Arabic Countries Economic Outlook Survey Results", dpi=300, fig.width=4, fig.height=4} 
+```{r, likert_ab3, fig.cap="12 Arabic Countries Economic Outlook Survey Results", dpi=300, fig.width=6, fig.height=6} 
 df = ab3 %>% tidyr::gather(opinion, pct, -Country)
 lvls = unique(df$opinion)
 plt = mk_likertplot(df)

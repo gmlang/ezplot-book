@@ -23,7 +23,8 @@ We've already seen how to use `xvar`, `yvar`, `fillby`, and `yorder` before. The
 
 ```r
 plt("pct", "mpaa", fillby = "made_money", fillby_lvls = c("no", "yes"), 
-    legend_title = "Is profitable?", x_as_pct = TRUE, font_size = 8) %>% 
+    legend_title = "Is profitable?", legend_pos = 'top', 
+    x_as_pct = TRUE, font_size = 8) %>% 
         add_labs(xlab = 'Relative Frequency')
 ```
 
@@ -45,11 +46,11 @@ head(df)
 
 ```
   item slope       type spp sppInv
-1    A North     native   3      3
-2    B North     native   0      0
-3    C North     native   4      4
-4    D North     native   3      3
-5    E North     native   3      3
+1    A North     native   6      6
+2    B North     native   8      8
+3    C North     native   7      7
+4    D North     native   6      6
+5    E North     native   6      6
 6    A North introduced   5     -5
 ```
 
@@ -61,10 +62,10 @@ tail(df)
    item slope       type spp sppInv
 15    E South     native   3      3
 16    A South introduced   5     -5
-17    B South introduced   9     -9
-18    C South introduced   2     -2
+17    B South introduced   5     -5
+18    C South introduced   3     -3
 19    D South introduced   6     -6
-20    E South introduced   5     -5
+20    E South introduced   4     -4
 ```
 
 Let's focus on North and ignore South. 
