@@ -25,21 +25,22 @@ How can we make a bar chart to visualize the `n` values? The answer lies in a di
 
 ```r
 plt = mk_barplot_resp(df)
-p = plt(xvar = "mpaa", yvar = "n", label_decimals = 0)
+p = plt(xvar = "mpaa", yvar = "n", label_decimals = 0, font_size = 8)
 add_labs(p, ylab = "Frequency")
 ```
 
-![Frequency of MPAA](images/barplot_resp_mpaa_cnt-1.png)
+![](images/barplot_resp_mpaa_cnt-1.png)
 
 Notice that in addition to supplying a categorical variable name to `xvar`, we also need to supply a continuous variable name to `yvar`. We created the above chart by setting `yvar = "n"`, and we now set `yvar = "pct"` to visualize the relative frequencies.
 
 
 ```r
 plt(xvar = "mpaa", yvar = "pct", show_pct = TRUE, 
-    label_decimals = 2, font_size = 9)
+    label_decimals = 2, font_size = 8) %>% 
+        add_labs(ylab = 'Relative Frequency')
 ```
 
-![Relative Frequency of MPAA](images/barplot_resp_mpaa_pct-1.png)
+![](images/barplot_resp_mpaa_pct-1.png)
 
 What will happen if you set `show_pct = FALSE`? Try it.
 
@@ -71,22 +72,21 @@ What will happen if we make a bar chart using `df2`? We'll get exactly the same 
 
 ```r
 plt = mk_barplot_resp(df2)
-p = plt(xvar = "mpaa", yvar = "n", label_decimals = 0) 
+p = plt(xvar = "mpaa", yvar = "n", label_decimals = 0, font_size = 8) 
 add_labs(p, ylab = "Frequency")
 ```
 
-![Frequency of MPAA](images/barplot_resp_mpaa_cnt_p2-1.png)
+![](images/barplot_resp_mpaa_cnt_p2-1.png)
 
 To summarise, `mk_barplot_resp()` aggregates the y values for each x category before making a bar chart. Now we know this, we can use it to plot the total boxoffice for each MPAA rating.
 
 
 ```r
 plt = mk_barplot_resp(films)
-plt("mpaa", "boxoffice", xorder = "descend", 
-    font_size = 10, label_decimals = 0)
+plt("mpaa", "boxoffice", xorder = "descend", font_size = 8, label_decimals = 0)
 ```
 
-![Boxoffice by MPAA](images/barplot_mpaa_vs_bo-1.png)
+![](images/barplot_mpaa_vs_bo-1.png)
 
 Now try the following exercises for homework.
 
