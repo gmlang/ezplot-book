@@ -17,21 +17,21 @@ unique(films$mpaa)
 
 Next let's make a bar chart to show its frequency counts. Notice in the code block below we don't need to tally the counts ourselves. The function `mk_barplot_freq` does that automatically. All we need is to pass into `plt()` the name of the categorical variable, which is `"mpaa"` in this case.
 
-```{r, barplot_freq_mpaa_cnt_p1, fig.cap="Frequency of MPAA", dpi=300, fig.width=7, fig.height=7} 
+```{r, barplot_freq_mpaa_cnt_p1, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
 plt = mk_barplot_freq(films)
-plt("mpaa")
+plt("mpaa", font_size = 8)
 ```      
 
 The resulting chart is quite elobrate. It has the frequency of each category level labeled on top of each bar, and the corresponding relative frequency labeled in the middle of each bar body. The levels are ordered alphanumerically from left to right by default. But we can also order them ascendingly or descendingly according to bar height. And we can change the number of decimal places of the % labels.
 
-```{r, barplot_freq_mpaa_cnt_p2, fig.cap="Frequency of MPAA", dpi=300, fig.width=7, fig.height=7} 
-plt("mpaa", xorder = "descend", label_decimals = 2)
+```{r, barplot_freq_mpaa_cnt_p2, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
+plt("mpaa", xorder = "descend", label_decimals = 2, font_size = 8)
 ```      
 
 Instead of showing the raw counts on y-axis, we can show relative frequencies (%) by setting `show_pct = TRUE`. If we do that, the top and middle bar labels will also switch places.  
 
-```{r, barplot_freq_mpaa_pct, fig.cap="Relative Frequency of MPAA", dpi=300, fig.width=7, fig.height=7} 
-plt("mpaa", show_pct = TRUE, xorder = "descend") 
+```{r, barplot_freq_mpaa_pct, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
+plt("mpaa", show_pct = TRUE, xorder = "descend", font_size = 8) 
 ```
 
 To summarize, when we have a dataset where each row is an individual record, we can use `mk_barplot_freq()` to make bar charts for understanding the distribution of any categorical variables in the dataset. Now try the following exercises.

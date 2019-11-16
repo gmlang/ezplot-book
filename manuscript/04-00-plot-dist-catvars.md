@@ -10,7 +10,8 @@ unique(films$mpaa)
 ```
 
 ```
-[1] NA      "PG-13" "R"     "PG"    "NC-17"
+[1] (Missing) PG-13     R         PG        NC-17    
+Levels: NC-17 PG PG-13 R (Missing)
 ```
 
 Let's replace `NA` with "(Missing)".
@@ -31,28 +32,28 @@ Next let's make a bar chart to show its frequency counts. Notice in the code blo
 
 ```r
 plt = mk_barplot_freq(films)
-plt("mpaa")
+plt("mpaa", font_size = 8)
 ```
 
-![Frequency of MPAA](images/barplot_freq_mpaa_cnt_p1-1.png)
+![](images/barplot_freq_mpaa_cnt_p1-1.png)
 
 The resulting chart is quite elobrate. It has the frequency of each category level labeled on top of each bar, and the corresponding relative frequency labeled in the middle of each bar body. The levels are ordered alphanumerically from left to right by default. But we can also order them ascendingly or descendingly according to bar height. And we can change the number of decimal places of the % labels.
 
 
 ```r
-plt("mpaa", xorder = "descend", label_decimals = 2)
+plt("mpaa", xorder = "descend", label_decimals = 2, font_size = 8)
 ```
 
-![Frequency of MPAA](images/barplot_freq_mpaa_cnt_p2-1.png)
+![](images/barplot_freq_mpaa_cnt_p2-1.png)
 
 Instead of showing the raw counts on y-axis, we can show relative frequencies (%) by setting `show_pct = TRUE`. If we do that, the top and middle bar labels will also switch places.  
 
 
 ```r
-plt("mpaa", show_pct = TRUE, xorder = "descend") 
+plt("mpaa", show_pct = TRUE, xorder = "descend", font_size = 8) 
 ```
 
-![Relative Frequency of MPAA](images/barplot_freq_mpaa_pct-1.png)
+![](images/barplot_freq_mpaa_pct-1.png)
 
 To summarize, when we have a dataset where each row is an individual record, we can use `mk_barplot_freq()` to make bar charts for understanding the distribution of any categorical variables in the dataset. Now try the following exercises.
 
