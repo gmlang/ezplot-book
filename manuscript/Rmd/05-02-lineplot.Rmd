@@ -6,7 +6,8 @@ annual average budget (and boxoffice) over the years.
 ```{r, lineplot_bobt, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
 library(ezplot)
 plt = mk_lineplot(btbo_by_year)
-p = plt("year", "avg", colorby = "type", font_size = 8, add_cnt_to_legend = F,
+p = plt("year", "avg", colorby = "type", font_size = 8, 
+        pt_size = 0.4, linew = 0.3, add_cnt_to_legend = FALSE,
         legend_pos = "top", legend_title = NULL)
 add_labs(p, ylab = "Avg amount ($billion)", xlab = NULL, subtitle = NULL,
          title = "Annual Avg Budget and Boxoffice from 1913 to 2014",
@@ -25,9 +26,10 @@ library(tidyr)
 df = btbo_by_year %>% select(-avg) %>% spread(type, tot) %>% 
         mutate(bo_bt_ratio = boxoffice / budget)
 plt = mk_lineplot(df)
-p = plt("year", "bo_bt_ratio", font_size = 8)
+p = plt("year", "bo_bt_ratio", font_size = 8, pt_size = 0.4, linew = 0.3)
 p = p + ggplot2::geom_hline(yintercept = 10, linetype = 2) +
-        ggplot2::geom_text(x = 2005, y = 20, color = "black", label = "10x")
+        ggplot2::geom_text(x = 2005, y = 20, color = "black", label = "10x",
+                           size = 2.5)
 add_labs(p, ylab="boxoffice/budget", xlab = NULL,
          title = "Boxoffice/Budget (1913 - 2014)",
          caption = "data source: IMDB.com")
@@ -52,7 +54,7 @@ plot because there's a time order to the periods.
 ```{r, lineplot_films, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
 films_cnt = films %>% group_by(year_cat) %>% summarise(n = n())
 plt = mk_lineplot(films_cnt)
-plt("year_cat", "n", font_size = 8) %>% 
+plt("year_cat", "n", font_size = 8, pt_size = 0.4, linew = 0.3) %>% 
         add_labs(title = "Film Counts, 1913 - 2014",
                  subtitle = NULL, caption = "data source: IMDB.com",
                  ylab = "Number of films", xlab = NULL)
@@ -78,8 +80,8 @@ variables at once.
 ```{r, power_n_ssize, fig.cap="", dpi=300, fig.width=4, fig.height=4}
 plt = mk_facet_lineplot(power_n_ssize_gender)
 p = plt("delta", "Power", xvar_top = "csize", yvar_rt = "ssize", 
-        colorby = "rho", ylab_rt = "Sample Size", 
-        legend_title = bquote(rho), font_size = 8)
+        colorby = "rho", ylab_rt = "Sample Size", legend_title = bquote(rho), 
+        font_size = 8, linew = 0.3)
 cap = "delta: outcome difference between male and female;
          rho: correlation coefficient within animal."
 add_labs(p, xlab = bquote(delta),
