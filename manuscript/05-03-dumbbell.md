@@ -72,7 +72,7 @@ Let's use a dumbbell plot to display the data.
 plt = mk_dumbbell(df)
 plt(xvar_left = "age35", xvar_right = "age18to34", yvar = "country", 
     yorder = "ascend", label_decimals = 2) %>% 
-        add_labs(title = 'Social media usage comparison \nbetween two age groups')
+        add_labs(title = 'Social media usage comparison between \ntwo age groups across different countries')
 ```
 
 ![](images/dumbbell_sm_p1-1.png)
@@ -86,7 +86,7 @@ choose to show them in % format by setting `show_pct = T`.
 ```r
 plt("age35", "age18to34", "country", yorder = "descend", show_pct = T,
     label_decimals = 0) %>% 
-        add_labs(title = 'Social media usage comparison \nbetween two age groups')
+        add_labs(title = 'Social media usage comparison between \ntwo age groups across different countries')
 ```
 
 ![](images/dumbbell_sm_p2-1.png)

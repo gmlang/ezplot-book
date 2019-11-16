@@ -47,7 +47,7 @@ Let's use a dumbbell plot to display the data.
 plt = mk_dumbbell(df)
 plt(xvar_left = "age35", xvar_right = "age18to34", yvar = "country", 
     yorder = "ascend", label_decimals = 2) %>% 
-        add_labs(title = 'Social media usage comparison \nbetween two age groups')
+        add_labs(title = 'Social media usage comparison between \ntwo age groups across different countries')
 ```
 
 In the chart above, we sorted the countries in ascending order of the differences
@@ -58,7 +58,7 @@ choose to show them in % format by setting `show_pct = T`.
 ```{r, dumbbell_sm_p2, fig.cap="", dpi=300, fig.width=7, fig.height=7} 
 plt("age35", "age18to34", "country", yorder = "descend", show_pct = T,
     label_decimals = 0) %>% 
-        add_labs(title = 'Social media usage comparison \nbetween two age groups')
+        add_labs(title = 'Social media usage comparison between \ntwo age groups across different countries')
 ```
 
 Notice ezplot automatically uses the two x-variable names (age35 and 
