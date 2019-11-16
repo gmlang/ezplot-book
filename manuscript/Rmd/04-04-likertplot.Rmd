@@ -10,8 +10,8 @@ df = films %>% # convert implicit NA to explicit "(Missing)"
         count(mpaa, made_money) %>% group_by(mpaa) %>%
         mutate(pct = n/sum(n)) %>% ungroup()
 plt = mk_likertplot(df)
-plt(xvar = "n", yvar = "mpaa", fillby = "made_money", 
-    fillby_lvls = c("no", "yes"), yorder = "ascend", font_size = 8) %>% 
+plt(xvar = "n", yvar = "mpaa", fillby = "made_money", fillby_lvls = c("no", "yes"), 
+    yorder = "ascend", font_size = 8, legend_pos = 'top') %>% 
         add_labs(xlab = 'Frequency')
 ```
 

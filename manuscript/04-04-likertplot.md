@@ -11,8 +11,8 @@ df = films %>% # convert implicit NA to explicit "(Missing)"
         count(mpaa, made_money) %>% group_by(mpaa) %>%
         mutate(pct = n/sum(n)) %>% ungroup()
 plt = mk_likertplot(df)
-plt(xvar = "n", yvar = "mpaa", fillby = "made_money", 
-    fillby_lvls = c("no", "yes"), yorder = "ascend", font_size = 8) %>% 
+plt(xvar = "n", yvar = "mpaa", fillby = "made_money", fillby_lvls = c("no", "yes"), 
+    yorder = "ascend", font_size = 8, legend_pos = 'top') %>% 
         add_labs(xlab = 'Frequency')
 ```
 
@@ -45,12 +45,12 @@ head(df)
 
 ```
   item slope       type spp sppInv
-1    A North     native   6      6
-2    B North     native   5      5
+1    A North     native   3      3
+2    B North     native   0      0
 3    C North     native   4      4
-4    D North     native   4      4
-5    E North     native   4      4
-6    A North introduced   6     -6
+4    D North     native   3      3
+5    E North     native   3      3
+6    A North introduced   5     -5
 ```
 
 ```r
@@ -59,12 +59,12 @@ tail(df)
 
 ```
    item slope       type spp sppInv
-15    E South     native   4      4
-16    A South introduced   7     -7
-17    B South introduced   4     -4
-18    C South introduced   4     -4
-19    D South introduced   7     -7
-20    E South introduced   2     -2
+15    E South     native   3      3
+16    A South introduced   5     -5
+17    B South introduced   9     -9
+18    C South introduced   2     -2
+19    D South introduced   6     -6
+20    E South introduced   5     -5
 ```
 
 Let's focus on North and ignore South. 
