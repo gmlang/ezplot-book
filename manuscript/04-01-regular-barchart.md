@@ -1,6 +1,6 @@
 ## Regular Bar Chart
 
-What if we're given a summary dataset where the frequencies are already tallied? How can we visualize the frequencies on a bar chart? For example, let's create a data frame with counts and percentages of the `mpaa` categories. 
+What if we're given a summary dataset where the frequencies are already counted and available? How can we visualize them? For example, let's create a data frame with counts and percentages for the `mpaa` categories. 
 
 
 ```r
@@ -10,17 +10,15 @@ df
 ```
 
 ```
-# A tibble: 5 x 3
-  mpaa          n      pct
-  <fct>     <int>    <dbl>
-1 NC-17         5 0.000841
-2 PG          576 0.0969  
-3 PG-13      1293 0.218   
-4 R          2083 0.350   
-5 (Missing)  1987 0.334   
+   mpaa    n        pct
+1 NC-17    5 0.00084118
+2    PG  576 0.09690444
+3 PG-13 1293 0.21753028
+4     R 2083 0.35043742
+5  <NA> 1987 0.33428668
 ```
 
-How can we make a bar chart to visualize the `n` values? The answer lies in a different ezplot function, `mk_barplot_resp()`. 
+How can we make a bar chart to visualize the `n` or `pct` values? The function `mk_barplot_freq()` won't work and we need to use `mk_barplot_resp()`. 
 
 
 ```r
@@ -31,43 +29,42 @@ add_labs(p, ylab = "Frequency")
 
 ![](images/barplot_resp_mpaa_cnt-1.png)
 
-Notice that in addition to supplying a categorical variable name to `xvar`, we also need to supply a continuous variable name to `yvar`. We created the above chart by setting `yvar = "n"`, and we now set `yvar = "pct"` to visualize the relative frequencies.
+Note that we need to supply a categorical variable name to the `xvar` parameter, 
+as well as a continuous variable name to `yvar`. To show the relative frequencies we simply set `yvar = "pct"`.
 
 
 ```r
-plt(xvar = "mpaa", yvar = "pct", show_pct = TRUE, 
+plt(xvar = "mpaa", yvar = "pct", show_pct = T, # try show_pct = F, see what happens
     label_decimals = 2, font_size = 8) %>% 
         add_labs(ylab = 'Relative Frequency')
 ```
 
 ![](images/barplot_resp_mpaa_pct-1.png)
 
-What will happen if you set `show_pct = FALSE`? Try it.
+What happens if you set `show_pct = FALSE` instead? Try it.
 
-The function `mk_barplot_resp()` is actually more powerful than the example I just gave. Consider the following dataset, which further splits the counts of each MPAA category according to if the films made money or not.
+The function `mk_barplot_resp()` is actually more powerful than the example I just gave. Consider the following dataset, which further splits the counts of each MPAA category according to if the films made money or not. 
 
 
 ```r
 df2 = films %>% count(mpaa, made_money) %>% mutate(pct = n / sum(n))
-df2
+df2 # compare df2 with df and understand their relationship
 ```
 
 ```
-# A tibble: 9 x 4
-  mpaa      made_money     n      pct
-  <fct>     <fct>      <int>    <dbl>
-1 NC-17     yes            5 0.000841
-2 PG        no           118 0.0199  
-3 PG        yes          458 0.0771  
-4 PG-13     no           298 0.0501  
-5 PG-13     yes          995 0.167   
-6 R         no           813 0.137   
-7 R         yes         1270 0.214   
-8 (Missing) no           602 0.101   
-9 (Missing) yes         1385 0.233   
+   mpaa made_money    n        pct
+1 NC-17        yes    5 0.00084118
+2    PG         no  118 0.01985195
+3    PG        yes  458 0.07705249
+4 PG-13         no  298 0.05013459
+5 PG-13        yes  995 0.16739569
+6     R         no  813 0.13677658
+7     R        yes 1270 0.21366083
+8  <NA>         no  602 0.10127860
+9  <NA>        yes 1385 0.23300808
 ```
 
-What will happen if we make a bar chart using `df2`? We'll get exactly the same bar chart as when using `df`! This is because `mk_barplot_resp()` is smart enough to aggregate the `n` values for the same `mpaa` category.
+What will happen if we make a bar chart using `df2`? We'll get exactly the same bar chart as under `df`! This is because `mk_barplot_resp()` is smart enough to aggregate the y values within each x category even when the same category appears in multiple rows of the same dataset.
 
 
 ```r
@@ -78,7 +75,7 @@ add_labs(p, ylab = "Frequency")
 
 ![](images/barplot_resp_mpaa_cnt_p2-1.png)
 
-To summarise, `mk_barplot_resp()` aggregates the y values for each x category before making a bar chart. Now we know this, we can use it to plot the total boxoffice for each MPAA rating.
+So `mk_barplot_resp()` aggregates the y values for each x category before drawing a bar chart. Now we know this, and let's use it to plot the total boxoffice for each MPAA rating.
 
 
 ```r
@@ -91,8 +88,8 @@ plt("mpaa", "boxoffice", xorder = "descend", font_size = 8, label_decimals = 0,
 
 Now try the following exercises for homework.
 
-1. Read the document of `mk_barplot_resp()`. You can pull up the documents by running `?mk_barplot_resp` in Rstudio. 
-2. Make a bar chart to show the total budget of the films for each MPAA rating.
+1. Read the document of `mk_barplot_resp()`. You can pull it up by running `?mk_barplot_resp` in Rstudio. 
+2. Make a bar chart to show the total budget of each MPAA rating.
 3. Make a bar chart to show the total boxoffice of profitable vs. unprofitable
 films. 
 

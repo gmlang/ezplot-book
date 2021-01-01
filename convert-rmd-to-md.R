@@ -9,7 +9,7 @@ opts_chunk$set(comment = "", warning = FALSE, message = FALSE, tidy = FALSE,
 options(width = 100, scipen = 5, digits = 5)
 
 # set paths
-proj_path = "~/write/ezplot-book"
+proj_path = "~/Documents/2-Areas/2-Business/MyBooks/ezplot-book"
 manu_path = file.path(proj_path, "manuscript")
 setwd(manu_path)
 rmd_path = file.path(manu_path, "Rmd")

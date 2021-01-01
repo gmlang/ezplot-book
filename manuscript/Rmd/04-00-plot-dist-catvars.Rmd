@@ -1,41 +1,35 @@
 # Plot the Distribution of a Categorical Variable
 
-The types of charts we learned so far are good for understanding the distribution of a continuous variable. What about categorical variables? The distribution of a categorical variable simply consists of the frequencies 
-(counts) or relative frequencies (percentages) of its levels, which can be visualized with bar charts. Let's start with an example. The `mpaa` variable from the `films` dataset has 5 unique values: `NA`, "PG-13", "R", "PG", and "NC-17". 
+The chart types we learned so far are good for showing the distribution of a continuous variable. What about categorical variables? The distribution of a categorical variable is made up by the frequencies (counts) or relative frequencies (percentages) of its levels. It's best to be visualized with bar charts. Let's start with an example. The variable `mpaa` of the `films` dataset has 5 unique values: `(Missing), PG-13, R, PG, NC-17`. 
 
 ```{r}
 library(ezplot)
 unique(films$mpaa)
 ```
 
-Let's replace `NA` with "(Missing)".
+Let's make a bar chart to show its frequency counts. Note that we don't need to tally the counts ourselves. The function `mk_barplot_freq` does that automatically. All we need is to pass the name of the categorical variable (`"mpaa"`) to the function returned by `mk_barplot_freq(films)`. 
 
-```{r}
-films$mpaa = forcats::fct_explicit_na(films$mpaa)
-unique(films$mpaa)
-```
-
-Next let's make a bar chart to show its frequency counts. Notice in the code block below we don't need to tally the counts ourselves. The function `mk_barplot_freq` does that automatically. All we need is to pass into `plt()` the name of the categorical variable, which is `"mpaa"` in this case.
-
-```{r, barplot_freq_mpaa_cnt_p1, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
+```{r, barplot_freq_mpaa_cnt_p1, fig.cap="", dpi=300, fig.width=4, fig.height=4}
 plt = mk_barplot_freq(films)
 plt("mpaa", font_size = 8)
 ```      
 
-The resulting chart is quite elobrate. It has the frequency of each category level labeled on top of each bar, and the corresponding relative frequency labeled in the middle of each bar body. The levels are ordered alphanumerically from left to right by default. But we can also order them ascendingly or descendingly according to bar height. And we can change the number of decimal places of the % labels.
+The resulting bar chart has many details. It has the frequency counts labeled on top of each bar, and the relative frequency percents labeled in the middle. The levels are ordered alphanumerically from left to right by default. With a few strokes, we can easily re-order them in ascending or descending order of bar heights. And we can set the number of decimal places of the % labels.
 
 ```{r, barplot_freq_mpaa_cnt_p2, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
 plt("mpaa", xorder = "descend", label_decimals = 2, font_size = 8)
 ```      
 
-Instead of showing the raw counts on y-axis, we can show relative frequencies (%) by setting `show_pct = TRUE`. If we do that, the top and middle bar labels will also switch places.  
+We can also show relative frequencies (%) on the y-axis by setting `show_pct = TRUE`. If we do that, the top and middle bar labels will also switch places.  
 
 ```{r, barplot_freq_mpaa_pct, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
 plt("mpaa", show_pct = TRUE, xorder = "descend", font_size = 8) 
 ```
 
-To summarize, when we have a dataset where each row is an individual record, we can use `mk_barplot_freq()` to make bar charts for understanding the distribution of any categorical variables in the dataset. Now try the following exercises.
+To summarize, when we have a dataset where each row is an individual record and the frequency distribution of a categorical variable is not directly available, we can use `mk_barplot_freq()` to understand its distribution without having to first tally up the frequencies and calculate their percentages. 
 
-1. Read the document of `mk_barplot_freq()`. You can pull up the documents by running `?mk_barplot_freq` in Rstudio. 
-2. Make a bar chart to show the number of drama films for each MPAA rating. 
-3. Make a bar chart to show the percent of action films for each MPAA rating.
+Now try the following exercises.
+
+1. Read the document of `mk_barplot_freq()`. You can pull it up by running `?mk_barplot_freq` in Rstudio. 
+2. Use it to show the number of drama films for each MPAA rating (`mpaa`). 
+3. Use it to show the percent of action films for each period (`year_cat`).

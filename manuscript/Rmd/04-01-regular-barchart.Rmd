@@ -1,6 +1,6 @@
 ## Regular Bar Chart
 
-What if we're given a summary dataset where the frequencies are already tallied? How can we visualize the frequencies on a bar chart? For example, let's create a data frame with counts and percentages of the `mpaa` categories. 
+What if we're given a summary dataset where the frequencies are already counted and available? How can we visualize them? For example, let's create a data frame with counts and percentages for the `mpaa` categories. 
 
 ```{r}
 library(dplyr)
@@ -8,7 +8,7 @@ df = films %>% count(mpaa) %>% mutate(pct = n / sum(n))
 df
 ```
 
-How can we make a bar chart to visualize the `n` values? The answer lies in a different ezplot function, `mk_barplot_resp()`. 
+How can we make a bar chart to visualize the `n` or `pct` values? The function `mk_barplot_freq()` won't work and we need to use `mk_barplot_resp()`. 
 
 ```{r, barplot_resp_mpaa_cnt, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
 plt = mk_barplot_resp(df)
@@ -16,24 +16,25 @@ p = plt(xvar = "mpaa", yvar = "n", label_decimals = 0, font_size = 8)
 add_labs(p, ylab = "Frequency")
 ```  
 
-Notice that in addition to supplying a categorical variable name to `xvar`, we also need to supply a continuous variable name to `yvar`. We created the above chart by setting `yvar = "n"`, and we now set `yvar = "pct"` to visualize the relative frequencies.
+Note that we need to supply a categorical variable name to the `xvar` parameter, 
+as well as a continuous variable name to `yvar`. To show the relative frequencies we simply set `yvar = "pct"`.
 
 ```{r, barplot_resp_mpaa_pct, fig.cap="", dpi=300, fig.width=4, fig.height=4}   
-plt(xvar = "mpaa", yvar = "pct", show_pct = TRUE, 
+plt(xvar = "mpaa", yvar = "pct", show_pct = T, # try show_pct = F, see what happens
     label_decimals = 2, font_size = 8) %>% 
         add_labs(ylab = 'Relative Frequency')
 ```
 
-What will happen if you set `show_pct = FALSE`? Try it.
+What happens if you set `show_pct = FALSE` instead? Try it.
 
-The function `mk_barplot_resp()` is actually more powerful than the example I just gave. Consider the following dataset, which further splits the counts of each MPAA category according to if the films made money or not.
+The function `mk_barplot_resp()` is actually more powerful than the example I just gave. Consider the following dataset, which further splits the counts of each MPAA category according to if the films made money or not. 
 
 ```{r}
 df2 = films %>% count(mpaa, made_money) %>% mutate(pct = n / sum(n))
-df2
+df2 # compare df2 with df and understand their relationship
 ```
 
-What will happen if we make a bar chart using `df2`? We'll get exactly the same bar chart as when using `df`! This is because `mk_barplot_resp()` is smart enough to aggregate the `n` values for the same `mpaa` category.
+What will happen if we make a bar chart using `df2`? We'll get exactly the same bar chart as under `df`! This is because `mk_barplot_resp()` is smart enough to aggregate the y values within each x category even when the same category appears in multiple rows of the same dataset.
 
 ```{r, barplot_resp_mpaa_cnt_p2, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
 plt = mk_barplot_resp(df2)
@@ -41,7 +42,7 @@ p = plt(xvar = "mpaa", yvar = "n", label_decimals = 0, font_size = 8)
 add_labs(p, ylab = "Frequency")
 ```
 
-To summarise, `mk_barplot_resp()` aggregates the y values for each x category before making a bar chart. Now we know this, we can use it to plot the total boxoffice for each MPAA rating.
+So `mk_barplot_resp()` aggregates the y values for each x category before drawing a bar chart. Now we know this, and let's use it to plot the total boxoffice for each MPAA rating.
 
 ```{r, barplot_mpaa_vs_bo, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
 plt = mk_barplot_resp(films)
@@ -51,8 +52,8 @@ plt("mpaa", "boxoffice", xorder = "descend", font_size = 8, label_decimals = 0,
 
 Now try the following exercises for homework.
 
-1. Read the document of `mk_barplot_resp()`. You can pull up the documents by running `?mk_barplot_resp` in Rstudio. 
-2. Make a bar chart to show the total budget of the films for each MPAA rating.
+1. Read the document of `mk_barplot_resp()`. You can pull it up by running `?mk_barplot_resp` in Rstudio. 
+2. Make a bar chart to show the total budget of each MPAA rating.
 3. Make a bar chart to show the total boxoffice of profitable vs. unprofitable
 films. 
 

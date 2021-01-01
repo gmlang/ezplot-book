@@ -1,7 +1,7 @@
 ## Dodged or Stacked Bar Chart
 
 A dodged or stacked bar chart is often used to show relationships between two 
-categorical and one continous variables. For example, take `year_cat` and `made_money` from the dataset `films`. The former groups years into four brackets and the latter flags if a film made money or not. If we want to compare the frequencies of profitable vs. unprofitable films for each time period, we can make a dodged bar chart.
+categorical and one continuous variables. For example, take `year_cat` and `made_money` from the dataset `films`. The former groups years into four brackets and the latter flags if a film made money or not. If we want to compare the frequencies of profitable vs. unprofitable films for each time period, we can make a dodged bar chart.
 
 ```{r, barplot_dodged, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
 library(ezplot)
@@ -31,8 +31,7 @@ plt(xvar = "made_money", fillby = "year_cat", label_size = 0, font_size = 8,
 ```  
 
 So when supplied with a `fillby` variable name, the function `mk_barplot_freq()` can be used to visualize the frequencies or relative frequencies of a categorical variable grouped by the `fillby` variable. But what if you are not interested in
-frequencies or relative frequencies? What if you are interested in the aggregated value of some continuous variable? For example, `films` has a variable `votes` for the number of votes a film received from IMBD users. We want to know the total number of votes for each MPAA rating breaking down by profitable and unprofitable
-films respectively. We can use the function `mk_barplot_resp()` and set `yvar = "votes" and fillby = "made_money"` inside `plt()` as shown in the code below. 
+frequencies or relative frequencies? What if you are interested in the aggregated value of some continuous variable? For example, `films` has a variable `votes` for the number of votes a film received from IMBD users. We want to know the total number of votes for each MPAA rating by profitable and unprofitable films. We can use the function `mk_barplot_resp()` and set `yvar = "votes" and fillby = "made_money"` inside `plt()` as shown in the code below. 
 
 ```{r, barplot_dodged_p3, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
 plt = mk_barplot_resp(films)
@@ -40,8 +39,63 @@ plt(xvar = "mpaa", yvar = "votes", fillby = "made_money", label_size = 0,
     font_size = 8, legend_title = "Is profitable?", legend_pos = "bottom")
 ```
 
+It's also helpful to see their relative frequencies for comparison. To do that, 
+we just need to add a few strokes by setting `show_pct = TRUE`.
+
+```{r, barplot_stacked_p2, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
+plt = mk_barplot_resp(films)
+plt(xvar = "mpaa", yvar = "votes", fillby = "made_money", show_pct = TRUE,
+    font_size = 8, legend_title = "Is profitable?", legend_pos = "bottom")
+```
+
+As another example, consider the `Titanic` dataset.
+
+```{r}
+d = as.data.frame(Titanic)
+head(d)
+```
+
+Let's explore the relationship between the number of people survived and their cabin (or ticket) classes.
+
+```{r, barplot_dodged_stacked, fig.cap="", dpi=300, fig.width=12, fig.height=6}
+plt = mk_barplot_resp(d)
+p1 = plt('Class', 'Freq', fillby = 'Survived') %>% # dodged bar chart
+    add_labs(ylab = 'Frequency')
+p2 = plt('Class', 'Freq', fillby = 'Survived', show_pct = T) %>% # stacked bar chart
+    add_labs(ylab = 'Relative Frequency (%)')
+
+# install.packages('cowplot') # installs the cowplot pkg 
+cowplot::plot_grid(square_fig(p1), square_fig(p2))
+```
+
+Once again, when frequencies and relative frequencies of a categorical variable are directly available, use `mk_barplot_resp()` to plot them.
+
+```{r}
+dat = d %>% group_by(Class, Sex) %>%
+        summarise(cnt = sum(Freq), .groups = 'drop_last') %>%
+        mutate(pct = cnt / sum(cnt))
+head(dat)
+```
+
+```{r, barplot_dodged_p4, fig.cap="", dpi=300, fig.width=6, fig.height=4}
+g = mk_barplot_resp(dat)
+g('Class', 'cnt', fillby = 'Sex', legend_pos = 'bottom') %>% # dodged bar chart
+  add_labs(xlab='Class', ylab='Frequency')
+```
+
+Note that the following two different ways result identical stacked bar charts.
+
+```{r, barplot_stacked_p3, fig.cap="Identical charts made by different code", dpi=300, fig.width=12, fig.height=6}
+p1 = g('Class', 'cnt', fillby = 'Sex', show_pct = T) %>%
+  add_labs(xlab='Class', ylab='Relative Frequency')
+p2 = g('Class', 'pct', fillby = 'Sex', show_pct = T) %>%
+  add_labs(xlab='Class', ylab='Relative Frequency')
+
+cowplot::plot_grid(square_fig(p1), square_fig(p2))
+```
+
 Now it's your turn. Run `str(films)` to examine its variables. Pick two 
-categorical variables and a continuous one, and visualize the relationships 
-among them. You may also need to perform some data filtering. If you run into 
+categorical and one continuous variables, and visualize their relationships. 
+You may also need to perform some data filtering. If you run into 
 problems, read the document of `mk_barplot_freq()` and `mk_barplot_resp()`. 
 To access the documents, run `?mk_barplot_freq` or `?mk_barplot_resp` in Rstudio.
