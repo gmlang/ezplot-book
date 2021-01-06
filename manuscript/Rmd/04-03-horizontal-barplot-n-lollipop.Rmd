@@ -1,12 +1,12 @@
 ## Horizontal Bar Chart & Lollipop Plot
 
-We've discussed two ezplot functions: `mk_barplot_freq()` and 
-`mk_barplot_resp()`. They allow us to easily make vertical bar charts. They have two counterparts: `mk_barploth_freq()` and `mk_barploth_resp()`, which can be used to make horizontal bar charts. Let's produce the horizontal versions of the bar charts we made previously.
+In previous sections, we learned `mk_barplot_freq()` and `mk_barplot_resp()` for making vertical bar charts. In this section we'll learn their close cousins `mk_barploth_freq()` and `mk_barploth_resp()` for making horizontal bar charts. 
 
-The following examples show how to use `mk_barploth_freq()`.
+We'll start by making the horizontal versions of the vertical bar charts we made before. First, let's see `mk_barploth_freq()` in action.
 
 ```{r}
 library(ezplot)
+films$mpaa = forcats::fct_explicit_na(films$mpaa)
 plt = mk_barploth_freq(films)
 ```
 
@@ -20,19 +20,20 @@ plt("mpaa", show_pct = TRUE, yorder = "descend", label_size = 2, font_size = 8)
 ```
 
 ```{r, barploth_dodged, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
-plt(yvar = "year_cat", fillby = "made_money", label_size = 0, font_size = 8) 
+plt(yvar = "year_cat", fillby = "made_money", label_size = 2, font_size = 8) 
 ```  
 
 ```{r, barploth_stacked, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
 plt(yvar = "year_cat", fillby = "made_money", show_pct = TRUE, 
-    legend_title = "Is profitable?", label_size = 2, font_size = 8)
+    legend_title = "Is profitable?", label_size = 2, font_size = 6)
 ```  
 
-The next examples show how to use `mk_barploth_resp()`.
+Next, let's see `mk_barploth_resp()` in action.
 
 ```{r}
 library(dplyr)
-df = films %>% count(mpaa) %>% mutate(pct = n / sum(n))
+df = films %>% count(mpaa) %>% 
+    mutate(mpaa = forcats::fct_explicit_na(mpaa), pct = n / sum(n))
 plt = mk_barploth_resp(df)
 ```
 
@@ -43,24 +44,27 @@ plt(xvar = "n", yvar = "mpaa", label_decimals = 0, label_size = 2,
 
 ```{r, barploth_resp_mpaa_pct, fig.cap="", dpi=300, fig.width=4, fig.height=4}   
 plt(xvar = "pct", yvar = "mpaa", show_pct = TRUE, label_decimals = 2, 
-    label_size = 2, font_size = 8) %>% 
-        add_labs(xlab = 'Relative Frequency')
+    label_size = 2, font_size = 8) %>% add_labs(xlab = 'Relative Frequency (%)')
 ```
 
 ```{r, barploth_mpaa_vs_bo, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
 plt = mk_barploth_resp(films)
 plt("boxoffice", "mpaa", yorder = "descend", label_decimals = 0, 
-    label_size = 2, font_size = 8) %>% 
-        rotate_axis_text(15)
+    label_size = 2, font_size = 8) %>% rotate_axis_text(15)
 ```  
 
 ```{r, barploth_dodged_p3, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
-plt("votes", "mpaa", fillby = "made_money", label_size = 0, 
-    font_size = 8, legend_pos = "top") %>% 
-        rotate_axis_text(20)
+plt("votes", "mpaa", fillby = "made_money", label_size = 2, 
+    font_size = 8, legend_pos = "top") %>% rotate_axis_text(20)
 ```
 
-An alternative of horizontal bar chart is the lollipop chart. They are exchangeable. Let's make both charts with the following dataset.
+```{r, barploth_stacked_p2, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
+plt("votes", "mpaa", fillby = "made_money", show_pct = T, label_size = 2, 
+    font_size = 6, legend_pos = "top") %>% 
+        add_labs(xlab = 'Relative Frequency (%)')
+```
+
+If you recall when we studied `mk_barplot_resp()` in the previous two sections, we specifically mentioned that setting `is_y_pct = TRUE` will allow us to display a variable of percents as is without aggregating its values by the x categories first. You can do the same when using `mk_barploth_resp()` to make horizontal bar chart by setting `is_x_pct=TRUE`. Here's an example. Consider the following fake dataset where the `pct` column contains numbers between 0 and 1 and represents the percentage of some measurement.
 
 ```{r}
 df = read.csv(text="category,pct
@@ -88,13 +92,17 @@ df = read.csv(text="category,pct
               stringsAsFactors = FALSE, sep = ",", header = TRUE)
 # change category to factor and order its levels in ascending order of pct 
 df$category = reorder(df$category, df$pct)
+head(df)
 ```
+
+The following code display the percentage values on a horizontal bar chart.
 
 ```{r, barploth_vs_lollipop_p1, fig.cap="", dpi=300, fig.width=7, fig.height=7} 
 plt = mk_barploth_resp(df)
-plt("pct", "category", yorder = "descend", show_pct = TRUE, label_decimals = 0,
-    font_size = 8)
+plt("pct", "category", yorder = "descend", is_x_pct = TRUE, font_size = 8)
 ```
+
+Alternatively, we can use the lollipop chart, which looks less crowded than the horizontal bar chart. 
 
 ```{r, barploth_vs_lollipop_p2, fig.cap="", dpi=300, fig.width=7, fig.height=7} 
 plt = mk_lollipop(df)

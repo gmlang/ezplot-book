@@ -13,7 +13,7 @@ plt(xvar = "year_cat", fillby = "made_money", legend_pos = 'top',
 ![](images/barplot_dodged-1.png)
 
 We see that there are more profitable films than unprofitable ones at each time 
-period. By the way, the blue and orange colors are color-blind friendly. Instead of a dodged bar chart, we can draw a stacked bar chart by setting `show_pct = TRUE` inside `plt()`.
+period. By the way, the blue and orange colors are color-blind friendly. Instead of a dodged bar chart, we can draw a stacked bar chart by setting `show_pct = TRUE`.
 
 ```r
 plt(xvar = "year_cat", fillby="made_money", show_pct = TRUE, font_size = 8,
@@ -22,7 +22,7 @@ plt(xvar = "year_cat", fillby="made_money", show_pct = TRUE, font_size = 8,
 
 ![](images/barplot_stacked-1.png)
 
-The stacked bar chart is more appropriate when comparing the relative frequencies
+The stacked bar chart is easier to look at when comparing the relative frequencies
 between categories. The proportion of profitable films has been decreasing
 over the years. During 1950-1970, more than 86% of films made money. But only 66% of films made money between 1990 and 2014. 
 
@@ -37,21 +37,19 @@ plt(xvar = "made_money", fillby = "year_cat", label_size = 0, font_size = 8,
 ![](images/barplot_dodged_p2-1.png)
 
 So when supplied with a `fillby` variable name, the function `mk_barplot_freq()` can be used to visualize the frequencies or relative frequencies of a categorical variable grouped by the `fillby` variable. But what if you are not interested in
-frequencies or relative frequencies? What if you are interested in the aggregated value of some continuous variable? For example, `films` has a variable `votes` for the number of votes a film received from IMBD users. We want to know the total number of votes for each MPAA rating by profitable and unprofitable films. We can use the function `mk_barplot_resp()` and set `yvar = "votes" and fillby = "made_money"` inside `plt()` as shown in the code below. 
+frequencies or relative frequencies? What if you are interested in the aggregated value of some continuous variable? For example, `films` has a variable `votes` for the number of votes a film received from IMBD users. We want to know the total number of votes for each MPAA rating by profitable and unprofitable films. We can use the function `mk_barplot_resp()` and pass `"votes"` to `yvar` and `"made_money"` to `fillby` as shown in the code below. 
 
 ```r
 plt = mk_barplot_resp(films)
-plt(xvar = "mpaa", yvar = "votes", fillby = "made_money", label_size = 0, 
+plt(xvar = "mpaa", yvar = "votes", fillby = "made_money", label_size = 1.5, 
     font_size = 8, legend_title = "Is profitable?", legend_pos = "bottom")
 ```
 
 ![](images/barplot_dodged_p3-1.png)
 
-It's also helpful to see their relative frequencies for comparison. To do that, 
-we just need to add a few strokes by setting `show_pct = TRUE`.
+To compare the relative percents of the aggregated votes, we set `show_pct = TRUE`.
 
 ```r
-plt = mk_barplot_resp(films)
 plt(xvar = "mpaa", yvar = "votes", fillby = "made_money", show_pct = TRUE,
     font_size = 8, legend_title = "Is profitable?", legend_pos = "bottom")
 ```
@@ -90,7 +88,7 @@ cowplot::plot_grid(square_fig(p1), square_fig(p2))
 
 ![](images/barplot_dodged_stacked-1.png)
 
-Once again, when frequencies and relative frequencies of a categorical variable are directly available, use `mk_barplot_resp()` to plot them.
+We can also first calculate the counts and percents of people by their cabin classes and gender, and use `mk_barplot_resp()` to directly barplot our calculated numbers.
 
 ```r
 dat = d %>% group_by(Class, Sex) %>%
@@ -114,20 +112,22 @@ head(dat)
 
 ```r
 g = mk_barplot_resp(dat)
-g('Class', 'cnt', fillby = 'Sex', legend_pos = 'bottom') %>% # dodged bar chart
+p1 = g('Class', 'cnt', fillby = 'Sex', legend_pos = 'bottom', label_size = 1.5) %>% 
   add_labs(xlab='Class', ylab='Frequency')
+p2 = g('Class', 'pct', fillby = 'Sex', legend_pos = 'bottom', label_size = 1.5,
+       is_y_pct = T) %>% add_labs(xlab='Class', ylab='Relative Frequency')
+cowplot::plot_grid(square_fig(p1), square_fig(p2))
 ```
 
 ![](images/barplot_dodged_p4-1.png)
 
-Note that the following two different ways result identical stacked bar charts.
+Note that the following two different ways produce identical stacked bar charts.
 
 ```r
 p1 = g('Class', 'cnt', fillby = 'Sex', show_pct = T) %>%
   add_labs(xlab='Class', ylab='Relative Frequency')
 p2 = g('Class', 'pct', fillby = 'Sex', show_pct = T) %>%
   add_labs(xlab='Class', ylab='Relative Frequency')
-
 cowplot::plot_grid(square_fig(p1), square_fig(p2))
 ```
 
