@@ -1,11 +1,12 @@
-# Web Display
+# Other Topics
+
+## Web Display
 
 The plots created so far are too small for web display. If you are making an 
 analytic web app, you may want bigger font size and everything. Luckily, the 
 function `web_display()` comes to rescue. Often, all you have to do is to feed 
 in the plot object, and it'll return a plot object that looks just right when 
 shown in a web browser. Below is an example.
-
 
 ```r
 library(ezplot)

@@ -18,6 +18,7 @@ mainmatter.md
 05-02-lineplot.md
 05-03-dumbbell.md
 05-04-heatmap.md
-06-web-display.md
+06-01-web-display.md
+06-02-combine-plots.md
 backmatter.md
 conclusion.md
