@@ -5,7 +5,6 @@
 A scatter plot shows the relationship between two continuous variables. Let's 
 apply the function `mk_scatterplot()` to the data frame `films` to get a function for making scatter plots of any two continuous variables in `films`.
 
-
 ```r
 library(dplyr)
 library(ezplot)
@@ -15,7 +14,6 @@ plt = mk_scatterplot(films)
 For example, we can use `plt()` to draw a scatter plot of `boxoffice` vs. 
 `budget`. We'll use `log10` scale on both axes because the two variables are 
 heavily right-skewed.
-
 
 ```r
 p = plt(xvar = "budget", yvar = "boxoffice", font_size = 8) %>% 
@@ -37,7 +35,6 @@ automatically. It adds to the plot the best fitting line, and displays its
 equation by default. In addtion, it also shows the R-squared value and the 
 p-value associated with the coefficient estimate of x. 
 
-
 ```r
 add_lm_line(p)
 ```
@@ -51,7 +48,6 @@ find the correlation between boxoffice and budget (both at log10 scale) is 0.61.
 
 The function `plt()` can be re-used for other variables in the same data frame. 
 For example, we can draw a scatter plot of `boxoffice` vs. `votes`.
-
 
 ```r
 p = plt("votes", "boxoffice", alpha = 0.2, jitter = T, font_size = 8) %>% 
@@ -76,7 +72,6 @@ statistically significant by the tiny p-value.
 Instead of the equation, we can show a table of quantities associated with the 
 best fitting line by setting `show = "tb"`.
 
-
 ```r
 add_lm_line(p, show = "tb") 
 ```
@@ -87,7 +82,6 @@ The table gives more information than the equation. In particular, it reports th
 
 To summarize, setting `show = "tb"` inside `add_lm_line()` displays a table of
 details such as standard errors and t-statistics; setting `show = "eq"` (default) displays the equation of the best fitting line without those details. When showing the equation, we can optionally supply a categorical variable name to `colorby` and this will color the data points by different groups. Consider this question: did action movies make money year after year? To find out, we'll draw a scatter plot of `bo_bt_ratio` vs. `year`, setting `colorby = "action"`, where `action` is a binary flag indicating if a film is an action film or not.
-
 
 ```r
 p = plt("year", "bo_bt_ratio", colorby = "action", 
@@ -113,8 +107,7 @@ Now it's your turn. Make scatter plots to answer the following questions:
 
 1. Does drama make money year after year? What about comedy? 
 2. Is it true the higher the `rating`, the bigger the boxoffice/budget ratio 
-(`bo_bt_ratio`)? What about when viewed separartely under romance vs. 
-non-romance films?
+   (`bo_bt_ratio`)? What about when viewed separartely under romance vs. 
+   non-romance films?
 3. Is it true the more `votes` a film gets, the bigger its boxoffice/budget 
-ratio? What about when viewed separartely under drama vs. non-drama films?
-
+   ratio? What about when viewed separartely under drama vs. non-drama films?
