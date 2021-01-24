@@ -1,0 +1,36 @@
+## Forest Plot
+
+A forest plot allows us to visually compare ranges of values associated with different groups. Its typical use case is to display multiple rows of point estimates and their confidence intervals. For example, say you had a dataset of 1 continuous outcome and 10 features. Suppose you fitted a simple linear regression model using each feature and extracted the coefficient estimate and its 95% confidence interval, you could then stack them as rows into a data frame and call `mk_forestplot()` to visualize all coefficient estimates and their confidence intervals in a plot. This can allow you to quickly identify the features with the highest or lowest effect on the outcome. Let's see an example. The `ezplot` package includes a data frame called `ests_CIs` that contains fake coefficients and their confidence intervals. There's also a grouping variable (`group`) that groups the models, and as we'll see in a short while, this `group` variable can also be plotted.
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(ezplot)
+# look at the first 13 rows
+head(ests_CIs, 13)
+```      
+
+First, let's simply plot out the coefficient estimates and their confidence intervals. Note that we need to pass a categorical variable that represents the row labels to the `yvar` parameter. The implicit message is that the input data frame must have unique rows. 
+
+```{r, forestplot1, fig.cap="Effect Size Estimates and Uncertainties", dpi=300, fig.width=7, fig.height=7} 
+plt = mk_forestplot(ests_CIs)
+plt('est', xmin_var = 'lwr', xmax_var = 'upr', yvar = 'model')
+```
+
+We see from the above chart that the y-axis is ordered alphabetically by default. But we can order it however we want. For example, the following code re-orders the levels of `model` in descending alphanumerical order (`lm26, lm25, ..., lm10, lm9, ..., lm1`) in the data, and this will order the y-axis in ascending alphanumerical order (`lm1, ..., lm10, lm11, ..., lm26`).
+
+```{r, forestplot2, fig.cap="Y-axis in Ascending Alphanumerical Order", dpi=300, fig.width=7, fig.height=7}
+df = ests_CIs
+df$model = factor(df[['model']], levels = rev(unique(df[['model']])))
+plt2 = mk_forestplot(df)
+plt2('est', xmin_var = 'lwr', xmax_var = 'upr', yvar = 'model')
+```
+
+Now let's add in the grouping variable `group` by passing it to the `colorby` parameter. Notice the ascending alphanumerical order is preserved within each group.
+
+```{r, forestplot3, fig.cap="Colored by Group", dpi=300, fig.width=7, fig.height=7} 
+plt2('est', xmin_var = 'lwr', xmax_var = 'upr', yvar = 'model', 
+     colorby = 'group', font_size = 8)
+```
+
+As an exercise, can you re-order the y-axis in descending alphanumerical order? Can you re-order the facet panels (groups) in ascending alphanumerical order (i.e., `G1, G2, ..., G12`)?
