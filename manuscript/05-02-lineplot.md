@@ -1,8 +1,7 @@
-## Line Plot
+## Line Plots
 
 Line plots are good for showing trends over time. For example, let's plot the
 annual average budget (and boxoffice) over the years.
-
 
 ```r
 library(ezplot)
@@ -22,7 +21,6 @@ and re-run. What's changed on the plot?
 
 Alternatively, we can calculate and plot the annual boxoffice/budget ratios over
 the years.
-
 
 ```r
 library(dplyr)
@@ -49,13 +47,12 @@ However, the `plt()` function also works with a x variable of type character or
 factor. For example, the `films` dataset has a character variable `year_cat` 
 with only 4 unique values. 
 
-
 ```r
 str(films$year_cat)
 ```
 
 ```
- chr [1:5944] "1913-1950" "1990-2014" "1990-2014" "1990-2014" ...
+ chr [1:5944] "1913-1950" "1990-2014" "1990-2014" "1990-2014" "1990-2014" "1970-1990" ...
 ```
 
 ```r
@@ -63,7 +60,6 @@ table(films$year_cat)
 ```
 
 ```
-
 1913-1950 1950-1970 1970-1990 1990-2014 
       231       243       876      4594 
 ```
@@ -71,9 +67,8 @@ table(films$year_cat)
 Instead of plotting the films of each period on a bar chart, we can use a line 
 plot because there's a time order to the periods.
 
-
 ```r
-films_cnt = films %>% group_by(year_cat) %>% summarise(n = n())
+films_cnt = films %>% group_by(year_cat) %>% summarise(n = n(), .groups='drop')
 plt = mk_lineplot(films_cnt)
 plt("year_cat", "n", font_size = 8, pt_size = 0.4, linew = 0.3) %>% 
         add_labs(title = "Film Counts, 1913 - 2014",
@@ -93,7 +88,6 @@ some cellular chemical differences between Male and Female rats. The variable
 from each animal, `delta` is the effect size, and `rho` is the correlation among
 different cells. 
 
-
 ```r
 head(power_n_ssize_gender)
 ```
@@ -110,7 +104,6 @@ head(power_n_ssize_gender)
 
 We can draw a faceted line plot using `mk_facet_lineplot()` to show all 5 
 variables at once.
-
 
 ```r
 plt = mk_facet_lineplot(power_n_ssize_gender)
@@ -131,7 +124,7 @@ Now it's your turn. Try the following exercises.
 
 1. Read the document of `mk_lineplot()` by running `?mk_lineplot` in Rstudio. 
 2. Make a line plot to show the trend of annual average boxoffice and votes over 
-the years.
+   the years.
 3. Make a line plot to show the trend of annual total number of action films 
-over the years.
+   over the years.
 4. Read the document of `mk_facet_lineplot()` by running `?mk_facet_lineplot`. 

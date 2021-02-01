@@ -1,4 +1,4 @@
-## Line Plot
+## Line Plots
 
 Line plots are good for showing trends over time. For example, let's plot the
 annual average budget (and boxoffice) over the years.
@@ -52,7 +52,7 @@ Instead of plotting the films of each period on a bar chart, we can use a line
 plot because there's a time order to the periods.
 
 ```{r, lineplot_films, fig.cap="", dpi=300, fig.width=4, fig.height=4} 
-films_cnt = films %>% group_by(year_cat) %>% summarise(n = n())
+films_cnt = films %>% group_by(year_cat) %>% summarise(n = n(), .groups='drop')
 plt = mk_lineplot(films_cnt)
 plt("year_cat", "n", font_size = 8, pt_size = 0.4, linew = 0.3) %>% 
         add_labs(title = "Film Counts, 1913 - 2014",

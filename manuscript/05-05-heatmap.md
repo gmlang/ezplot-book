@@ -2,7 +2,6 @@
 
 Let's start with an example. Consider the `nba` data frame.
 
-
 ```r
 library(dplyr)
 library(tidyr)
@@ -35,15 +34,13 @@ colnames(nba)
 ```
 
 ```
- [1] "Name" "G"    "MIN"  "PTS"  "FGM"  "FGA"  "FGP"  "FTM"  "FTA"  "FTP" 
-[11] "X3PM" "X3PA" "X3PP" "ORB"  "DRB"  "TRB"  "AST"  "STL"  "BLK"  "TO"  
-[21] "PF"  
+ [1] "Name" "G"    "MIN"  "PTS"  "FGM"  "FGA"  "FGP"  "FTM"  "FTA"  "FTP"  "X3PM" "X3PA" "X3PP"
+[14] "ORB"  "DRB"  "TRB"  "AST"  "STL"  "BLK"  "TO"   "PF"  
 ```
 
 The variable `Name` contains players' names. It's a factor with levels ordered 
 alphabetically. Let's reorder the levels in ascending order of the points the 
 players scored.
-
 
 ```r
 str(nba$Name)
@@ -58,22 +55,18 @@ levels(nba$Name)
 ```
 
 ```
- [1] "Al Harrington "     "Al Jefferson "      "Allen Iverson "    
- [4] "Amare Stoudemire "  "Andre Iguodala "    "Antawn Jamison "   
- [7] "Ben Gordon "        "Brandon Roy "       "Carmelo Anthony "  
-[10] "Caron Butler "      "Chauncey Billups "  "Chris Bosh "       
-[13] "Chris Paul "        "Corey Maggette "    "Danny Granger "    
-[16] "David West "        "Deron Williams "    "Devin Harris "     
-[19] "Dirk Nowitzki "     "Dwight Howard "     "Dwyane Wade "      
-[22] "Jamal Crawford "    "Jason Terry "       "Joe Johnson "      
-[25] "John Salmons "      "Josh Howard "       "Kevin Durant "     
-[28] "Kevin Martin "      "Kobe Bryant "       "LaMarcus Aldridge "
-[31] "LeBron James "      "Maurice Williams "  "Michael Redd "     
-[34] "Monta Ellis "       "Nate Robinson "     "O.J. Mayo "        
-[37] "Pau Gasol "         "Paul Pierce "       "Rashard Lewis "    
-[40] "Ray Allen "         "Richard Hamilton "  "Richard Jefferson "
-[43] "Rudy Gay "          "Shaquille O'neal "  "Stephen Jackson "  
-[46] "Tim Duncan "        "Tony Parker "       "Vince Carter "     
+ [1] "Al Harrington "     "Al Jefferson "      "Allen Iverson "     "Amare Stoudemire " 
+ [5] "Andre Iguodala "    "Antawn Jamison "    "Ben Gordon "        "Brandon Roy "      
+ [9] "Carmelo Anthony "   "Caron Butler "      "Chauncey Billups "  "Chris Bosh "       
+[13] "Chris Paul "        "Corey Maggette "    "Danny Granger "     "David West "       
+[17] "Deron Williams "    "Devin Harris "      "Dirk Nowitzki "     "Dwight Howard "    
+[21] "Dwyane Wade "       "Jamal Crawford "    "Jason Terry "       "Joe Johnson "      
+[25] "John Salmons "      "Josh Howard "       "Kevin Durant "      "Kevin Martin "     
+[29] "Kobe Bryant "       "LaMarcus Aldridge " "LeBron James "      "Maurice Williams " 
+[33] "Michael Redd "      "Monta Ellis "       "Nate Robinson "     "O.J. Mayo "        
+[37] "Pau Gasol "         "Paul Pierce "       "Rashard Lewis "     "Ray Allen "        
+[41] "Richard Hamilton "  "Richard Jefferson " "Rudy Gay "          "Shaquille O'neal " 
+[45] "Stephen Jackson "   "Tim Duncan "        "Tony Parker "       "Vince Carter "     
 [49] "Yao Ming "          "Zachary Randolph " 
 ```
 
@@ -85,7 +78,6 @@ The other variables are various performance statistics. In order to visualize
 the data in a heatmap, we first need to put the data in long format, a.k.a., we 
 need to gather the names of the statistics in one column and their values in 
 another column.
-
 
 ```r
 nba_m = nba %>% gather(stats, val, -Name)
@@ -104,7 +96,6 @@ head(nba_m)
 
 Let's scale the values of every performance statistics so that they are between 
 0 and 1. 
-
 
 ```r
 dat = nba_m %>% group_by(stats) %>% mutate(val_scaled = scales::rescale(val))
@@ -127,7 +118,6 @@ head(dat)
 With the data prep work done, we're ready to make a heatmap using the 
 `mk_heatmap()` function.
 
-
 ```r
 plt = mk_heatmap(dat)
 plt(xvar = "stats", yvar = "Name", fillby = "val_scaled", 
@@ -147,24 +137,22 @@ us to make multiple heatmaps in one plot with no sweat. Let's see another
 example. The dataset `attacks_by_country` has the number of internet 
 attacks of ten countries for each hour of a day during a fixed time period. 
 
-
 ```r
 str(attacks_by_country)
 ```
 
 ```
-Classes 'tbl_df', 'tbl' and 'data.frame':	1680 obs. of  5 variables:
+tibble [1,680 × 5] (S3: tbl_df/tbl/data.frame)
  $ country     : Factor w/ 10 levels "South Korea (KR)",..: 9 9 9 9 9 9 9 9 9 9 ...
  $ wkday       : Factor w/ 7 levels "Sunday","Monday",..: 1 1 1 1 1 1 1 1 1 1 ...
- $ hour        : chr  "00" "01" "02" "03" ...
- $ country_code: chr  NA "AR" NA "AR" ...
- $ n           : num  0 1 0 2 18 1 28 1 0 0 ...
+ $ hour        : chr [1:1680] "00" "01" "02" "03" ...
+ $ country_code: chr [1:1680] NA "AR" NA "AR" ...
+ $ n           : num [1:1680] 0 1 0 2 18 1 28 1 0 0 ...
 ```
 
 We can draw a heatmap for each country, showing the severity of attacks over 
 time. Pay attention to the usage of `facet_by` and `facet_ncol` parameters in
 the following code.
-
 
 ```r
 plt = mk_heatmap(attacks_by_country)
@@ -177,12 +165,12 @@ plt("hour", "wkday", fillby ="n", facet_by = "country", facet_ncol = 2) %>%
 Now it's your turn. Try the following exercises for homework.
 
 1. Derive from `films` a data frame with 3 columns: `year_cat`, `made_money` and
-`n`, where `n` counts the number of films. Hint: `?dplyr::count()`. Afterwards, 
-make a heatmap to display the data.
+   `n`, where `n` counts the number of films. Hint: `?dplyr::count()`. Afterwards, 
+   make a heatmap to display the data.
 2. Derive from `films` a data frame with 3 columns: `year_cat`, `action` and
-`avg_rating`, where `avg_rating` summarizes the average rating. Hint: 
-`?dplyr::group_by()` and `?dplyr::summarize()`. Afterwards, make a heatmap to
-display the data.
+   `avg_rating`, where `avg_rating` summarizes the average rating. Hint: 
+   `?dplyr::group_by()` and `?dplyr::summarize()`. Afterwards, make a heatmap to
+   display the data.
 3. Read the document of `mk_heatmap()` by running `?mk_heatmap` in Rstudio. 
-What does the parameter `palette` do? Repeat exercise 1 and 2 using different 
-values for `palette`.
+   What does the parameter `palette` do? Repeat exercise 1 and 2 using different 
+   values for `palette`.

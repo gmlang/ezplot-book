@@ -56,13 +56,16 @@ rmd_path = file.path(manu_path, "Rmd")
 # file_in = file.path(rmd_path, "05-02-lineplot.Rmd")
 # knitr::knit(file_in)
 
-# file_in = file.path(rmd_path, "05-03-dumbbell.Rmd")
+# file_in = file.path(rmd_path, "05-03-rank-order-plot.Rmd")
 # knitr::knit(file_in)
 
-# file_in = file.path(rmd_path, "05-04-heatmap.Rmd")
+# file_in = file.path(rmd_path, "05-04-dumbbell.Rmd")
 # knitr::knit(file_in)
 
-# file_in = file.path(rmd_path, "05-05-forestplot.Rmd")
+# file_in = file.path(rmd_path, "05-05-heatmap.Rmd")
+# knitr::knit(file_in)
+
+# file_in = file.path(rmd_path, "05-06-forestplot.Rmd")
 # knitr::knit(file_in)
 
 # file_in = file.path(rmd_path, "06-01-web-display.Rmd")
