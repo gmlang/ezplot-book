@@ -16,8 +16,10 @@ mainmatter.md
 04-04-likertplot.md
 05-01-scatterplot.md
 05-02-lineplot.md
-05-03-dumbbell.md
-05-04-heatmap.md
+05-03-rank-order-plot.md
+05-04-dumbbell.md
+05-05-heatmap.md
+05-06-forestplot.md
 06-01-web-display.md
 06-02-combine-plots.md
 backmatter.md
