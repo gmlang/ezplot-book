@@ -1,28 +1,35 @@
 # Plot the Distribution of a Continuous Variable
 
-Let's begin with an example. The `ezplot` package contains a dataset of films from IMBD.com. Let's load the package and look at the variables from the `films` dataset.
+When showing the univariate distribution of a continuous variable, if the number of observations is relatively small, a dot plot is often used. For example, the `ezplot` package comes with a dataset of all past American presidents (as of 2020) and the number of days each spent in office. It's a small dataset of 44 records and 2 columns.
 
 ```{r}
 library(ezplot)
-str(films)
+str(days_in_office)
 ```
 
-If you want to learn more about this dataset, for example, the meaning of each variable, you can run `?films` to pull up its documentation. 
+Let's create a dot plot to see if we can discover any patterns. 
 
-Let's focus on the variable `budget`. Its type is numeric, so it's continuous and we can examine its distribution by making a histogram.
+```{r, dotplt_tenure, fig.cap="Dot Plot of U.S. Presidents' tenure (in days)", dpi=300, fig.width=5, fig.height=5}
+plt = mk_dotplot(days_in_office) # plt is a function
+plt("days", legend_pos = 'top') 
+```
+
+We see that there are two clusters of data points located at a value that's a little less than 1500 and at a value that's a little less than 3000, indicating that these two values occur more frequently than others. Not surprisingly, these are 1461 and 2922 days, which correspond to one and two full 4-year terms in office. What may be a little surprising, is the relatively large number of points that occur outside these clusters. Apparently, quite a few presidents left office without finishing their first or second full term.
+
+When the data size is large, a dot plot is inappropriate, instead, a histogram, density plot, CDF plot or boxplot is often used. For example, the `ezplot` package contains a dataset of `r nrow(films)` films from IMBD.com. You can run `?films` inside Rstudio to pull up its documentation if you want to find out the meaning of each variable. For our purpose here, let's look at the distribution of the variable `budget` in a histogram.
 
 ```{r, hist_budget, fig.cap="Histogram of budget", dpi=300, fig.width=5, fig.height=5}
 plt = mk_histdens(films) # plt is a function
-plt("budget", bins = 100, legend_pos = 'top') # plot histogram by default
+plt("budget", bins = 100, legend_pos = 'top')
 ```
 
-Alternatively, we can make a density plot.
+We can also make a density plot instead of histogram.
 
 ```{r, density_budget, fig.cap="Density plot of budget", dpi=300, fig.width=5, fig.height=5}
 plt("budget", type = 'density', legend_pos = 'top') 
 ```
 
-Instead of looking at its density curve, we can plot its Cumulative Distribution Function (CDF).
+Instead of the density curve, we can plot its Cumulative Distribution Function (CDF).
 
 ```{r, cdf_budget, fig.cap="Empirical CDF of budget", dpi=300, fig.width=5, fig.height=5}
 plt = mk_cdfplot(films) 
