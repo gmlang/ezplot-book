@@ -2,7 +2,6 @@
 
 We've seen that we can use histogram, density plot, cdf plot, boxplot and qqplot to understand the distribution of a continuous variable. In this section, we'll take a deeper look at how to make histograms using `ezplot`. Let's first load the `ezplot` library and examine the variable `rating` from the `films` data frame by calling `str()` on it. The variable `rating` measures IMDB users' average ratings.
 
-
 ```r
 library(ezplot)
 str(films$rating)
@@ -13,7 +12,6 @@ str(films$rating)
 ```
 
 The output `num` says that its type is numeric. Looking at the first few data values, it's clear `rating` is continuous. We can use a histogram to understand its distribution.
-
 
 ```r
 plt = mk_histdens(films)
@@ -29,7 +27,6 @@ obtained another function `plt()` in return. We then passed the string `"rating"
 The function `plt()` also takes other arguments. In the example aboved, we passed in `bins = 80` to tell `plt()` to make a histogram of 80 bins. (The default value of `bins` is 30.) You can also supply a value to the `binwidth` parameter. For example, you can set `binwidth = 0.1` to change the size
 of each bin, and this will overwrite the number of bins. In practice, I often play with different values of `binwidth` or `bins` until the obtained histogram has a large number of bins to show how the data are really distributed. Another useful parameter is `add_vline_median` or `add_vline_mean`. For example, setting `add_vline_median = FALSE` will not show the vertical line at the median.
 
-
 ```r
 plt("rating", binwidth = 0.1, add_vline_median = FALSE, legend_pos = "top") 
 ```
@@ -40,7 +37,6 @@ Now I want you to run `?mk_histdens()` and read the documentation. Pay attention
 
 We've looked at the distribution of users' average ratings for all films. What do users' average ratings look like for films that made money vs. those that didn't? We can answer this question by bringing in another variable called 
 `made_money`. Let's `str` it first.
-
 
 ```r
 str(films$made_money)
@@ -53,7 +49,6 @@ str(films$made_money)
 So `made_money` is a factor with two levels (yes, no), indicating if a film made money or not. We can create 2 facets, one with a histogram of profitable films
 and the other of unprofitable films, by simply setting `facet_by = "made_money"`. 
 
-
 ```r
 p = plt("rating", facet_by = "made_money", bins=100, add_vline_mean = F)
 add_labs(p, subtitle = 'Avg. ratings of unrofitable vs. profitable films')
@@ -65,13 +60,11 @@ We see profitable films have a higher median average rating, and it seems
 there're more profitable films (the height of the bottom histogram is higher).
 Let's check if this is true.
 
-
 ```r
 table(films$made_money)
 ```
 
 ```
-
   no  yes 
 1831 4113 
 ```
